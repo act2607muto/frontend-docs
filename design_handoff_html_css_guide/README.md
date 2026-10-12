@@ -1,7 +1,7 @@
 # Handoff: HTML & CSS GUIDE（HTML・CSS学習／辞典サイト）
 
 ## 概要
-HTMLタグ・CSSプロパティの辞典と、初心者〜上級者向け学習ロードマップを組み合わせた個人用学習サイト。コンセプトは「学ぶ・調べる・理解する」。すべての詳細ページで **コードと実際のブラウザ表示（ライブプレビュー）をセットで掲載** することが最重要要件。
+HTMLタグ・CSSプロパティ・JavaScriptの辞典と、初心者〜上級者向け学習ロードマップを組み合わせた個人用学習サイト。コンセプトは「学ぶ・調べる・理解する」。すべての詳細ページで **コードと実際のブラウザ表示（ライブプレビュー）をセットで掲載** することが最重要要件。
 
 ## デザインファイルについて
 `design/` 内のファイルは **HTMLで作成したデザインリファレンス（動作するプロトタイプ）** であり、そのまま本番に使うコードではない。プロトタイプは独自ランタイム（`support.js` / `.dc.html` 形式）上で動いているため、**素のHTML・CSS・JavaScript（フレームワーク非依存）で再実装**すること。将来WordPressオリジナルテーマへ移行する前提で、共通部品・データ分離を意識する。
@@ -35,13 +35,13 @@ HTMLタグ・CSSプロパティの辞典と、初心者〜上級者向け学習�
 WordPress移行時の対応：一覧＝カスタム投稿タイプ（html_tag / css_property）＋タクソノミー（カテゴリ）、詳細＝single テンプレート、ロードマップ＝固定ページ。共通部品は `template-parts/` 化できる単位（header / footer / sidebar / code-block / preview / related-list）で分割しておく。
 
 ## データ構造（`data/`）
-- `categories.json` … `{ html: [{id, name}], css: [...] }`（表示順）
-- `items.json` … 全項目 `{ id: "html-h1", type: "html"|"css", slug, name, summary, keywords[], category }`（100件）
+- `categories.json` … `{ html: [{id, name}], css: [...], js: [...] }`（表示順）
+- `items.json` … 全項目 `{ id: "html-h1", type: "html"|"css"|"js", slug, name, summary, keywords[], category }`（120件：HTML 55・CSS 45・JS 20）
 - `details.json` … 解説済み項目（全100件）
   ```
   { id, title?(見出しの上書き 例 "<!DOCTYPE html>"), ja, lead,
     meta: [{label, value}],
-    code: { html, css },               // どちらかnull可
+    code: { html, css, js? },          // null可。js があるとプレビューにコンソール欄が付く
     preview: { height, note, fullDocument }, // fullDocument=true は code.html が完全なHTML文書
     explain: [string],                 // `バッククォート` 部分はインラインコード表示
     values: { label, head, rows: [{key, desc}] },
@@ -59,7 +59,7 @@ WordPress移行時の対応：一覧＝カスタム投稿タイプ（html_tag / 
 ### 共通ヘッダー（トップ以外）
 - sticky、高さ60px、背景 `--color-bg`、下に1pxヘアライン（`--color-divider`）。内側 max-width 1320px、左右padding 40px（SP 18px）。
 - 左：ロゴ「HTML & CSS GUIDE」19px / 700。SP詳細ページではロゴ左にハンバーガー（サイドバー開閉）。
-- ナビ：「学習する」「HTML辞典」「CSS辞典」14px。現在地は文字色 `--color-accent` ＋下線1px アクセント（詳細ページは項目の種類に応じてHTML辞典/CSS辞典が現在地）。
+- ナビ：「学習する」「HTML辞典」「CSS辞典」「JS辞典」14px。現在地は文字色 `--color-accent` ＋下線1px アクセント（詳細ページは項目の種類に応じた辞典が現在地）。SPのナビは4等分。
 - 右：検索入力（幅240px、タブレット180px、高さ34px、左に虫眼鏡アイコン）＋テーマ切替アイコンボタン（月／太陽）。
 - SP（<760px）：ナビはヘッダー下段に3等分グリッドで表示。検索はアイコンボタンでヘッダー下に全幅展開。
 
@@ -70,7 +70,7 @@ WordPress移行時の対応：一覧＝カスタム投稿タイプ（html_tag / 
 - 説明文 15.5px / 行高1.95 / muted。
 - 検索バー：高さ52px、左46pxに虫眼鏡。プレースホルダ「タグ・プロパティ・やりたいことで検索（例：flex、中央寄せ）」。
 - 「よく調べるキーワード」：flex / margin / 中央寄せ / 画像 / 見出し（ゴーストボタン、クリックで検索欄に入力）。
-- 入口3つ：`repeat(auto-fit, minmax(200px,1fr))`、上罫線1px（文字色）。各「01 — ROADMAP」等のキッカー＋→アイコン、タイトル24px/700、説明13px。カード塗りは使わない。
+- 入口4つ（学習する・HTML辞典・CSS辞典・JS辞典）：`repeat(auto-fit, minmax(200px,1fr))`、上罫線1px（文字色）。各「01 — ROADMAP」等のキッカー＋→アイコン、タイトル24px/700、説明13px。カード塗りは使わない。
 - フッター：左「HTML & CSS GUIDE」、右「HTML n項目 ・ CSS n項目を収録」12px muted。
 
 ### ② / ③ HTML辞典・CSS辞典一覧（同一UI）
@@ -84,7 +84,7 @@ WordPress移行時の対応：一覧＝カスタム投稿タイプ（html_tag / 
 ### ④ / ⑤ 詳細ページ（最重要）
 **レイアウト**：PC 2カラム `290px | 1fr`（タブレット 250px）、max-width 1320px。
 - **サイドバー**：sticky top 61px、高さ `calc(100vh - 61px)`、独立スクロール、右ヘアライン。
-  - 上部に HTML / CSS のセグメント切替（`.seg`）。
+  - 上部に HTML / CSS / JS のセグメント切替（`.seg`）。
   - 全カテゴリをアコーディオン表示。**閲覧中項目を含むカテゴリは初期展開**、カテゴリ名をアクセント色に。
   - 項目行：等幅12.5pxのコード名＋11.5pxの説明（1行省略）。**現在項目は背景 `--hl-bg`（アクセント15%）・文字 `--hl-text`**、`aria-current="page"`。
   - SP：左からのドロワー（幅 min(86%,340px)、shadow-lg、背景オーバーレイ neutral-900 45%）。ヘッダーのメニューボタンで開閉、オーバーレイ／×で閉じる。
@@ -111,6 +111,13 @@ WordPress移行時の対応：一覧＝カスタム投稿タイプ（html_tag / 
 - 進捗率・完了チェック・ポイントは**付けない**。
 
 ---
+
+### ⑦ JS辞典（追加）
+- 一覧・詳細ページの構成は HTML / CSS 辞典と同じ（`/js/index.html`、`/js/{slug}.html`）。キッカーは「JavaScript ・ カテゴリ名」。
+- カテゴリ：基本構文 / 配列・オブジェクト / DOM操作 / イベント / タイマー・非同期（計20項目）。学習ロードマップには含めない。
+- サンプルコードは HTML → CSS → JS の順に表示。JSのハイライトは VS Code Light+ / Dark+ 準拠（宣言系キーワード青、制御構文紫、文字列 #a31515 / #ce9178、変数 #001080 / #9cdcfe）。
+- 実行結果：画面の表示に加え、下に「コンソール」欄（console.log / warn / error の出力、エラー）を表示。「もう一度実行」で iframe を読み込み直す。HTML がない項目はコンソール欄だけを表示。
+- JS のプレビューのみ iframe に `allow-forms` も付ける（submit イベントを扱うため）。
 
 ## 操作・挙動
 - **テーマ切替**：`html[data-theme="light|dark"]`。localStorage `hcg-theme` に保存。初回は `prefers-color-scheme` に従ってよい。

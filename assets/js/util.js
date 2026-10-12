@@ -11,6 +11,16 @@ export const pad2 = (n) => String(n).padStart(2, '0');
 /** サイトルートへの相対パス（各HTMLの <html data-root> で指定） */
 export const ROOT = document.documentElement.dataset.root || '';
 
+/** 辞典の種類（表示順） */
+export const TYPES = ['html', 'css', 'js'];
+
+/** 種類ごとの表示名 */
+export const TYPE_INFO = {
+  html: { dict: 'HTML辞典', tag: 'HTML', kicker: 'HTML要素', unit: 'タグ' },
+  css: { dict: 'CSS辞典', tag: 'CSS', kicker: 'CSS', unit: 'プロパティ' },
+  js: { dict: 'JS辞典', tag: 'JS', kicker: 'JavaScript', unit: '構文・メソッド' },
+};
+
 export const url = {
   top: () => `${ROOT}index.html`,
   dict: (type) => `${ROOT}${type}/index.html`,

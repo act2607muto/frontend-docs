@@ -7,7 +7,7 @@ export const CONFIG = {
   // 検索ドロップダウンの最大件数
   searchLimit: 8,
   // 辞典一覧で初期展開するカテゴリ（例：{ html: ['text'], css: ['flexgrid'] }）
-  dictInitialOpen: { html: [], css: [] },
+  dictInitialOpen: { html: [], css: [], js: [] },
   // トップページの「よく調べるキーワード」
   quickWords: ['flex', 'margin', '中央寄せ', '画像', '見出し'],
 };

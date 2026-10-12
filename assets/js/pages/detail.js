@@ -1,5 +1,5 @@
 // ④ / ⑤ 詳細ページ（HTML・CSS共通）
-import { esc, inlineCode, pad2, titleOf, url } from '../util.js';
+import { esc, inlineCode, pad2, titleOf, TYPES, TYPE_INFO, url } from '../util.js';
 import { icon } from '../icons.js';
 import { initAccordion } from '../accordion.js';
 import { createCodeBlocks } from '../code.js';
@@ -40,7 +40,7 @@ function renderSidebar(data, item) {
   aside.innerHTML = `
     <div class="sidebar__head"><span>カテゴリ</span><button type="button" class="btn btn-icon" aria-label="閉じる" data-drawer-close>${icon('x')}</button></div>
     <div class="seg" role="radiogroup" aria-label="辞典の種類">
-      ${['html', 'css'].map((t) => `
+      ${TYPES.map((t) => `
         <label class="seg-opt"><input type="radio" name="sbtype" value="${t}"${t === item.type ? ' checked' : ''}>${t.toUpperCase()}</label>`).join('')}
     </div>
     <div class="sidebar__cats">${sidebarCats(data, item.type, item)}</div>`;
@@ -87,8 +87,7 @@ function relatedIds(data, item, d) {
 }
 
 function renderArticle(data, item, d) {
-  const isHtml = item.type === 'html';
-  const dictName = isHtml ? 'HTML辞典' : 'CSS辞典';
+  const info = TYPE_INFO[item.type];
   const ord = data.order[item.type];
   const pos = ord.indexOf(item.id);
   const prev = data.index[ord[pos - 1]];
@@ -99,14 +98,14 @@ function renderArticle(data, item, d) {
   art.className = 'article';
   art.innerHTML = `
     <nav class="crumbs" aria-label="パンくず">
-      <a href="${url.dict(item.type)}">${dictName}</a><span>/</span>
+      <a href="${url.dict(item.type)}">${info.dict}</a><span>/</span>
       <span>${esc(item.categoryName)}</span><span>/</span>
       <code>${esc(item.name)}</code>
     </nav>
-    <div class="kicker article__kicker">${isHtml ? 'HTML要素' : 'CSS'} ・ ${esc(item.categoryName)}</div>
+    <div class="kicker article__kicker">${info.kicker} ・ ${esc(item.categoryName)}</div>
     <h1 class="article__title">${esc(d?.title || titleOf(item))}</h1>
     <p class="article__ja">${esc(d ? d.ja : item.summary)}</p>
-    <p class="article__lead">${esc(d ? d.lead : `${item.summary}を指定・表現するための${isHtml ? 'タグ' : 'プロパティ'}です。`)}</p>
+    <p class="article__lead">${esc(d ? d.lead : `${item.summary}を指定・表現するための${info.unit}です。`)}</p>
     ${d ? `<dl class="meta">${d.meta.map((m) => `<div><dt>${esc(m.label)}</dt><dd>${esc(m.value)}</dd></div>`).join('')}</dl>` : ''}
 
     ${d ? `

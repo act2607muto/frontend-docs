@@ -70,5 +70,27 @@
       "id": "other",
       "name": "その他"
     }
+  ],
+  "js": [
+    {
+      "id": "basic",
+      "name": "基本構文"
+    },
+    {
+      "id": "data",
+      "name": "配列・オブジェクト"
+    },
+    {
+      "id": "dom",
+      "name": "DOM操作"
+    },
+    {
+      "id": "event",
+      "name": "イベント"
+    },
+    {
+      "id": "async",
+      "name": "タイマー・非同期"
+    }
   ]
 }
