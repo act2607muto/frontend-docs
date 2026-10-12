@@ -1,0 +1,918 @@
+[
+  {
+    "id": "html-meta",
+    "title": "<meta>",
+    "ja": "文字コードなどのメタデータ",
+    "lead": "ページそのものに関する情報（メタデータ）をブラウザや検索エンジンに伝えます。head の中に書き、画面には表示されません。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "メタデータ要素"
+      },
+      {
+        "label": "記述位置",
+        "value": "head の中"
+      },
+      {
+        "label": "終了タグ",
+        "value": "不要（空要素）"
+      }
+    ],
+    "code": {
+      "html": "<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta name=\"description\" content=\"HTMLタグとCSSプロパティを、サンプルコードと実際の表示結果で学べる辞典サイトです。\">\n    <title>HTML &amp; CSS GUIDE</title>\n</head>\n<body>\n    <p>meta要素の内容は画面には表示されません。</p>\n</body>\n</html>",
+      "css": null
+    },
+    "preview": {
+      "height": 110,
+      "note": "meta要素は画面に表示されず、ブラウザや検索エンジンが読み取ります",
+      "fullDocument": true
+    },
+    "explain": [
+      "`meta` は終了タグを持たない空要素で、`head` の中に書きます。どんな情報を伝えるかは、`charset`、`name`、`content` などの属性で指定します。",
+      "`<meta charset=\"UTF-8\">` は文字コードの指定です。日本語の文字化けを防ぐため、`head` のできるだけ先頭に書きます。",
+      "`<meta name=\"viewport\">` は、スマートフォンでページを端末の画面幅に合わせて表示するための指定です。レスポンシブデザインには欠かせません。",
+      "`<meta name=\"description\">` は、ページの内容を短くまとめた説明文です。`content` 属性に書いた文章は、Googleなどの検索結果でタイトルの下に表示されることがあり、利用者がページを開くかどうかを判断する材料になります。"
+    ],
+    "values": {
+      "label": "よく使う書き方",
+      "head": "コード",
+      "rows": [
+        {
+          "key": "charset=\"UTF-8\"",
+          "desc": "文字コードをUTF-8に指定する"
+        },
+        {
+          "key": "name=\"viewport\"",
+          "desc": "スマートフォンでの表示幅を端末に合わせる"
+        },
+        {
+          "key": "name=\"description\"",
+          "desc": "ページの説明文。検索結果に表示されることがある"
+        },
+        {
+          "key": "name=\"robots\"",
+          "desc": "検索エンジンに登録させるかどうかを指定（noindex など）"
+        },
+        {
+          "key": "property=\"og:title\" など",
+          "desc": "SNSでシェアされたときのタイトル・画像（OGP）"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "description を書く",
+        "desc": "ページごとに内容に合った説明文を、全角80〜120文字程度で書くのが目安です。",
+        "html": "<meta name=\"description\" content=\"Flexboxの基本を図解。justify-contentとalign-itemsで要素を中央寄せする方法を、サンプルコード付きで解説します。\">"
+      }
+    ],
+    "notes": [
+      "description はページごとに異なる文章にします。全ページ同じ説明文では効果がありません。",
+      "description に書いても、検索結果に必ずそのまま表示されるとは限りません。検索エンジンが本文から自動で抜き出すこともあります。",
+      "キーワードを詰め込んだ不自然な文章は避け、内容が伝わる自然な文章にします。"
+    ],
+    "related": [
+      "html-head",
+      "html-title",
+      "html-doctype",
+      "html-link"
+    ]
+  },
+  {
+    "id": "html-doctype",
+    "title": "<!DOCTYPE html>",
+    "ja": "HTML文書であることの宣言",
+    "lead": "ファイルの1行目に書き、この文書がHTML（HTML Living Standard）で書かれていることをブラウザに伝えます。タグではなく「宣言」です。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "文書型宣言"
+      },
+      {
+        "label": "記述位置",
+        "value": "ファイルの1行目"
+      },
+      {
+        "label": "終了タグ",
+        "value": "なし"
+      }
+    ],
+    "code": {
+      "html": "<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Document</title>\n</head>\n<body>\n    <h1>Hello World</h1>\n</body>\n</html>",
+      "css": null
+    },
+    "preview": {
+      "height": 130,
+      "note": "<title> の内容はブラウザのタブに表示されます",
+      "fullDocument": true
+    },
+    "explain": [
+      "`<!DOCTYPE html>` は文書型宣言と呼ばれ、ブラウザに「標準のHTMLとして表示してください」と伝えます。書き忘れると、古いブラウザとの互換を優先する「互換モード（Quirks Mode）」で表示され、レイアウトが崩れることがあります。",
+      "続く `<html lang=\"ja\">` は文書全体を囲むルート要素です。`lang` 属性で日本語の文書であることを示すと、読み上げソフトや翻訳機能が正しく動作します。",
+      "`<head>` にはページの情報を書きます。`<meta charset=\"UTF-8\">` は文字コードの指定で、文字化けを防ぎます。`<meta name=\"viewport\">` はスマートフォンで画面幅に合わせて表示するための指定です。",
+      "`<title>` はブラウザのタブや検索結果に表示されるページ名です。実際に画面に表示される内容は `<body>` の中に書きます。"
+    ],
+    "values": {
+      "label": "各行の役割",
+      "head": "コード",
+      "rows": [
+        {
+          "key": "<!DOCTYPE html>",
+          "desc": "HTML文書であることの宣言"
+        },
+        {
+          "key": "<html lang=\"ja\">",
+          "desc": "ルート要素。文書の言語を日本語に指定"
+        },
+        {
+          "key": "<meta charset=\"UTF-8\">",
+          "desc": "文字コードをUTF-8に指定"
+        },
+        {
+          "key": "<meta name=\"viewport\" …>",
+          "desc": "スマートフォンでの表示幅を端末に合わせる"
+        },
+        {
+          "key": "<title>",
+          "desc": "タブや検索結果に表示されるページ名"
+        },
+        {
+          "key": "<body>",
+          "desc": "画面に表示される内容"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "CSSファイルを読み込む",
+        "desc": "head の中に link 要素を書くと、外部のCSSファイルを読み込めます。",
+        "html": "<head>\n    <meta charset=\"UTF-8\">\n    <title>Document</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n</head>"
+      }
+    ],
+    "notes": [
+      "必ずファイルの1行目に書きます。前に空白や他の文字があると正しく認識されないことがあります。",
+      "大文字・小文字は区別されませんが、<!DOCTYPE html> と書くのが一般的です。",
+      "meta charset はできるだけ head の先頭に書きます。"
+    ],
+    "related": [
+      "html-html",
+      "html-head",
+      "html-meta",
+      "html-title"
+    ]
+  },
+  {
+    "id": "html-h1",
+    "title": null,
+    "ja": "最上位の見出し",
+    "lead": "ページの主題を表す、最も重要な見出しです。見出しは h1 から h6 までの6段階があり、h1 はその最上位にあたります。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "ブロック要素"
+      },
+      {
+        "label": "終了タグ",
+        "value": "必須"
+      },
+      {
+        "label": "使用の目安",
+        "value": "1ページに1つ"
+      }
+    ],
+    "code": {
+      "html": "<h1>Hello World</h1>\n<p>はじめてのWebページです。</p>",
+      "css": null
+    },
+    "preview": {
+      "height": 150,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`h1` は \"heading 1\" の略で、そのページ全体の主題を示す見出しです。ブラウザは既定で大きく太い文字で表示し、上下に余白をとります。",
+      "見出しは `h1` から `h6` までの6段階があり、数字が小さいほど重要度が高くなります。文書の章立てに合わせて `h1` → `h2` → `h3` の順に階層を下げていきます。",
+      "検索エンジンやスクリーンリーダーは、見出しの階層をもとにページの構造を理解します。見た目の大きさではなく、内容の重要度で選ぶことが大切です。"
+    ],
+    "values": {
+      "label": "主な属性",
+      "head": "属性",
+      "rows": [
+        {
+          "key": "id",
+          "desc": "ページ内リンクの移動先として使う名前"
+        },
+        {
+          "key": "class",
+          "desc": "CSSで装飾するための名前"
+        },
+        {
+          "key": "lang",
+          "desc": "見出しだけ言語が異なる場合に指定"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "ページの見出し構造をつくる",
+        "desc": "サイト名やページタイトルを h1 にし、その下の章を h2、節を h3 で表します。",
+        "html": "<header>\n  <h1>HTML &amp; CSS GUIDE</h1>\n</header>\n<main>\n  <h2>Flexbox入門</h2>\n  <h3>主軸と交差軸</h3>\n</main>"
+      }
+    ],
+    "notes": [
+      "文字を大きく見せる目的で見出しを使わないでください。大きさはCSSの font-size で調整します。",
+      "h1 の次にいきなり h3 を使うなど、階層を飛ばさないようにします。",
+      "h1 は1ページに1つが一般的です。"
+    ],
+    "related": [
+      "html-h2",
+      "html-p",
+      "css-font-size",
+      "html-header"
+    ]
+  },
+  {
+    "id": "html-a",
+    "title": null,
+    "ja": "ハイパーリンク",
+    "lead": "別のページやファイル、同じページ内の位置へ移動するためのリンクをつくります。移動先は href 属性で指定します。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "インライン要素"
+      },
+      {
+        "label": "終了タグ",
+        "value": "必須"
+      },
+      {
+        "label": "必須属性",
+        "value": "href"
+      }
+    ],
+    "code": {
+      "html": "<p>\n  詳しくは<a href=\"https://example.com/\">公式ドキュメント</a>を参照してください。\n</p>\n<p>\n  <a href=\"https://example.com/\" target=\"_blank\" rel=\"noopener\">新しいタブで開く</a>\n</p>",
+      "css": "a {\n  color: #9a5a1c;\n  text-underline-offset: 3px;\n}\na:hover {\n  text-decoration: none;\n}"
+    },
+    "preview": {
+      "height": 140,
+      "note": "リンクにマウスを乗せると下線が消えます",
+      "fullDocument": false
+    },
+    "explain": [
+      "`a` は \"anchor（いかり）\" の略です。`href` 属性に移動先のURLを書くと、囲んだテキストや画像がクリックできるリンクになります。",
+      "`target=\"_blank\"` を指定すると新しいタブで開きます。その場合は、セキュリティのために `rel=\"noopener\"` もあわせて指定します。",
+      "リンクの色や下線はCSSで変更できます。`:hover` を使うと、マウスを乗せたときの見た目を変えられます。"
+    ],
+    "values": {
+      "label": "主な属性",
+      "head": "属性",
+      "rows": [
+        {
+          "key": "href",
+          "desc": "リンク先のURL。#id でページ内、mailto: でメールを指定"
+        },
+        {
+          "key": "target=\"_blank\"",
+          "desc": "新しいタブ（ウィンドウ）で開く"
+        },
+        {
+          "key": "rel=\"noopener\"",
+          "desc": "開いたページから元のページを操作させない"
+        },
+        {
+          "key": "download",
+          "desc": "リンク先をファイルとしてダウンロードさせる"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "ページ内リンク",
+        "desc": "href に「#」とid名を書くと、同じページ内の該当箇所へ移動します。",
+        "html": "<a href=\"#contact\">お問い合わせへ</a>\n\n<section id=\"contact\">\n  <h2>お問い合わせ</h2>\n</section>"
+      }
+    ],
+    "notes": [
+      "リンクテキストは「こちら」ではなく、移動先がわかる言葉にします。",
+      "ページ移動ではなく動作（送信・開閉など）を行う場合は button を使います。",
+      "target=\"_blank\" を多用すると、ユーザーが元のページに戻りにくくなります。"
+    ],
+    "related": [
+      "html-img",
+      "html-nav",
+      "css-hover",
+      "css-text-decoration"
+    ]
+  },
+  {
+    "id": "html-img",
+    "title": null,
+    "ja": "画像を埋め込む",
+    "lead": "ページに画像を表示します。src 属性で画像ファイルを、alt 属性で画像の内容を説明する代替テキストを指定します。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "インライン（置換要素）"
+      },
+      {
+        "label": "終了タグ",
+        "value": "不要（空要素）"
+      },
+      {
+        "label": "必須属性",
+        "value": "src / alt"
+      }
+    ],
+    "code": {
+      "html": "<figure>\n  <img src=\"photo.jpg\" alt=\"窓辺に置かれた観葉植物\" width=\"320\" height=\"200\">\n  <figcaption>図1：alt属性で画像の内容を説明する</figcaption>\n</figure>",
+      "css": "img {\n  max-width: 100%;\n  height: auto;\n  border-radius: 6px;\n}\nfigcaption {\n  font-size: 13px;\n  color: #666;\n}"
+    },
+    "preview": {
+      "height": 300,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`img` は終了タグを持たない空要素です。`src` に画像のパス、`alt` に画像の内容を書きます。",
+      "`alt` は画像が表示できないときや、スクリーンリーダーで読み上げるときに使われます。装飾のための画像なら `alt=\"\"` と空にします。",
+      "CSSで `max-width: 100%` と `height: auto` を指定すると、親要素からはみ出さず、縦横比を保ったまま縮小されます。"
+    ],
+    "values": {
+      "label": "主な属性",
+      "head": "属性",
+      "rows": [
+        {
+          "key": "src",
+          "desc": "画像ファイルのパス"
+        },
+        {
+          "key": "alt",
+          "desc": "画像の内容を説明する代替テキスト"
+        },
+        {
+          "key": "width / height",
+          "desc": "表示サイズ。指定するとレイアウトのずれを防げる"
+        },
+        {
+          "key": "loading=\"lazy\"",
+          "desc": "画面に近づくまで読み込みを遅らせる"
+        },
+        {
+          "key": "srcset",
+          "desc": "画面の解像度や幅に応じて画像を切り替える"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "画像を遅延読み込みする",
+        "desc": "ページ下部の画像に loading=\"lazy\" を指定すると、最初の表示が速くなります。",
+        "html": "<img src=\"gallery-01.jpg\" alt=\"作品1\" loading=\"lazy\" width=\"640\" height=\"400\">"
+      }
+    ],
+    "notes": [
+      "alt 属性は省略しないでください。",
+      "width と height を書いておくと、読み込み中にレイアウトがずれる（CLS）のを防げます。",
+      "大きな画像はWebPなどで圧縮し、表示サイズに合わせて用意します。"
+    ],
+    "related": [
+      "html-picture",
+      "html-figure",
+      "css-max-width",
+      "css-aspect-ratio"
+    ]
+  },
+  {
+    "id": "html-ul",
+    "title": null,
+    "ja": "順序のないリスト",
+    "lead": "順番に意味がない項目を箇条書きで並べます。各項目は li 要素で囲みます。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "ブロック要素"
+      },
+      {
+        "label": "子要素",
+        "value": "li のみ"
+      },
+      {
+        "label": "終了タグ",
+        "value": "必須"
+      }
+    ],
+    "code": {
+      "html": "<ul>\n  <li>HTMLの基本構造</li>\n  <li>見出し・文章</li>\n  <li>画像・リンク</li>\n</ul>",
+      "css": "ul {\n  padding-left: 1.4em;\n}\nli {\n  margin-bottom: 4px;\n}\nli::marker {\n  color: #b68235;\n}"
+    },
+    "preview": {
+      "height": 150,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`ul` は \"unordered list\" の略で、順番に意味のないリストを表します。中には `li`（list item）だけを入れます。",
+      "ブラウザは既定で各項目の先頭に「・」の記号（マーカー）を表示し、左側に余白をとります。マーカーの色は `::marker` で変えられます。",
+      "ナビゲーションメニューのように、リンクを並べる場面でもよく使われます。"
+    ],
+    "values": {
+      "label": "よく使う組み合わせ",
+      "head": "書き方",
+      "rows": [
+        {
+          "key": "ol",
+          "desc": "順番に意味があるリスト（手順など）"
+        },
+        {
+          "key": "li",
+          "desc": "リストの各項目"
+        },
+        {
+          "key": "list-style: none",
+          "desc": "先頭のマーカーを消す（CSS）"
+        },
+        {
+          "key": "nav > ul",
+          "desc": "ナビゲーションメニューの定番構造"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "ナビゲーションメニュー",
+        "desc": "リンクのリストをFlexboxで横並びにする、実務でよく見る構成です。",
+        "html": "<nav>\n  <ul class=\"menu\">\n    <li><a href=\"/\">ホーム</a></li>\n    <li><a href=\"/learn\">学習する</a></li>\n  </ul>\n</nav>",
+        "css": ".menu {\n  display: flex;\n  gap: 16px;\n  padding: 0;\n  list-style: none;\n}"
+      }
+    ],
+    "notes": [
+      "ul の直下には li 以外を置かないでください。",
+      "手順など順番に意味がある場合は ol を使います。"
+    ],
+    "related": [
+      "html-ol",
+      "html-li",
+      "html-nav",
+      "css-display"
+    ]
+  },
+  {
+    "id": "css-margin",
+    "title": null,
+    "ja": "外側の余白",
+    "lead": "要素の外側に余白をとります。上下左右をまとめて、または個別に指定でき、auto を使うと中央寄せにも使えます。",
+    "meta": [
+      {
+        "label": "初期値",
+        "value": "0"
+      },
+      {
+        "label": "適用対象",
+        "value": "すべての要素"
+      },
+      {
+        "label": "継承",
+        "value": "しない"
+      }
+    ],
+    "code": {
+      "html": "<div class=\"box\">margin: 24px</div>\n<div class=\"box center\">margin: 24px auto</div>",
+      "css": ".box {\n  margin: 24px;\n  padding: 12px;\n  background: #f6ead8;\n  border: 1px solid #b68235;\n}\n.center {\n  width: 220px;\n  margin: 24px auto;\n}"
+    },
+    "preview": {
+      "height": 190,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`margin` は要素の枠線（border）より外側の余白です。内側の余白は `padding` で指定します。",
+      "値を1〜4つ並べて指定でき、4つの場合は「上・右・下・左」の時計回りになります。",
+      "幅が決まったブロック要素に `margin: 0 auto` を指定すると、左右の余白が均等に計算され、水平方向の中央に配置されます。"
+    ],
+    "values": {
+      "label": "指定できる値",
+      "head": "値",
+      "rows": [
+        {
+          "key": "margin: 16px;",
+          "desc": "上下左右すべてに16px"
+        },
+        {
+          "key": "margin: 8px 16px;",
+          "desc": "上下に8px、左右に16px"
+        },
+        {
+          "key": "margin: 1px 2px 3px 4px;",
+          "desc": "上・右・下・左の順（時計回り）"
+        },
+        {
+          "key": "auto",
+          "desc": "余白を自動計算する。左右に使うと中央寄せ"
+        },
+        {
+          "key": "margin-top: -8px;",
+          "desc": "負の値で要素を引き寄せる"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "隣り合うカードの間隔",
+        "desc": "隣接セレクタ「+」を使うと、2つ目以降の要素にだけ上の余白をつけられます。",
+        "css": ".card + .card {\n  margin-top: 24px;\n}"
+      }
+    ],
+    "notes": [
+      "上下に隣接する要素の margin は、大きいほうだけが適用されます（マージンの相殺）。",
+      "インライン要素には上下の margin が効きません。",
+      "並んだ要素の間隔は、Flexbox・Gridの gap を使うほうが簡潔です。"
+    ],
+    "related": [
+      "css-padding",
+      "css-box-sizing",
+      "css-gap",
+      "css-width"
+    ]
+  },
+  {
+    "id": "css-display",
+    "title": null,
+    "ja": "表示形式",
+    "lead": "要素をブロック・インライン・Flexbox・Gridなど、どの形式で表示するかを決めます。レイアウトの基本となるプロパティです。",
+    "meta": [
+      {
+        "label": "初期値",
+        "value": "inline"
+      },
+      {
+        "label": "適用対象",
+        "value": "すべての要素"
+      },
+      {
+        "label": "継承",
+        "value": "しない"
+      }
+    ],
+    "code": {
+      "html": "<div class=\"row\">\n  <span class=\"item\">A</span>\n  <span class=\"item\">B</span>\n  <span class=\"item\">C</span>\n</div>",
+      "css": ".row {\n  display: flex;\n  gap: 12px;\n}\n.item {\n  display: block;\n  padding: 16px 24px;\n  border: 1px solid #b68235;\n}"
+    },
+    "preview": {
+      "height": 110,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "HTMLの要素は、`div` のように縦に積まれる「ブロック」と、`span` のように文中に並ぶ「インライン」に分かれます。`display` はこの性質を変更します。",
+      "親要素に `display: flex` を指定すると、子要素が横一列に並びます。`display: grid` なら行と列による格子状のレイアウトになります。",
+      "`display: none` を指定すると、要素は表示されず、場所も占めなくなります。"
+    ],
+    "values": {
+      "label": "指定できる値",
+      "head": "値",
+      "rows": [
+        {
+          "key": "block",
+          "desc": "幅いっぱいに広がり、縦に積まれる"
+        },
+        {
+          "key": "inline",
+          "desc": "文中に並ぶ。width・heightは効かない"
+        },
+        {
+          "key": "inline-block",
+          "desc": "文中に並びつつ、幅・高さを指定できる"
+        },
+        {
+          "key": "flex",
+          "desc": "子要素を一方向に並べるFlexコンテナにする"
+        },
+        {
+          "key": "grid",
+          "desc": "子要素を格子状に配置するGridコンテナにする"
+        },
+        {
+          "key": "none",
+          "desc": "要素を非表示にする"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "要素を非表示にする",
+        "desc": "JavaScriptでクラスを付け外しして、表示・非表示を切り替える定番の書き方です。",
+        "css": ".is-hidden {\n  display: none;\n}"
+      }
+    ],
+    "notes": [
+      "display: none の要素はスクリーンリーダーでも読み上げられません。",
+      "inline 要素には width・height や上下の margin が効きません。"
+    ],
+    "related": [
+      "css-flex-direction",
+      "css-justify-content",
+      "css-grid-template-columns",
+      "css-position"
+    ]
+  },
+  {
+    "id": "css-justify-content",
+    "title": null,
+    "ja": "主軸方向の配置",
+    "lead": "FlexboxやGridで、アイテムを主軸方向（通常は横方向）にどう並べるかを指定します。中央寄せや均等配置に使います。",
+    "meta": [
+      {
+        "label": "初期値",
+        "value": "normal"
+      },
+      {
+        "label": "適用対象",
+        "value": "Flex・Gridコンテナ"
+      },
+      {
+        "label": "継承",
+        "value": "しない"
+      }
+    ],
+    "code": {
+      "html": "<div class=\"container\">\n  <div class=\"item\">1</div>\n  <div class=\"item\">2</div>\n  <div class=\"item\">3</div>\n</div>",
+      "css": ".container {\n  display: flex;\n  justify-content: space-between;\n  padding: 12px;\n  border: 1px dashed #999;\n}\n.item {\n  width: 64px;\n  padding: 12px 0;\n  text-align: center;\n  background: #f6ead8;\n}"
+    },
+    "preview": {
+      "height": 110,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`justify-content` は、子要素ではなく親要素（`display: flex` を指定したコンテナ）に書きます。",
+      "`space-between` は両端のアイテムをコンテナの端に寄せ、残りの間隔を均等に分けます。`center` にするとアイテムがまとまって中央に寄ります。",
+      "`flex-direction: column` で縦並びにしたときは、縦方向の配置を決めるプロパティになります。"
+    ],
+    "values": {
+      "label": "指定できる値",
+      "head": "値",
+      "rows": [
+        {
+          "key": "flex-start",
+          "desc": "先頭（左）に寄せる"
+        },
+        {
+          "key": "center",
+          "desc": "中央に寄せる"
+        },
+        {
+          "key": "flex-end",
+          "desc": "末尾（右）に寄せる"
+        },
+        {
+          "key": "space-between",
+          "desc": "両端に寄せ、間を均等にあける"
+        },
+        {
+          "key": "space-around",
+          "desc": "各アイテムの左右に均等な余白をとる"
+        },
+        {
+          "key": "space-evenly",
+          "desc": "すべての間隔を完全に均等にする"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "上下左右の中央寄せ",
+        "desc": "align-items と組み合わせると、要素を縦横どちらも中央に配置できます。",
+        "css": ".center {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  min-height: 200px;\n}"
+      }
+    ],
+    "notes": [
+      "子要素に書いても効きません。親のFlexコンテナに指定します。",
+      "アイテムがコンテナいっぱいに伸びている場合は、余白がないため変化が見えません。"
+    ],
+    "related": [
+      "css-align-items",
+      "css-display",
+      "css-gap",
+      "css-flex-direction"
+    ]
+  },
+  {
+    "id": "css-grid-template-columns",
+    "title": null,
+    "ja": "グリッドの列",
+    "lead": "Gridレイアウトで、列の数と幅を定義します。fr単位や repeat() を使うと、柔軟な段組みを短く書けます。",
+    "meta": [
+      {
+        "label": "初期値",
+        "value": "none"
+      },
+      {
+        "label": "適用対象",
+        "value": "Gridコンテナ"
+      },
+      {
+        "label": "継承",
+        "value": "しない"
+      }
+    ],
+    "code": {
+      "html": "<div class=\"grid\">\n  <div>1</div>\n  <div>2</div>\n  <div>3</div>\n  <div>4</div>\n  <div>5</div>\n  <div>6</div>\n</div>",
+      "css": ".grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 8px;\n}\n.grid div {\n  padding: 16px;\n  text-align: center;\n  background: #f6ead8;\n}"
+    },
+    "preview": {
+      "height": 160,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`grid-template-columns` に幅を並べると、その数だけ列ができます。`200px 1fr` なら「200pxの列」と「残り全部の列」の2列です。",
+      "`fr` は余った領域を分け合う単位です。`repeat(3, 1fr)` は `1fr 1fr 1fr` と同じ意味で、3等分の列になります。",
+      "アイテムは左上から順に自動で配置され、列があふれると次の行に折り返します。"
+    ],
+    "values": {
+      "label": "指定できる値",
+      "head": "値",
+      "rows": [
+        {
+          "key": "200px 1fr",
+          "desc": "固定幅の列と、残りを埋める列"
+        },
+        {
+          "key": "repeat(3, 1fr)",
+          "desc": "同じ幅の列を3つ"
+        },
+        {
+          "key": "minmax(160px, 1fr)",
+          "desc": "最小160px、最大1frの範囲で伸縮"
+        },
+        {
+          "key": "repeat(auto-fill, minmax(160px, 1fr))",
+          "desc": "入るだけ列を作り、自動で折り返す"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "カードを自動で折り返す",
+        "desc": "メディアクエリを使わずに、画面幅に応じて列数が変わるレイアウトをつくれます。",
+        "css": ".cards {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));\n  gap: 24px;\n}"
+      }
+    ],
+    "notes": [
+      "列数を固定するとスマートフォンで窮屈になります。auto-fill や @media と組み合わせましょう。",
+      "gap は列の幅に含まれず、列と列の間に追加されます。"
+    ],
+    "related": [
+      "css-gap",
+      "css-display",
+      "css-place-items",
+      "css-media"
+    ]
+  },
+  {
+    "id": "css-border-radius",
+    "title": null,
+    "ja": "角丸",
+    "lead": "要素の角を丸くします。値を大きくするほど丸みが強くなり、50% を指定すると正方形の要素は円になります。",
+    "meta": [
+      {
+        "label": "初期値",
+        "value": "0"
+      },
+      {
+        "label": "適用対象",
+        "value": "すべての要素"
+      },
+      {
+        "label": "継承",
+        "value": "しない"
+      }
+    ],
+    "code": {
+      "html": "<div class=\"box\">border-radius: 12px</div>\n<div class=\"circle\">50%</div>",
+      "css": ".box {\n  padding: 16px;\n  border: 1px solid #b68235;\n  border-radius: 12px;\n}\n.circle {\n  width: 80px;\n  height: 80px;\n  margin-top: 16px;\n  display: grid;\n  place-items: center;\n  background: #f6ead8;\n  border-radius: 50%;\n}"
+    },
+    "preview": {
+      "height": 190,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`border-radius` は四隅の丸みの半径を指定します。枠線や背景色がある要素で効果がわかります。",
+      "値を4つ並べると「左上・右上・右下・左下」の順に個別の丸みを指定できます。",
+      "幅と高さが同じ要素に `50%` を指定すると円になり、アイコンやアバター画像によく使われます。"
+    ],
+    "values": {
+      "label": "指定できる値",
+      "head": "値",
+      "rows": [
+        {
+          "key": "8px",
+          "desc": "四隅すべてを8pxの丸みに"
+        },
+        {
+          "key": "8px 0 8px 0",
+          "desc": "左上・右上・右下・左下の順に指定"
+        },
+        {
+          "key": "50%",
+          "desc": "正方形なら円、長方形なら楕円"
+        },
+        {
+          "key": "9999px",
+          "desc": "ボタンなどを両端が丸い形にする"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "丸いアバター画像",
+        "desc": "画像にも border-radius は効きます。object-fit と組み合わせると切り抜きが自然になります。",
+        "css": ".avatar {\n  width: 48px;\n  height: 48px;\n  border-radius: 50%;\n  object-fit: cover;\n}"
+      }
+    ],
+    "notes": [
+      "子要素が角からはみ出す場合は、親に overflow: hidden を指定します。"
+    ],
+    "related": [
+      "css-border",
+      "css-box-shadow",
+      "css-outline",
+      "css-overflow"
+    ]
+  },
+  {
+    "id": "css-transition",
+    "title": null,
+    "ja": "変化をなめらかにする",
+    "lead": "ホバーなどでプロパティの値が変わるとき、その変化を指定した時間をかけてなめらかに見せます。",
+    "meta": [
+      {
+        "label": "初期値",
+        "value": "all 0s ease 0s"
+      },
+      {
+        "label": "適用対象",
+        "value": "すべての要素"
+      },
+      {
+        "label": "継承",
+        "value": "しない"
+      }
+    ],
+    "code": {
+      "html": "<button class=\"btn\">マウスを乗せてください</button>",
+      "css": ".btn {\n  padding: 12px 24px;\n  color: #7d5411;\n  background: transparent;\n  border: 1px solid #b68235;\n  border-radius: 4px;\n  transition: background-color 0.3s ease;\n}\n.btn:hover {\n  background-color: #ffe3bf;\n}"
+    },
+    "preview": {
+      "height": 100,
+      "note": "ボタンにマウスを乗せると背景色が変化します",
+      "fullDocument": false
+    },
+    "explain": [
+      "`transition` は「どのプロパティを」「何秒かけて」「どんな速度変化で」変えるかを1行で指定する一括指定プロパティです。",
+      "変化前の状態（`.btn`）に書くのがポイントです。こうすると、マウスを乗せたときも離したときも、なめらかに変化します。",
+      "`ease` は始めと終わりがゆっくりになる動き、`linear` は一定速度の動きです。"
+    ],
+    "values": {
+      "label": "指定できる値",
+      "head": "値",
+      "rows": [
+        {
+          "key": "transition-property",
+          "desc": "変化させるプロパティ名（all ですべて）"
+        },
+        {
+          "key": "transition-duration",
+          "desc": "変化にかける時間（0.3s など）"
+        },
+        {
+          "key": "transition-timing-function",
+          "desc": "ease / linear / ease-in-out など速度の変化"
+        },
+        {
+          "key": "transition-delay",
+          "desc": "変化が始まるまでの待ち時間"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "動きを減らす設定に配慮する",
+        "desc": "OSで「視差効果を減らす」を設定している利用者には、アニメーションを止めます。",
+        "css": "@media (prefers-reduced-motion: reduce) {\n  * {\n    transition: none;\n  }\n}"
+      }
+    ],
+    "notes": [
+      "all を指定すると、意図しないプロパティまで動くことがあります。",
+      "width や top の変化は描画の負荷が高いため、transform や opacity を使うと軽く動きます。"
+    ],
+    "related": [
+      "css-animation",
+      "css-transform",
+      "css-hover",
+      "css-keyframes"
+    ]
+  }
+]
