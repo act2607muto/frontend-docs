@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="_ds/classical-b5a372dc-1ed4-496b-ae5f-8894c306080d/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<script src="_ds/classical-b5a372dc-1ed4-496b-ae5f-8894c306080d/_ds_bundle.js"></script>
+<style>
+:root,[data-theme]{--font-body:"Helvetica Neue",Helvetica,Arial,"Noto Sans JP","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;--font-heading:"Helvetica Neue",Helvetica,Arial,"Noto Sans JP","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;--font-heading-weight:700;--font-code:ui-monospace,SFMono-Regular,Menlo,Consolas,"Noto Sans Mono",monospace;--muted:color-mix(in srgb,var(--color-text) 62%,transparent);--tint:color-mix(in srgb,var(--color-text) 5%,transparent);--hl-bg:color-mix(in srgb,var(--color-accent) 15%,transparent);--hl-text:var(--color-accent-800);--strong-accent:var(--color-accent-700);--link:var(--color-accent-700);--code-bg:#fbfaf8;--backdrop:#dcd9d6;--c-text:#1f1f1f;--c-punct:#800000;--c-tag:#800000;--c-attr:#e50000;--c-val:#0000ff;--c-cmt:#008000;--c-sel:#800000;--c-prop:#e50000;--c-cval:#0451a5;--c-num:#098658;--c-kw:#af00db;--c-fn:#795e26;--c-ln:#a19c98}
+[data-theme="dark"]{--color-bg:#1a1918;--color-surface:#232120;--color-text:#e4e0da;--color-divider:color-mix(in srgb,#e4e0da 15%,transparent);--color-accent:#d2a25e;--hl-text:var(--color-accent-300);--strong-accent:var(--color-accent-400);--link:var(--color-accent-400);--code-bg:#1e1e1e;--backdrop:#0e0d0d;--shadow-md:0 3px 12px rgba(0,0,0,.45);--shadow-lg:0 12px 36px rgba(0,0,0,.6);--c-text:#d4d4d4;--c-punct:#808080;--c-tag:#569cd6;--c-attr:#9cdcfe;--c-val:#ce9178;--c-cmt:#6a9955;--c-sel:#d7ba7d;--c-prop:#9cdcfe;--c-cval:#ce9178;--c-num:#b5cea8;--c-kw:#c586c0;--c-fn:#dcdcaa;--c-ln:#6e7681}
+html,body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body)}
+a{color:var(--link)}a:hover{color:var(--color-accent)}
+button{font:inherit;color:inherit}
+</style>
+</helmet>
+<div ref="{{ outerRef }}" data-theme="{{ theme }}" style="background:{{ L.outerBg }};padding:{{ L.outerPad }};min-height:100vh;box-sizing:border-box;color:var(--color-text)">
+<div style="width:{{ L.frameW }};height:{{ L.frameH }};margin:0 auto;border-radius:{{ L.frameRadius }};box-shadow:{{ L.frameShadow }};border:{{ L.frameBorder }};transform:{{ L.frameTransform }};overflow:{{ L.frameOverflow }};background:var(--color-bg)">
+<div ref="{{ scrollRef }}" style="height:{{ L.scrollH }};overflow:{{ L.scrollOverflow }};background:var(--color-bg)">
+
+<sc-if value="{{ isTop }}" hint-placeholder-val="{{ true }}">
+<div style="min-height:{{ L.topMinH }};display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:flex-end;padding:16px {{ L.padX }}">
+    <button class="btn btn-secondary" onClick="{{ toggleTheme }}" aria-label="テーマ切り替え">
+      <sc-if value="{{ isLight }}"><svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></sc-if>
+      <sc-if value="{{ isDark }}"><svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2m-7.07-14.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></sc-if>
+      <span>{{ themeLabel }}</span>
+    </button>
+  </div>
+  <main style="flex:1;display:flex;flex-direction:column;justify-content:center;max-width:780px;width:100%;margin:0 auto;padding:{{ L.topPad }};box-sizing:border-box">
+    <div style="font-size:12px;letter-spacing:.18em;color:var(--strong-accent)">学ぶ・調べる・理解する</div>
+    <h1 style="font-size:{{ L.heroSize }};font-weight:400;letter-spacing:-.02em;line-height:1;margin:16px 0 20px">HTML &amp; CSS GUIDE</h1>
+    <p style="font-size:15.5px;line-height:1.95;color:var(--muted);max-width:580px;margin:0 0 36px;text-wrap:pretty">HTMLタグとCSSプロパティを網羅した辞典と、段階的に学べるロードマップ。すべての項目で、コードと実際の表示結果をあわせて確認できます。</p>
+    <div style="position:relative">
+      <svg viewBox="0 0 24 24" style="position:absolute;left:16px;top:17px;width:18px;height:18px;fill:none;stroke:var(--muted);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;pointer-events:none"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+      <input ref="{{ topInputRef }}" class="input" type="search" value="{{ q }}" onChange="{{ onQ }}" onFocus="{{ onSFocus }}" onBlur="{{ onSBlur }}" onKeyDown="{{ onSKey }}" placeholder="タグ・プロパティ・やりたいことで検索（例：flex、中央寄せ）" aria-label="検索" style="min-height:52px;padding-left:46px;font-size:15px;background:var(--color-bg)">
+      <sc-if value="{{ S.open }}">
+        <div style="position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:30;background:var(--color-bg);border:1px solid var(--color-divider);border-radius:var(--radius-md);box-shadow:var(--shadow-md);max-height:400px;overflow:auto;text-align:left">
+          <div style="padding:9px 16px;font-size:11.5px;color:var(--muted);border-bottom:1px solid var(--color-divider)">{{ S.label }}</div>
+          <sc-for list="{{ S.results }}" as="r" hint-placeholder-count="0">
+            <button onMouseDown="{{ r.go }}" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:baseline;width:100%;text-align:left;padding:11px 16px;border:0;border-bottom:1px solid var(--color-divider);background:{{ r.bg }};cursor:pointer" style-hover="background:var(--tint)">
+              <span class="tag tag-outline" style="justify-content:center;font-size:10.5px;padding:2px 0;font-family:var(--font-code)">{{ r.typeLabel }}</span>
+              <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
+                <span style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--font-code);font-size:14px;color:var(--strong-accent)">{{ r.name }}</span><span style="font-size:11.5px;color:var(--muted)">{{ r.cat }}</span></span>
+                <span style="font-size:13px">{{ r.summary }}</span>
+              </span>
+            </button>
+          </sc-for>
+          <sc-if value="{{ S.empty }}"><div style="padding:18px 16px;font-size:13px;color:var(--muted)">一致する項目は見つかりませんでした。別のキーワードをお試しください。</div></sc-if>
+        </div>
+      </sc-if>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;margin-top:14px;font-size:12.5px">
+      <span style="color:var(--muted);margin-right:4px">よく調べるキーワード</span>
+      <sc-for list="{{ quickWords }}" as="w" hint-placeholder-count="5">
+        <button class="btn btn-ghost" onClick="{{ w.pick }}" style="font-family:var(--font-body);font-size:12.5px;padding:3px 8px">{{ w.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 28px;margin-top:64px">
+      <sc-for list="{{ entries }}" as="e" hint-placeholder-count="3">
+        <button onClick="{{ e.go }}" style="display:flex;flex-direction:column;gap:6px;text-align:left;padding:18px 0 22px;background:transparent;border:0;border-top:1px solid var(--color-text);cursor:pointer" style-hover="color:var(--strong-accent)">
+          <span style="display:flex;justify-content:space-between;align-items:center;width:100%;font-size:11.5px;letter-spacing:.12em;font-variant-numeric:tabular-nums;color:var(--muted)"><span>{{ e.num }} — {{ e.sub }}</span><svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round"><path d="M5 12h14m-7-7 7 7-7 7"></path></svg></span>
+          <span style="font-family:var(--font-heading);font-weight:600;font-size:24px;line-height:1.2">{{ e.title }}</span>
+          <span style="font-size:13px;line-height:1.75;color:var(--muted)">{{ e.desc }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </main>
+  <footer style="padding:20px {{ L.padX }};border-top:1px solid var(--color-divider);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)">
+    <span>HTML &amp; CSS GUIDE</span><span>{{ countLabel }}</span>
+  </footer>
+</div>
+</sc-if>
+
+<sc-if value="{{ isInner }}" hint-placeholder-val="{{ false }}">
+<header style="position:sticky;top:0;z-index:20;background:var(--color-bg);border-bottom:1px solid var(--color-divider)">
+  <div style="max-width:1320px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;column-gap:{{ L.hdrGap }};padding:0 {{ L.padX }}">
+    <div style="display:flex;align-items:center;gap:10px;height:60px">
+      <sc-if value="{{ L.showMenuBtn }}">
+        <button class="btn btn-icon" onClick="{{ openDrawer }}" aria-label="カテゴリメニュー" style="margin-left:-8px"><svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+      </sc-if>
+      <button onClick="{{ goTop }}" style="background:none;border:0;padding:0;cursor:pointer;font-family:var(--font-heading);font-weight:600;font-size:19px;letter-spacing:.02em;white-space:nowrap">HTML &amp; CSS GUIDE</button>
+    </div>
+    <sc-if value="{{ L.desktop }}">
+      <nav style="display:flex;gap:4px;height:60px;align-items:stretch">
+        <sc-for list="{{ navLinks }}" as="n" hint-placeholder-count="3">
+          <button onClick="{{ n.go }}" aria-current="{{ n.current }}" style="background:none;border:0;border-bottom:1px solid {{ n.line }};margin-bottom:-1px;padding:0 12px;cursor:pointer;font-size:14px;color:{{ n.color }}" style-hover="color:var(--color-accent)">{{ n.label }}</button>
+        </sc-for>
+      </nav>
+    </sc-if>
+    <div style="flex:1"></div>
+    <div style="display:{{ L.hdrSearchDisplay }};order:{{ L.hdrSearchOrder }};flex-basis:{{ L.hdrSearchBasis }};position:relative;padding:{{ L.hdrSearchPad }}">
+      <svg viewBox="0 0 24 24" style="position:absolute;left:11px;top:{{ L.hdrIconTop }};width:15px;height:15px;fill:none;stroke:var(--muted);stroke-width:1.6;stroke-linecap:round;pointer-events:none"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+      <input ref="{{ hdrInputRef }}" class="input" type="search" value="{{ q }}" onChange="{{ onQ }}" onFocus="{{ onSFocus }}" onBlur="{{ onSBlur }}" onKeyDown="{{ onSKey }}" placeholder="検索（flex、余白…）" aria-label="検索" style="width:{{ L.hdrInputW }};padding-left:32px;font-size:13px;min-height:34px">
+      <sc-if value="{{ S.open }}">
+        <div style="position:absolute;top:calc(100% + 6px);right:0;width:{{ L.dropW }};z-index:30;background:var(--color-bg);border:1px solid var(--color-divider);border-radius:var(--radius-md);box-shadow:var(--shadow-md);max-height:420px;overflow:auto">
+          <div style="padding:9px 16px;font-size:11.5px;color:var(--muted);border-bottom:1px solid var(--color-divider)">{{ S.label }}</div>
+          <sc-for list="{{ S.results }}" as="r" hint-placeholder-count="0">
+            <button onMouseDown="{{ r.go }}" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:baseline;width:100%;text-align:left;padding:11px 16px;border:0;border-bottom:1px solid var(--color-divider);background:{{ r.bg }};cursor:pointer" style-hover="background:var(--tint)">
+              <span class="tag tag-outline" style="justify-content:center;font-size:10.5px;padding:2px 0;font-family:var(--font-code)">{{ r.typeLabel }}</span>
+              <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
+                <span style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--font-code);font-size:14px;color:var(--strong-accent)">{{ r.name }}</span><span style="font-size:11.5px;color:var(--muted)">{{ r.cat }}</span></span>
+                <span style="font-size:13px">{{ r.summary }}</span>
+              </span>
+            </button>
+          </sc-for>
+          <sc-if value="{{ S.empty }}"><div style="padding:18px 16px;font-size:13px;color:var(--muted)">一致する項目は見つかりませんでした。</div></sc-if>
+        </div>
+      </sc-if>
+    </div>
+    <div style="display:flex;align-items:center;gap:2px;height:60px;margin-right:-8px">
+      <sc-if value="{{ L.mobile }}">
+        <button class="btn btn-icon" onClick="{{ toggleMSearch }}" aria-label="検索"><svg viewBox="0 0 24 24" style="width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></button>
+      </sc-if>
+      <button class="btn btn-icon" onClick="{{ toggleTheme }}" aria-label="{{ themeLabel }}">
+        <sc-if value="{{ isLight }}"><svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></sc-if>
+        <sc-if value="{{ isDark }}"><svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2m-7.07-14.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></sc-if>
+      </button>
+    </div>
+  </div>
+  <sc-if value="{{ L.mobile }}">
+    <nav style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--color-divider)">
+      <sc-for list="{{ navLinks }}" as="n" hint-placeholder-count="3">
+        <button onClick="{{ n.go }}" style="background:none;border:0;border-bottom:1px solid {{ n.line }};margin-bottom:-1px;padding:10px 0;cursor:pointer;font-size:13px;color:{{ n.color }}">{{ n.label }}</button>
+      </sc-for>
+    </nav>
+  </sc-if>
+</header>
+</sc-if>
+
+<sc-if value="{{ isDict }}" hint-placeholder-val="{{ false }}">
+<main style="max-width:880px;margin:0 auto;padding:{{ L.pagePad }}">
+  <div style="font-size:11.5px;letter-spacing:.16em;color:var(--strong-accent)">{{ D.kicker }}</div>
+  <h1 style="font-size:{{ L.h1Size }};font-weight:400;margin:10px 0 14px">{{ D.title }}</h1>
+  <p style="font-size:15px;line-height:1.95;color:var(--muted);max-width:620px;margin:0;text-wrap:pretty">{{ D.lead }}</p>
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:40px;padding-bottom:8px;border-bottom:1px solid var(--color-text)">
+    <span style="font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums">{{ D.countLabel }}</span>
+    <div style="display:flex;gap:2px">
+      <button class="btn btn-ghost" onClick="{{ D.expandAll }}" style="font-size:13px">すべて開く</button>
+      <button class="btn btn-ghost" onClick="{{ D.collapseAll }}" style="font-size:13px">すべて閉じる</button>
+    </div>
+  </div>
+  <sc-for list="{{ D.cats }}" as="cat" hint-placeholder-count="8">
+    <section style="border-bottom:1px solid var(--color-divider)">
+      <button onClick="{{ cat.toggle }}" aria-expanded="{{ cat.open }}" style="width:100%;display:flex;align-items:center;gap:18px;padding:18px 4px;background:transparent;border:0;cursor:pointer;text-align:left" style-hover="color:var(--strong-accent)">
+        <span style="font-size:12px;letter-spacing:.06em;color:var(--muted);font-variant-numeric:tabular-nums;width:22px">{{ cat.num }}</span>
+        <span style="font-family:var(--font-heading);font-weight:600;font-size:{{ L.catSize }};flex:1">{{ cat.name }}</span>
+        <span style="font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums">{{ cat.countLabel }}</span>
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transform:rotate({{ cat.rot }});transition:transform .15s"><path d="m6 9 6 6 6-6"></path></svg>
+      </button>
+      <sc-if value="{{ cat.open }}">
+        <ul style="list-style:none;margin:0 0 18px;padding:0 0 0 {{ L.listIndent }}">
+          <sc-for list="{{ cat.items }}" as="it">
+            <li style="border-top:1px solid var(--color-divider)">
+              <button onClick="{{ it.go }}" style="width:100%;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 16px;padding:11px 8px;background:transparent;border:0;cursor:pointer;text-align:left" style-hover="background:var(--tint)">
+                <code style="flex:0 0 {{ L.codeW }};font-family:var(--font-code);font-size:14px;color:var(--strong-accent)">{{ it.label }}</code>
+                <span style="flex:1;font-size:14px;min-width:0">{{ it.summary }}</span>
+                <sc-if value="{{ L.desktop }}"><svg viewBox="0 0 24 24" style="align-self:center;width:15px;height:15px;fill:none;stroke:var(--muted);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round"><path d="m9 18 6-6-6-6"></path></svg></sc-if>
+              </button>
+            </li>
+          </sc-for>
+        </ul>
+      </sc-if>
+    </section>
+  </sc-for>
+</main>
+</sc-if>
+
+<sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:{{ L.detailCols }}">
+  <sc-if value="{{ drawerBackdrop }}">
+    <div onClick="{{ closeDrawer }}" style="position:fixed;inset:0;z-index:45;background:color-mix(in srgb,var(--color-neutral-900) 45%,transparent)"></div>
+  </sc-if>
+  <aside style="position:{{ L.sbPos }};top:{{ L.sbTop }};left:0;height:{{ L.sbH }};width:{{ L.sbW }};z-index:{{ L.sbZ }};display:{{ L.sbDisplay }};align-self:start;overflow:auto;box-sizing:border-box;background:var(--color-bg);border-right:1px solid var(--color-divider);box-shadow:{{ L.sbShadow }};padding:{{ L.sbPad }}">
+    <sc-if value="{{ L.mobile }}">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:0 12px 14px 20px">
+        <span style="font-family:var(--font-heading);font-weight:600;font-size:18px">カテゴリ</span>
+        <button class="btn btn-icon" onClick="{{ closeDrawer }}" aria-label="閉じる"><svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+      </div>
+    </sc-if>
+    <div class="seg" style="display:flex;margin:0 20px 16px">
+      <label class="seg-opt" style="flex:1;justify-content:center;font-family:var(--font-code);font-size:12.5px"><input type="radio" name="sbtype" checked="{{ SB.isHtml }}" onChange="{{ SB.setHtml }}">HTML</label>
+      <label class="seg-opt" style="flex:1;justify-content:center;font-family:var(--font-code);font-size:12.5px"><input type="radio" name="sbtype" checked="{{ SB.isCss }}" onChange="{{ SB.setCss }}">CSS</label>
+    </div>
+    <sc-for list="{{ SB.cats }}" as="c" hint-placeholder-count="8">
+      <div style="border-top:1px solid var(--color-divider)">
+        <button onClick="{{ c.toggle }}" aria-expanded="{{ c.open }}" style="width:100%;display:flex;align-items:center;gap:8px;padding:10px 16px 10px 20px;background:transparent;border:0;cursor:pointer;text-align:left;font-size:13.5px;color:{{ c.color }}" style-hover="color:var(--color-accent)">
+          <span style="flex:1">{{ c.name }}</span>
+          <span style="font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums">{{ c.count }}</span>
+          <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transform:rotate({{ c.rot }})"><path d="m6 9 6 6 6-6"></path></svg>
+        </button>
+        <sc-if value="{{ c.open }}">
+          <ul style="list-style:none;margin:0;padding:0 12px 10px 12px">
+            <sc-for list="{{ c.items }}" as="it">
+              <li><button onClick="{{ it.go }}" aria-current="{{ it.current }}" style="width:100%;display:flex;gap:10px;align-items:baseline;padding:6px 8px 6px 10px;border:0;border-radius:var(--radius-sm);cursor:pointer;text-align:left;background:{{ it.bg }};color:{{ it.color }}" style-hover="background:var(--hl-bg)">
+                <code style="font-family:var(--font-code);font-size:12.5px;flex:none">{{ it.label }}</code>
+                <span style="font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0">{{ it.summary }}</span>
+              </button></li>
+            </sc-for>
+          </ul>
+        </sc-if>
+      </div>
+    </sc-for>
+  </aside>
+
+  <article style="min-width:0;padding:{{ L.articlePad }};max-width:860px;box-sizing:border-box">
+    <nav aria-label="パンくず" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:12.5px;color:var(--muted)">
+      <button onClick="{{ X.goDict }}" style="background:none;border:0;padding:0;cursor:pointer;color:var(--muted)" style-hover="color:var(--color-accent)">{{ X.dictName }}</button>
+      <span>/</span>
+      <span>{{ X.catName }}</span>
+      <span>/</span>
+      <span style="font-family:var(--font-code);color:var(--color-text)">{{ X.label }}</span>
+    </nav>
+    <div style="margin-top:28px;font-size:11.5px;letter-spacing:.16em;color:var(--strong-accent)">{{ X.kicker }}</div>
+    <h1 style="font-family:var(--font-code);font-weight:500;font-size:{{ L.titleSize }};letter-spacing:-.01em;line-height:1.15;margin:10px 0 6px;word-break:break-all">{{ X.title }}</h1>
+    <p style="font-family:var(--font-heading);font-weight:600;font-size:23px;margin:0 0 18px">{{ X.ja }}</p>
+    <p style="font-size:15.5px;line-height:1.95;text-align:justify;margin:0 0 24px">{{ X.lead }}</p>
+    <sc-if value="{{ X.hasMeta }}">
+      <dl style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin:0;border-top:1px solid var(--color-text);border-bottom:1px solid var(--color-divider)">
+        <sc-for list="{{ X.meta }}" as="m">
+          <div style="padding:12px 16px 12px 0">
+            <dt style="font-size:11.5px;color:var(--muted);margin-bottom:3px">{{ m.k }}</dt>
+            <dd style="margin:0;font-size:14px">{{ m.v }}</dd>
+          </div>
+        </sc-for>
+      </dl>
+    </sc-if>
+
+    <sc-if value="{{ X.full }}">
+      <section style="margin-top:56px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:18px"><span style="font-size:12px;color:var(--strong-accent);font-variant-numeric:tabular-nums">01</span><h2 style="font-size:28px;margin:0">サンプルコード</h2><span style="flex:1;height:1px;background:var(--color-divider);align-self:center"></span></div>
+        <sc-for list="{{ X.blocks }}" as="block">
+          <div style="border:1px solid var(--color-divider);border-radius:var(--radius-md);background:var(--code-bg);overflow:hidden;margin-bottom:12px">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 6px 4px 14px;border-bottom:1px solid var(--color-divider)">
+              <span style="font-family:var(--font-code);font-size:11.5px;letter-spacing:.1em;color:var(--muted)">{{ block.lang }}</span>
+              <button class="btn btn-ghost" onClick="{{ block.copy }}" style="font-family:var(--font-body);font-size:12px;padding:4px 8px;gap:5px">
+                <sc-if value="{{ block.copied }}"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M20 6 9 17l-5-5"></path></svg></sc-if>
+                <sc-if value="{{ block.notCopied }}"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></sc-if>
+                <span>{{ block.copyLabel }}</span>
+              </button>
+            </div>
+            <div style="overflow-x:auto;padding:14px 0;font-family:var(--font-code);font-size:13.5px;line-height:1.7;color:var(--c-text)">
+              <div style="width:max-content;min-width:100%">
+                <sc-for list="{{ block.lines }}" as="line">
+                  <div style="display:flex;min-height:1.7em">
+                    <sc-if value="{{ showLn }}"><span style="flex:none;width:40px;padding-right:14px;box-sizing:border-box;text-align:right;color:var(--c-ln);user-select:none;font-variant-numeric:tabular-nums">{{ line.n }}</span></sc-if>
+                    <span style="white-space:pre;padding:0 18px 0 {{ codePadL }}"><sc-for list="{{ line.toks }}" as="tok"><span style="color:{{ tok.c }}">{{ tok.t }}</span></sc-for></span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </section>
+
+      <section style="margin-top:40px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:18px"><span style="font-size:12px;color:var(--strong-accent);font-variant-numeric:tabular-nums">02</span><h2 style="font-size:28px;margin:0">実行結果</h2><span style="flex:1;height:1px;background:var(--color-divider);align-self:center"></span></div>
+        <div style="border:1px solid var(--color-accent);border-radius:var(--radius-md);overflow:hidden">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;padding:7px 14px;border-bottom:1px solid var(--color-accent);font-size:11.5px;color:var(--muted)">
+            <span style="letter-spacing:.08em">ブラウザでの表示</span><span>{{ X.previewNote }}</span>
+          </div>
+          <iframe title="実行結果のプレビュー" srcDoc="{{ X.srcdoc }}" sandbox="" style="display:block;width:100%;height:{{ X.previewH }};border:0;background:#ffffff"></iframe>
+        </div>
+      </section>
+
+      <section style="margin-top:56px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:18px"><span style="font-size:12px;color:var(--strong-accent);font-variant-numeric:tabular-nums">03</span><h2 style="font-size:28px;margin:0">解説</h2><span style="flex:1;height:1px;background:var(--color-divider);align-self:center"></span></div>
+        <sc-for list="{{ X.explain }}" as="para">
+          <p style="font-size:15.5px;line-height:2;text-align:justify;margin:0 0 16px"><sc-for list="{{ para.segs }}" as="seg"><sc-if value="{{ seg.code }}"><code style="font-family:var(--font-code);font-size:.88em;padding:1px 5px;border:1px solid var(--color-divider);border-radius:var(--radius-sm);color:var(--strong-accent)">{{ seg.t }}</code></sc-if><sc-if value="{{ seg.plain }}"><span>{{ seg.t }}</span></sc-if></sc-for></p>
+        </sc-for>
+      </section>
+
+      <section style="margin-top:56px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:22px"><span style="font-size:12px;color:var(--strong-accent);font-variant-numeric:tabular-nums">04</span><h2 style="font-size:28px;margin:0">応用例・注意点</h2><span style="flex:1;height:1px;background:var(--color-divider);align-self:center"></span></div>
+        <h3 style="font-size:21px;margin:0 0 10px">{{ X.valuesLabel }}</h3>
+        <div style="overflow-x:auto">
+          <table class="table" style="margin-bottom:40px">
+            <thead><tr><th style="width:42%">{{ X.valuesHead }}</th><th>説明</th></tr></thead>
+            <tbody>
+              <sc-for list="{{ X.values }}" as="v">
+                <tr><td style="vertical-align:top"><code style="font-family:var(--font-code);font-size:13px;color:var(--strong-accent);word-break:break-word">{{ v.k }}</code></td><td style="font-size:14px;line-height:1.75">{{ v.d }}</td></tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+        <sc-for list="{{ X.usages }}" as="u">
+          <div style="margin-bottom:36px">
+            <h3 style="font-size:21px;margin:0 0 6px">{{ u.title }}</h3>
+            <p style="font-size:14.5px;line-height:1.9;margin:0 0 14px;text-align:justify">{{ u.desc }}</p>
+            <sc-for list="{{ u.blocks }}" as="block">
+              <div style="border:1px solid var(--color-divider);border-radius:var(--radius-md);background:var(--code-bg);overflow:hidden;margin-bottom:10px">
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 6px 4px 14px;border-bottom:1px solid var(--color-divider)">
+                  <span style="font-family:var(--font-code);font-size:11.5px;letter-spacing:.1em;color:var(--muted)">{{ block.lang }}</span>
+                  <button class="btn btn-ghost" onClick="{{ block.copy }}" style="font-family:var(--font-body);font-size:12px;padding:4px 8px;gap:5px">
+                    <sc-if value="{{ block.copied }}"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M20 6 9 17l-5-5"></path></svg></sc-if>
+                    <sc-if value="{{ block.notCopied }}"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></sc-if>
+                    <span>{{ block.copyLabel }}</span>
+                  </button>
+                </div>
+                <div style="overflow-x:auto;padding:12px 0;font-family:var(--font-code);font-size:13px;line-height:1.7;color:var(--c-text)">
+                  <div style="width:max-content;min-width:100%">
+                    <sc-for list="{{ block.lines }}" as="line">
+                      <div style="display:flex;min-height:1.7em">
+                        <sc-if value="{{ showLn }}"><span style="flex:none;width:40px;padding-right:14px;box-sizing:border-box;text-align:right;color:var(--c-ln);user-select:none;font-variant-numeric:tabular-nums">{{ line.n }}</span></sc-if>
+                        <span style="white-space:pre;padding:0 18px 0 {{ codePadL }}"><sc-for list="{{ line.toks }}" as="tok"><span style="color:{{ tok.c }}">{{ tok.t }}</span></sc-for></span>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+        <h3 style="font-size:21px;margin:0 0 10px">注意点</h3>
+        <ul style="list-style:none;margin:0;padding:0;border-top:1px solid var(--color-divider)">
+          <sc-for list="{{ X.notes }}" as="note">
+            <li style="display:grid;grid-template-columns:28px minmax(0,1fr);padding:12px 0;border-bottom:1px solid var(--color-divider);font-size:14.5px;line-height:1.85">
+              <span style="color:var(--strong-accent);font-variant-numeric:tabular-nums;font-size:12.5px;padding-top:3px">{{ note.n }}</span><span style="text-align:justify">{{ note.t }}</span>
+            </li>
+          </sc-for>
+        </ul>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ X.pending }}">
+      <div class="card" style="margin-top:40px;padding:22px 24px;border-style:dashed">
+        <div class="card-kicker" style="color:var(--strong-accent)">準備中</div>
+        <div class="card-title" style="font-size:20px">サンプルコードと解説を準備しています</div>
+        <p class="card-body" style="font-size:14px;line-height:1.85">この項目の詳細ページは、辞典データの追加にあわせて公開されます。下の関連項目から、同じカテゴリの解説済みページをご覧いただけます。</p>
+      </div>
+    </sc-if>
+
+    <section style="margin-top:56px">
+      <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:12px"><span style="font-size:12px;color:var(--strong-accent);font-variant-numeric:tabular-nums">{{ X.relNum }}</span><h2 style="font-size:28px;margin:0">関連項目</h2><span style="flex:1;height:1px;background:var(--color-divider);align-self:center"></span></div>
+      <ul style="list-style:none;margin:0;padding:0">
+        <sc-for list="{{ X.related }}" as="r">
+          <li style="border-bottom:1px solid var(--color-divider)">
+            <button onClick="{{ r.go }}" style="width:100%;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding:12px 6px;background:transparent;border:0;cursor:pointer;text-align:left" style-hover="background:var(--tint)">
+              <span class="tag tag-outline" style="font-family:var(--font-code);font-size:10.5px;padding:1px 7px">{{ r.typeLabel }}</span>
+              <code style="font-family:var(--font-code);font-size:14px;color:var(--strong-accent);min-width:140px">{{ r.label }}</code>
+              <span style="font-size:14px;flex:1">{{ r.summary }}</span>
+            </button>
+          </li>
+        </sc-for>
+      </ul>
+    </section>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:48px">
+      <sc-if value="{{ X.prev }}">
+        <button onClick="{{ X.prev.go }}" style="display:flex;flex-direction:column;gap:4px;padding:14px 16px;text-align:left;background:transparent;border:1px solid var(--color-divider);border-radius:var(--radius-md);cursor:pointer" style-hover="border-color:var(--color-accent)">
+          <span style="font-size:11.5px;color:var(--muted)">← 前の項目</span>
+          <span style="font-family:var(--font-code);font-size:15px;color:var(--strong-accent)">{{ X.prev.label }}</span>
+        </button>
+      </sc-if>
+      <sc-if value="{{ X.next }}">
+        <button onClick="{{ X.next.go }}" style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;padding:14px 16px;text-align:right;background:transparent;border:1px solid var(--color-divider);border-radius:var(--radius-md);cursor:pointer;grid-column:-2" style-hover="border-color:var(--color-accent)">
+          <span style="font-size:11.5px;color:var(--muted)">次の項目 →</span>
+          <span style="font-family:var(--font-code);font-size:15px;color:var(--strong-accent)">{{ X.next.label }}</span>
+        </button>
+      </sc-if>
+    </div>
+  </article>
+</div>
+</sc-if>
+
+<sc-if value="{{ isRoadmap }}" hint-placeholder-val="{{ false }}">
+<main style="max-width:1040px;margin:0 auto;padding:{{ L.pagePad }}">
+  <div style="font-size:11.5px;letter-spacing:.16em;color:var(--strong-accent)">LEARNING ROADMAP</div>
+  <h1 style="font-size:{{ L.h1Size }};font-weight:400;margin:10px 0 14px">学習ロードマップ</h1>
+  <p style="font-size:15px;line-height:1.95;color:var(--muted);max-width:640px;margin:0;text-wrap:pretty">上から順に進めると、HTMLの基礎から実務レベルのCSSまで無理なく身につきます。各項目のタグ・プロパティを選ぶと、辞典の詳細ページで解説とサンプルを確認できます。</p>
+  <div style="display:grid;grid-template-columns:{{ L.overviewCols }};gap:10px;margin:40px 0 8px">
+    <sc-for list="{{ stages }}" as="st" hint-placeholder-count="3">
+      <button onClick="{{ st.jump }}" style="display:flex;align-items:center;gap:14px;padding:14px 16px;background:transparent;border:1px solid var(--color-divider);border-radius:var(--radius-md);cursor:pointer;text-align:left" style-hover="border-color:var(--color-accent)">
+        <span style="font-family:var(--font-heading);font-size:30px;line-height:1;color:var(--strong-accent);font-variant-numeric:tabular-nums">{{ st.num }}</span>
+        <span style="display:flex;flex-direction:column;flex:1">
+          <span style="font-family:var(--font-heading);font-weight:600;font-size:19px">{{ st.name }}</span>
+          <span style="font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums">{{ st.range }}</span>
+        </span>
+        <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:none;stroke:var(--muted);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round"><path d="m6 9 6 6 6-6"></path></svg>
+      </button>
+    </sc-for>
+  </div>
+  <sc-for list="{{ stages }}" as="st" hint-placeholder-count="3">
+    <section id="{{ st.anchor }}" style="display:grid;grid-template-columns:{{ L.stageCols }};gap:24px 48px;padding:48px 0 20px;border-bottom:1px solid var(--color-divider)">
+      <div style="position:{{ L.stageLabelPos }};top:96px;align-self:start">
+        <div style="font-size:11.5px;letter-spacing:.16em;color:var(--strong-accent);font-variant-numeric:tabular-nums">STAGE {{ st.num }} · {{ st.en }}</div>
+        <h2 style="font-size:40px;font-weight:400;margin:8px 0 10px">{{ st.name }}</h2>
+        <p style="font-size:13.5px;line-height:1.9;color:var(--muted);margin:0;text-align:justify">{{ st.desc }}</p>
+      </div>
+      <ol style="list-style:none;margin:0;padding:0">
+        <sc-for list="{{ st.steps }}" as="step">
+          <li style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:18px;position:relative;padding-bottom:30px">
+            <span style="position:absolute;left:20px;top:44px;bottom:4px;width:1px;background:var(--color-divider);display:{{ step.lineDisplay }}"></span>
+            <span style="width:40px;height:40px;border-radius:50%;border:1px solid var(--color-accent);display:grid;place-items:center;font-size:13px;color:var(--strong-accent);font-variant-numeric:tabular-nums;background:var(--color-bg)">{{ step.num }}</span>
+            <div style="padding-top:6px;min-width:0">
+              <h3 style="font-size:22px;margin:0 0 4px">{{ step.title }}</h3>
+              <p style="font-size:13.5px;line-height:1.85;color:var(--muted);margin:0 0 10px">{{ step.desc }}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <sc-for list="{{ step.links }}" as="lk">
+                  <button onClick="{{ lk.go }}" style="font-family:var(--font-code);font-size:12.5px;padding:4px 10px;border:1px solid var(--color-divider);border-radius:var(--radius-sm);background:transparent;color:var(--strong-accent);cursor:pointer" style-hover="border-color:var(--color-accent);background:var(--hl-bg)">{{ lk.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+          </li>
+        </sc-for>
+      </ol>
+    </section>
+  </sc-for>
+</main>
+</sc-if>
+
+<sc-if value="{{ isInner }}" hint-placeholder-val="{{ false }}">
+  <footer style="padding:20px {{ L.padX }};border-top:1px solid var(--color-divider);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)">
+    <span>HTML &amp; CSS GUIDE — 学ぶ・調べる・理解する</span><span>{{ countLabel }}</span>
+  </footer>
+</sc-if>
+
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;frame&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;auto&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;auto&quot;,&quot;tsType&quot;:&quot;'auto' | 'mobile'&quot;,&quot;label&quot;:&quot;表示幅（mobile = スマホ枠で確認）&quot;},&quot;initialTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light' | 'dark'&quot;,&quot;label&quot;:&quot;テーマ&quot;},&quot;lineNumbers&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;label&quot;:&quot;コードの行番号&quot;},&quot;accordionSingle&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;label&quot;:&quot;アコーディオンを1つずつ開く&quot;}}">
+const CATS = {
+  html: [
+    { id: 'base', name: '基本構造', items: [
+      ['doctype', '!DOCTYPE', 'HTML文書であることの宣言', 'DOCTYPE 宣言 doctype html5 文書型'],
+      ['html', 'html', 'HTML文書のルート要素', '文書 ルート lang'],
+      ['head', 'head', '文書のメタ情報をまとめる', 'ヘッド'],
+      ['body', 'body', '文書の本文', '本文'],
+      ['title', 'title', 'ページのタイトル', 'タブ タイトル'],
+      ['meta', 'meta', '文字コードなどのメタデータ', '文字コード viewport'],
+      ['link', 'link', '外部ファイルの読み込み', 'CSS 読み込み スタイルシート'] ] },
+    { id: 'text', name: '見出し・文章', items: [
+      ['h1', 'h1', '最上位の見出し', '見出し タイトル heading'],
+      ['h2', 'h2', '第2階層の見出し', '見出し'],
+      ['h3', 'h3', '第3階層の見出し', '見出し'],
+      ['p', 'p', '段落', '文章 段落 テキスト'],
+      ['span', 'span', '意味を持たないインライン要素', 'インライン'],
+      ['strong', 'strong', '重要な内容を示す', '強調 太字'],
+      ['em', 'em', '強勢を示す', '強調 斜体'],
+      ['br', 'br', '改行', '改行'],
+      ['blockquote', 'blockquote', '引用文', '引用'] ] },
+    { id: 'linkimg', name: 'リンク・画像', items: [
+      ['a', 'a', 'ハイパーリンク', 'リンク URL href'],
+      ['img', 'img', '画像を埋め込む', '画像 写真 alt'],
+      ['picture', 'picture', '条件に応じて画像を切り替える', '画像 レスポンシブ'],
+      ['figure', 'figure', '図表のまとまり', '画像 図'],
+      ['figcaption', 'figcaption', '図表のキャプション', '画像 キャプション'] ] },
+    { id: 'listtable', name: 'リスト・テーブル', items: [
+      ['ul', 'ul', '順序のないリスト', 'リスト 箇条書き'],
+      ['ol', 'ol', '順序のあるリスト', 'リスト 番号'],
+      ['li', 'li', 'リストの項目', 'リスト'],
+      ['dl', 'dl', '説明リスト', '用語 説明'],
+      ['dt', 'dt', '説明リストの用語', '用語 説明リスト'],
+      ['dd', 'dd', '用語の説明', '説明 説明リスト'],
+      ['table', 'table', '表', 'テーブル 表'],
+      ['tr', 'tr', '表の行', 'テーブル'],
+      ['th', 'th', '表の見出しセル', 'テーブル'],
+      ['td', 'td', '表のデータセル', 'テーブル'] ] },
+    { id: 'form', name: 'フォーム', items: [
+      ['form', 'form', 'フォーム全体', '送信 フォーム'],
+      ['input', 'input', '入力欄', '入力 テキスト チェックボックス'],
+      ['label', 'label', '入力欄のラベル', 'ラベル'],
+      ['textarea', 'textarea', '複数行の入力欄', '入力'],
+      ['select', 'select', 'プルダウンの選択肢', 'セレクト'],
+      ['button', 'button', 'ボタン', 'ボタン クリック'] ] },
+    { id: 'structure', name: 'ページ構造', items: [
+      ['header', 'header', 'ヘッダー領域', 'ヘッダー'],
+      ['nav', 'nav', 'ナビゲーション', 'メニュー ナビ'],
+      ['main', 'main', 'ページの主要な内容', 'メイン'],
+      ['section', 'section', '主題ごとのまとまり', 'セクション'],
+      ['article', 'article', '独立したコンテンツ', '記事'],
+      ['aside', 'aside', '補足情報', 'サイドバー'],
+      ['footer', 'footer', 'フッター領域', 'フッター'],
+      ['div', 'div', '汎用のブロック要素', 'ボックス'] ] },
+    { id: 'media', name: 'メディア', items: [
+      ['video', 'video', '動画を埋め込む', '動画'],
+      ['audio', 'audio', '音声を埋め込む', '音声'],
+      ['iframe', 'iframe', '別のページを埋め込む', '埋め込み 地図 YouTube'],
+      ['canvas', 'canvas', 'スクリプトで描画する領域', '描画'],
+      ['svg', 'svg', 'ベクター画像', 'アイコン 画像'] ] },
+    { id: 'other', name: 'その他', items: [
+      ['details', 'details', '開閉できる詳細情報', 'アコーディオン 開閉'],
+      ['summary', 'summary', 'detailsの見出し', 'アコーディオン'],
+      ['dialog', 'dialog', 'ダイアログ', 'モーダル'],
+      ['code', 'code', 'コードの断片', 'コード'],
+      ['pre', 'pre', '整形済みテキスト', 'コード 空白'] ] }
+  ],
+  css: [
+    { id: 'font', name: '文字・フォント', items: [
+      ['font-size', 'font-size', '文字の大きさ', '文字 サイズ'],
+      ['font-weight', 'font-weight', '文字の太さ', '太字'],
+      ['font-family', 'font-family', '書体', 'フォント'],
+      ['line-height', 'line-height', '行の高さ', '行間'],
+      ['letter-spacing', 'letter-spacing', '文字の間隔', '字間'],
+      ['text-align', 'text-align', '行揃え', '中央寄せ 左寄せ 右寄せ'],
+      ['text-decoration', 'text-decoration', '下線などの装飾', '下線'] ] },
+    { id: 'color', name: '色・背景', items: [
+      ['color', 'color', '文字色', '色 文字色'],
+      ['background-color', 'background-color', '背景色', '背景 色'],
+      ['background-image', 'background-image', '背景画像', '背景 画像'],
+      ['opacity', 'opacity', '不透明度', '透明'] ] },
+    { id: 'box', name: '余白・サイズ', items: [
+      ['margin', 'margin', '外側の余白', '余白 間隔 中央寄せ 外側'],
+      ['padding', 'padding', '内側の余白', '余白 内側'],
+      ['width', 'width', '幅', '幅 サイズ'],
+      ['height', 'height', '高さ', '高さ サイズ'],
+      ['max-width', 'max-width', '最大の幅', '幅 レスポンシブ'],
+      ['box-sizing', 'box-sizing', 'サイズの計算方法', 'ボックスモデル'] ] },
+    { id: 'layout', name: 'レイアウト', items: [
+      ['display', 'display', '表示形式', '横並び 非表示 flex grid block'],
+      ['position', 'position', '配置方法', '固定 絶対配置 sticky'],
+      ['z-index', 'z-index', '重なり順', '重なり'],
+      ['overflow', 'overflow', 'はみ出した部分の扱い', 'スクロール はみ出し'],
+      ['float', 'float', '回り込み', '回り込み'] ] },
+    { id: 'flexgrid', name: 'Flexbox・Grid', items: [
+      ['flex-direction', 'flex-direction', 'アイテムの並ぶ方向', 'flex 縦並び 横並び'],
+      ['justify-content', 'justify-content', '主軸方向の配置', 'flex 中央寄せ 横並び 均等'],
+      ['align-items', 'align-items', '交差軸方向の配置', 'flex 中央寄せ 縦'],
+      ['gap', 'gap', 'アイテム間の間隔', 'flex grid 間隔 余白'],
+      ['flex', 'flex', 'アイテムの伸縮', 'flex 伸縮'],
+      ['grid-template-columns', 'grid-template-columns', 'グリッドの列', 'grid 列 カラム'],
+      ['place-items', 'place-items', '縦横の配置をまとめて指定', 'grid 中央寄せ'] ] },
+    { id: 'deco', name: '枠線・装飾', items: [
+      ['border', 'border', '枠線', '枠線 線'],
+      ['border-radius', 'border-radius', '角丸', '角丸 円'],
+      ['box-shadow', 'box-shadow', '影', '影 シャドウ'],
+      ['outline', 'outline', 'アウトライン', 'フォーカス'] ] },
+    { id: 'anim', name: 'アニメーション', items: [
+      ['transition', 'transition', '変化をなめらかにする', 'アニメーション ホバー'],
+      ['animation', 'animation', 'アニメーションの設定', 'アニメーション'],
+      ['transform', 'transform', '移動・回転・拡大', '回転 拡大 移動'],
+      ['keyframes', '@keyframes', 'アニメーションの中間状態', 'アニメーション'] ] },
+    { id: 'resp', name: 'レスポンシブ', items: [
+      ['media', '@media', '画面幅に応じた切り替え', 'レスポンシブ メディアクエリ スマホ'],
+      ['clamp', 'clamp()', '最小値・推奨値・最大値', 'レスポンシブ 文字サイズ'],
+      ['container', '@container', 'コンテナの幅に応じた切り替え', 'コンテナクエリ'],
+      ['aspect-ratio', 'aspect-ratio', '縦横比', '比率 画像'] ] },
+    { id: 'other', name: 'その他', items: [
+      ['hover', ':hover', 'マウスを乗せたとき', '疑似クラス ホバー'],
+      ['before', '::before', '要素の前に内容を追加', '疑似要素'],
+      ['var', 'var()', 'CSS変数を参照', '変数 カスタムプロパティ'],
+      ['cursor', 'cursor', 'カーソルの形', 'マウス'] ] }
+  ]
+};
+
+const INDEX = {}, ORDER = { html: [], css: [] };
+['html', 'css'].forEach(type => CATS[type].forEach((cat, ci) => cat.items.forEach(([slug, name, summary, kw]) => {
+  const id = type + '-' + slug;
+  INDEX[id] = { id, type, slug, name, summary, kw, catId: cat.id, cat: cat.name, ci };
+  ORDER[type].push(id);
+})));
+const ALL = Object.values(INDEX);
+
+const DETAILS = {
+  'html-meta': {
+    title: '<meta>',
+    ja: '文字コードなどのメタデータ',
+    lead: 'ページそのものに関する情報（メタデータ）をブラウザや検索エンジンに伝えます。head の中に書き、画面には表示されません。',
+    meta: [['種類', 'メタデータ要素'], ['記述位置', 'head の中'], ['終了タグ', '不要（空要素）']],
+    html: `<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HTMLタグとCSSプロパティを、サンプルコードと実際の表示結果で学べる辞典サイトです。">
+    <title>HTML &amp; CSS GUIDE</title>
+</head>
+<body>
+    <p>meta要素の内容は画面には表示されません。</p>
+</body>
+</html>`,
+    raw: true, previewH: 110, previewNote: 'meta要素は画面に表示されず、ブラウザや検索エンジンが読み取ります',
+    explain: [
+      '`meta` は終了タグを持たない空要素で、`head` の中に書きます。どんな情報を伝えるかは、`charset`、`name`、`content` などの属性で指定します。',
+      '`<meta charset="UTF-8">` は文字コードの指定です。日本語の文字化けを防ぐため、`head` のできるだけ先頭に書きます。',
+      '`<meta name="viewport">` は、スマートフォンでページを端末の画面幅に合わせて表示するための指定です。レスポンシブデザインには欠かせません。',
+      '`<meta name="description">` は、ページの内容を短くまとめた説明文です。`content` 属性に書いた文章は、Googleなどの検索結果でタイトルの下に表示されることがあり、利用者がページを開くかどうかを判断する材料になります。'
+    ],
+    valuesLabel: 'よく使う書き方', valuesHead: 'コード',
+    values: [['charset="UTF-8"', '文字コードをUTF-8に指定する'], ['name="viewport"', 'スマートフォンでの表示幅を端末に合わせる'], ['name="description"', 'ページの説明文。検索結果に表示されることがある'], ['name="robots"', '検索エンジンに登録させるかどうかを指定（noindex など）'], ['property="og:title" など', 'SNSでシェアされたときのタイトル・画像（OGP）']],
+    usages: [{ title: 'description を書く', desc: 'ページごとに内容に合った説明文を、全角80〜120文字程度で書くのが目安です。',
+      html: `<meta name="description" content="Flexboxの基本を図解。justify-contentとalign-itemsで要素を中央寄せする方法を、サンプルコード付きで解説します。">` }],
+    notes: ['description はページごとに異なる文章にします。全ページ同じ説明文では効果がありません。', 'description に書いても、検索結果に必ずそのまま表示されるとは限りません。検索エンジンが本文から自動で抜き出すこともあります。', 'キーワードを詰め込んだ不自然な文章は避け、内容が伝わる自然な文章にします。'],
+    related: ['html-head', 'html-title', 'html-doctype', 'html-link']
+  },
+  'html-doctype': {
+    title: '<!DOCTYPE html>',
+    ja: 'HTML文書であることの宣言',
+    lead: 'ファイルの1行目に書き、この文書がHTML（HTML Living Standard）で書かれていることをブラウザに伝えます。タグではなく「宣言」です。',
+    meta: [['種類', '文書型宣言'], ['記述位置', 'ファイルの1行目'], ['終了タグ', 'なし']],
+    html: `<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+</body>
+</html>`,
+    raw: true, previewH: 130, previewNote: '<title> の内容はブラウザのタブに表示されます',
+    explain: [
+      '`<!DOCTYPE html>` は文書型宣言と呼ばれ、ブラウザに「標準のHTMLとして表示してください」と伝えます。書き忘れると、古いブラウザとの互換を優先する「互換モード（Quirks Mode）」で表示され、レイアウトが崩れることがあります。',
+      '続く `<html lang="ja">` は文書全体を囲むルート要素です。`lang` 属性で日本語の文書であることを示すと、読み上げソフトや翻訳機能が正しく動作します。',
+      '`<head>` にはページの情報を書きます。`<meta charset="UTF-8">` は文字コードの指定で、文字化けを防ぎます。`<meta name="viewport">` はスマートフォンで画面幅に合わせて表示するための指定です。',
+      '`<title>` はブラウザのタブや検索結果に表示されるページ名です。実際に画面に表示される内容は `<body>` の中に書きます。'
+    ],
+    valuesLabel: '各行の役割', valuesHead: 'コード',
+    values: [['<!DOCTYPE html>', 'HTML文書であることの宣言'], ['<html lang="ja">', 'ルート要素。文書の言語を日本語に指定'], ['<meta charset="UTF-8">', '文字コードをUTF-8に指定'], ['<meta name="viewport" …>', 'スマートフォンでの表示幅を端末に合わせる'], ['<title>', 'タブや検索結果に表示されるページ名'], ['<body>', '画面に表示される内容']],
+    usages: [{ title: 'CSSファイルを読み込む', desc: 'head の中に link 要素を書くと、外部のCSSファイルを読み込めます。',
+      html: `<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>` }],
+    notes: ['必ずファイルの1行目に書きます。前に空白や他の文字があると正しく認識されないことがあります。', '大文字・小文字は区別されませんが、<!DOCTYPE html> と書くのが一般的です。', 'meta charset はできるだけ head の先頭に書きます。'],
+    related: ['html-html', 'html-head', 'html-meta', 'html-title']
+  },
+  'html-h1': {
+    ja: '最上位の見出し',
+    lead: 'ページの主題を表す、最も重要な見出しです。見出しは h1 から h6 までの6段階があり、h1 はその最上位にあたります。',
+    meta: [['種類', 'ブロック要素'], ['終了タグ', '必須'], ['使用の目安', '1ページに1つ']],
+    html: `<h1>Hello World</h1>
+<p>はじめてのWebページです。</p>`,
+    previewH: 150,
+    explain: [
+      '`h1` は "heading 1" の略で、そのページ全体の主題を示す見出しです。ブラウザは既定で大きく太い文字で表示し、上下に余白をとります。',
+      '見出しは `h1` から `h6` までの6段階があり、数字が小さいほど重要度が高くなります。文書の章立てに合わせて `h1` → `h2` → `h3` の順に階層を下げていきます。',
+      '検索エンジンやスクリーンリーダーは、見出しの階層をもとにページの構造を理解します。見た目の大きさではなく、内容の重要度で選ぶことが大切です。'
+    ],
+    valuesLabel: '主な属性', valuesHead: '属性',
+    values: [['id', 'ページ内リンクの移動先として使う名前'], ['class', 'CSSで装飾するための名前'], ['lang', '見出しだけ言語が異なる場合に指定']],
+    usages: [{ title: 'ページの見出し構造をつくる', desc: 'サイト名やページタイトルを h1 にし、その下の章を h2、節を h3 で表します。',
+      html: `<header>
+  <h1>HTML &amp; CSS GUIDE</h1>
+</header>
+<main>
+  <h2>Flexbox入門</h2>
+  <h3>主軸と交差軸</h3>
+</main>` }],
+    notes: ['文字を大きく見せる目的で見出しを使わないでください。大きさはCSSの font-size で調整します。', 'h1 の次にいきなり h3 を使うなど、階層を飛ばさないようにします。', 'h1 は1ページに1つが一般的です。'],
+    related: ['html-h2', 'html-p', 'css-font-size', 'html-header']
+  },
+  'html-a': {
+    ja: 'ハイパーリンク',
+    lead: '別のページやファイル、同じページ内の位置へ移動するためのリンクをつくります。移動先は href 属性で指定します。',
+    meta: [['種類', 'インライン要素'], ['終了タグ', '必須'], ['必須属性', 'href']],
+    html: `<p>
+  詳しくは<a href="https://example.com/">公式ドキュメント</a>を参照してください。
+</p>
+<p>
+  <a href="https://example.com/" target="_blank" rel="noopener">新しいタブで開く</a>
+</p>`,
+    css: `a {
+  color: #9a5a1c;
+  text-underline-offset: 3px;
+}
+a:hover {
+  text-decoration: none;
+}`,
+    previewH: 140, previewNote: 'リンクにマウスを乗せると下線が消えます',
+    explain: [
+      '`a` は "anchor（いかり）" の略です。`href` 属性に移動先のURLを書くと、囲んだテキストや画像がクリックできるリンクになります。',
+      '`target="_blank"` を指定すると新しいタブで開きます。その場合は、セキュリティのために `rel="noopener"` もあわせて指定します。',
+      'リンクの色や下線はCSSで変更できます。`:hover` を使うと、マウスを乗せたときの見た目を変えられます。'
+    ],
+    valuesLabel: '主な属性', valuesHead: '属性',
+    values: [['href', 'リンク先のURL。#id でページ内、mailto: でメールを指定'], ['target="_blank"', '新しいタブ（ウィンドウ）で開く'], ['rel="noopener"', '開いたページから元のページを操作させない'], ['download', 'リンク先をファイルとしてダウンロードさせる']],
+    usages: [{ title: 'ページ内リンク', desc: 'href に「#」とid名を書くと、同じページ内の該当箇所へ移動します。',
+      html: `<a href="#contact">お問い合わせへ</a>
+
+<section id="contact">
+  <h2>お問い合わせ</h2>
+</section>` }],
+    notes: ['リンクテキストは「こちら」ではなく、移動先がわかる言葉にします。', 'ページ移動ではなく動作（送信・開閉など）を行う場合は button を使います。', 'target="_blank" を多用すると、ユーザーが元のページに戻りにくくなります。'],
+    related: ['html-img', 'html-nav', 'css-hover', 'css-text-decoration']
+  },
+  'html-img': {
+    ja: '画像を埋め込む',
+    lead: 'ページに画像を表示します。src 属性で画像ファイルを、alt 属性で画像の内容を説明する代替テキストを指定します。',
+    meta: [['種類', 'インライン（置換要素）'], ['終了タグ', '不要（空要素）'], ['必須属性', 'src / alt']],
+    html: `<figure>
+  <img src="photo.jpg" alt="窓辺に置かれた観葉植物" width="320" height="200">
+  <figcaption>図1：alt属性で画像の内容を説明する</figcaption>
+</figure>`,
+    css: `img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+figcaption {
+  font-size: 13px;
+  color: #666;
+}`,
+    previewH: 300,
+    explain: [
+      '`img` は終了タグを持たない空要素です。`src` に画像のパス、`alt` に画像の内容を書きます。',
+      '`alt` は画像が表示できないときや、スクリーンリーダーで読み上げるときに使われます。装飾のための画像なら `alt=""` と空にします。',
+      'CSSで `max-width: 100%` と `height: auto` を指定すると、親要素からはみ出さず、縦横比を保ったまま縮小されます。'
+    ],
+    valuesLabel: '主な属性', valuesHead: '属性',
+    values: [['src', '画像ファイルのパス'], ['alt', '画像の内容を説明する代替テキスト'], ['width / height', '表示サイズ。指定するとレイアウトのずれを防げる'], ['loading="lazy"', '画面に近づくまで読み込みを遅らせる'], ['srcset', '画面の解像度や幅に応じて画像を切り替える']],
+    usages: [{ title: '画像を遅延読み込みする', desc: 'ページ下部の画像に loading="lazy" を指定すると、最初の表示が速くなります。',
+      html: `<img src="gallery-01.jpg" alt="作品1" loading="lazy" width="640" height="400">` }],
+    notes: ['alt 属性は省略しないでください。', 'width と height を書いておくと、読み込み中にレイアウトがずれる（CLS）のを防げます。', '大きな画像はWebPなどで圧縮し、表示サイズに合わせて用意します。'],
+    related: ['html-picture', 'html-figure', 'css-max-width', 'css-aspect-ratio']
+  },
+  'html-ul': {
+    ja: '順序のないリスト',
+    lead: '順番に意味がない項目を箇条書きで並べます。各項目は li 要素で囲みます。',
+    meta: [['種類', 'ブロック要素'], ['子要素', 'li のみ'], ['終了タグ', '必須']],
+    html: `<ul>
+  <li>HTMLの基本構造</li>
+  <li>見出し・文章</li>
+  <li>画像・リンク</li>
+</ul>`,
+    css: `ul {
+  padding-left: 1.4em;
+}
+li {
+  margin-bottom: 4px;
+}
+li::marker {
+  color: #b68235;
+}`,
+    previewH: 150,
+    explain: [
+      '`ul` は "unordered list" の略で、順番に意味のないリストを表します。中には `li`（list item）だけを入れます。',
+      'ブラウザは既定で各項目の先頭に「・」の記号（マーカー）を表示し、左側に余白をとります。マーカーの色は `::marker` で変えられます。',
+      'ナビゲーションメニューのように、リンクを並べる場面でもよく使われます。'
+    ],
+    valuesLabel: 'よく使う組み合わせ', valuesHead: '書き方',
+    values: [['ol', '順番に意味があるリスト（手順など）'], ['li', 'リストの各項目'], ['list-style: none', '先頭のマーカーを消す（CSS）'], ['nav > ul', 'ナビゲーションメニューの定番構造']],
+    usages: [{ title: 'ナビゲーションメニュー', desc: 'リンクのリストをFlexboxで横並びにする、実務でよく見る構成です。',
+      html: `<nav>
+  <ul class="menu">
+    <li><a href="/">ホーム</a></li>
+    <li><a href="/learn">学習する</a></li>
+  </ul>
+</nav>`,
+      css: `.menu {
+  display: flex;
+  gap: 16px;
+  padding: 0;
+  list-style: none;
+}` }],
+    notes: ['ul の直下には li 以外を置かないでください。', '手順など順番に意味がある場合は ol を使います。'],
+    related: ['html-ol', 'html-li', 'html-nav', 'css-display']
+  },
+  'css-margin': {
+    ja: '外側の余白',
+    lead: '要素の外側に余白をとります。上下左右をまとめて、または個別に指定でき、auto を使うと中央寄せにも使えます。',
+    meta: [['初期値', '0'], ['適用対象', 'すべての要素'], ['継承', 'しない']],
+    html: `<div class="box">margin: 24px</div>
+<div class="box center">margin: 24px auto</div>`,
+    css: `.box {
+  margin: 24px;
+  padding: 12px;
+  background: #f6ead8;
+  border: 1px solid #b68235;
+}
+.center {
+  width: 220px;
+  margin: 24px auto;
+}`,
+    previewH: 190,
+    explain: [
+      '`margin` は要素の枠線（border）より外側の余白です。内側の余白は `padding` で指定します。',
+      '値を1〜4つ並べて指定でき、4つの場合は「上・右・下・左」の時計回りになります。',
+      '幅が決まったブロック要素に `margin: 0 auto` を指定すると、左右の余白が均等に計算され、水平方向の中央に配置されます。'
+    ],
+    valuesLabel: '指定できる値', valuesHead: '値',
+    values: [['margin: 16px;', '上下左右すべてに16px'], ['margin: 8px 16px;', '上下に8px、左右に16px'], ['margin: 1px 2px 3px 4px;', '上・右・下・左の順（時計回り）'], ['auto', '余白を自動計算する。左右に使うと中央寄せ'], ['margin-top: -8px;', '負の値で要素を引き寄せる']],
+    usages: [{ title: '隣り合うカードの間隔', desc: '隣接セレクタ「+」を使うと、2つ目以降の要素にだけ上の余白をつけられます。',
+      css: `.card + .card {
+  margin-top: 24px;
+}` }],
+    notes: ['上下に隣接する要素の margin は、大きいほうだけが適用されます（マージンの相殺）。', 'インライン要素には上下の margin が効きません。', '並んだ要素の間隔は、Flexbox・Gridの gap を使うほうが簡潔です。'],
+    related: ['css-padding', 'css-box-sizing', 'css-gap', 'css-width']
+  },
+  'css-display': {
+    ja: '表示形式',
+    lead: '要素をブロック・インライン・Flexbox・Gridなど、どの形式で表示するかを決めます。レイアウトの基本となるプロパティです。',
+    meta: [['初期値', 'inline'], ['適用対象', 'すべての要素'], ['継承', 'しない']],
+    html: `<div class="row">
+  <span class="item">A</span>
+  <span class="item">B</span>
+  <span class="item">C</span>
+</div>`,
+    css: `.row {
+  display: flex;
+  gap: 12px;
+}
+.item {
+  display: block;
+  padding: 16px 24px;
+  border: 1px solid #b68235;
+}`,
+    previewH: 110,
+    explain: [
+      'HTMLの要素は、`div` のように縦に積まれる「ブロック」と、`span` のように文中に並ぶ「インライン」に分かれます。`display` はこの性質を変更します。',
+      '親要素に `display: flex` を指定すると、子要素が横一列に並びます。`display: grid` なら行と列による格子状のレイアウトになります。',
+      '`display: none` を指定すると、要素は表示されず、場所も占めなくなります。'
+    ],
+    valuesLabel: '指定できる値', valuesHead: '値',
+    values: [['block', '幅いっぱいに広がり、縦に積まれる'], ['inline', '文中に並ぶ。width・heightは効かない'], ['inline-block', '文中に並びつつ、幅・高さを指定できる'], ['flex', '子要素を一方向に並べるFlexコンテナにする'], ['grid', '子要素を格子状に配置するGridコンテナにする'], ['none', '要素を非表示にする']],
+    usages: [{ title: '要素を非表示にする', desc: 'JavaScriptでクラスを付け外しして、表示・非表示を切り替える定番の書き方です。',
+      css: `.is-hidden {
+  display: none;
+}` }],
+    notes: ['display: none の要素はスクリーンリーダーでも読み上げられません。', 'inline 要素には width・height や上下の margin が効きません。'],
+    related: ['css-flex-direction', 'css-justify-content', 'css-grid-template-columns', 'css-position']
+  },
+  'css-justify-content': {
+    ja: '主軸方向の配置',
+    lead: 'FlexboxやGridで、アイテムを主軸方向（通常は横方向）にどう並べるかを指定します。中央寄せや均等配置に使います。',
+    meta: [['初期値', 'normal'], ['適用対象', 'Flex・Gridコンテナ'], ['継承', 'しない']],
+    html: `<div class="container">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+</div>`,
+    css: `.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  border: 1px dashed #999;
+}
+.item {
+  width: 64px;
+  padding: 12px 0;
+  text-align: center;
+  background: #f6ead8;
+}`,
+    previewH: 110,
+    explain: [
+      '`justify-content` は、子要素ではなく親要素（`display: flex` を指定したコンテナ）に書きます。',
+      '`space-between` は両端のアイテムをコンテナの端に寄せ、残りの間隔を均等に分けます。`center` にするとアイテムがまとまって中央に寄ります。',
+      '`flex-direction: column` で縦並びにしたときは、縦方向の配置を決めるプロパティになります。'
+    ],
+    valuesLabel: '指定できる値', valuesHead: '値',
+    values: [['flex-start', '先頭（左）に寄せる'], ['center', '中央に寄せる'], ['flex-end', '末尾（右）に寄せる'], ['space-between', '両端に寄せ、間を均等にあける'], ['space-around', '各アイテムの左右に均等な余白をとる'], ['space-evenly', 'すべての間隔を完全に均等にする']],
+    usages: [{ title: '上下左右の中央寄せ', desc: 'align-items と組み合わせると、要素を縦横どちらも中央に配置できます。',
+      css: `.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}` }],
+    notes: ['子要素に書いても効きません。親のFlexコンテナに指定します。', 'アイテムがコンテナいっぱいに伸びている場合は、余白がないため変化が見えません。'],
+    related: ['css-align-items', 'css-display', 'css-gap', 'css-flex-direction']
+  },
+  'css-grid-template-columns': {
+    ja: 'グリッドの列',
+    lead: 'Gridレイアウトで、列の数と幅を定義します。fr単位や repeat() を使うと、柔軟な段組みを短く書けます。',
+    meta: [['初期値', 'none'], ['適用対象', 'Gridコンテナ'], ['継承', 'しない']],
+    html: `<div class="grid">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>
+</div>`,
+    css: `.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.grid div {
+  padding: 16px;
+  text-align: center;
+  background: #f6ead8;
+}`,
+    previewH: 160,
+    explain: [
+      '`grid-template-columns` に幅を並べると、その数だけ列ができます。`200px 1fr` なら「200pxの列」と「残り全部の列」の2列です。',
+      '`fr` は余った領域を分け合う単位です。`repeat(3, 1fr)` は `1fr 1fr 1fr` と同じ意味で、3等分の列になります。',
+      'アイテムは左上から順に自動で配置され、列があふれると次の行に折り返します。'
+    ],
+    valuesLabel: '指定できる値', valuesHead: '値',
+    values: [['200px 1fr', '固定幅の列と、残りを埋める列'], ['repeat(3, 1fr)', '同じ幅の列を3つ'], ['minmax(160px, 1fr)', '最小160px、最大1frの範囲で伸縮'], ['repeat(auto-fill, minmax(160px, 1fr))', '入るだけ列を作り、自動で折り返す']],
+    usages: [{ title: 'カードを自動で折り返す', desc: 'メディアクエリを使わずに、画面幅に応じて列数が変わるレイアウトをつくれます。',
+      css: `.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+}` }],
+    notes: ['列数を固定するとスマートフォンで窮屈になります。auto-fill や @media と組み合わせましょう。', 'gap は列の幅に含まれず、列と列の間に追加されます。'],
+    related: ['css-gap', 'css-display', 'css-place-items', 'css-media']
+  },
+  'css-border-radius': {
+    ja: '角丸',
+    lead: '要素の角を丸くします。値を大きくするほど丸みが強くなり、50% を指定すると正方形の要素は円になります。',
+    meta: [['初期値', '0'], ['適用対象', 'すべての要素'], ['継承', 'しない']],
+    html: `<div class="box">border-radius: 12px</div>
+<div class="circle">50%</div>`,
+    css: `.box {
+  padding: 16px;
+  border: 1px solid #b68235;
+  border-radius: 12px;
+}
+.circle {
+  width: 80px;
+  height: 80px;
+  margin-top: 16px;
+  display: grid;
+  place-items: center;
+  background: #f6ead8;
+  border-radius: 50%;
+}`,
+    previewH: 190,
+    explain: [
+      '`border-radius` は四隅の丸みの半径を指定します。枠線や背景色がある要素で効果がわかります。',
+      '値を4つ並べると「左上・右上・右下・左下」の順に個別の丸みを指定できます。',
+      '幅と高さが同じ要素に `50%` を指定すると円になり、アイコンやアバター画像によく使われます。'
+    ],
+    valuesLabel: '指定できる値', valuesHead: '値',
+    values: [['8px', '四隅すべてを8pxの丸みに'], ['8px 0 8px 0', '左上・右上・右下・左下の順に指定'], ['50%', '正方形なら円、長方形なら楕円'], ['9999px', 'ボタンなどを両端が丸い形にする']],
+    usages: [{ title: '丸いアバター画像', desc: '画像にも border-radius は効きます。object-fit と組み合わせると切り抜きが自然になります。',
+      css: `.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}` }],
+    notes: ['子要素が角からはみ出す場合は、親に overflow: hidden を指定します。'],
+    related: ['css-border', 'css-box-shadow', 'css-outline', 'css-overflow']
+  },
+  'css-transition': {
+    ja: '変化をなめらかにする',
+    lead: 'ホバーなどでプロパティの値が変わるとき、その変化を指定した時間をかけてなめらかに見せます。',
+    meta: [['初期値', 'all 0s ease 0s'], ['適用対象', 'すべての要素'], ['継承', 'しない']],
+    html: `<button class="btn">マウスを乗せてください</button>`,
+    css: `.btn {
+  padding: 12px 24px;
+  color: #7d5411;
+  background: transparent;
+  border: 1px solid #b68235;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.btn:hover {
+  background-color: #ffe3bf;
+}`,
+    previewH: 100, previewNote: 'ボタンにマウスを乗せると背景色が変化します',
+    explain: [
+      '`transition` は「どのプロパティを」「何秒かけて」「どんな速度変化で」変えるかを1行で指定する一括指定プロパティです。',
+      '変化前の状態（`.btn`）に書くのがポイントです。こうすると、マウスを乗せたときも離したときも、なめらかに変化します。',
+      '`ease` は始めと終わりがゆっくりになる動き、`linear` は一定速度の動きです。'
+    ],
+    valuesLabel: '指定できる値', valuesHead: '値',
+    values: [['transition-property', '変化させるプロパティ名（all ですべて）'], ['transition-duration', '変化にかける時間（0.3s など）'], ['transition-timing-function', 'ease / linear / ease-in-out など速度の変化'], ['transition-delay', '変化が始まるまでの待ち時間']],
+    usages: [{ title: '動きを減らす設定に配慮する', desc: 'OSで「視差効果を減らす」を設定している利用者には、アニメーションを止めます。',
+      css: `@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none;
+  }
+}` }],
+    notes: ['all を指定すると、意図しないプロパティまで動くことがあります。', 'width や top の変化は描画の負荷が高いため、transform や opacity を使うと軽く動きます。'],
+    related: ['css-animation', 'css-transform', 'css-hover', 'css-keyframes']
+  }
+};
+
+const STAGES = [
+  { num: '01', name: '初心者', en: 'BEGINNER', desc: 'HTMLで文書の骨組みをつくり、CSSで色・文字・余白を整えるところまで。Webページの仕組みを理解する段階です。', steps: [
+    ['HTML・CSSの基本', 'HTMLは構造、CSSは見た目を担当します。両者の役割の違いを知りましょう。', ['html-html', 'html-link']],
+    ['HTMLの基本構造', 'すべてのページに共通する骨組みと、head・bodyの役割。', ['html-html', 'html-head', 'html-body', 'html-meta']],
+    ['見出し・文章', '見出しの階層と段落で、読みやすい文書をつくります。', ['html-h1', 'html-p', 'html-strong']],
+    ['画像・リンク', 'ページに画像を置き、他のページとつなげます。', ['html-a', 'html-img']],
+    ['CSSの基本的な書き方', 'セレクタ・プロパティ・値の関係を覚えます。', ['css-color', 'css-font-size']],
+    ['色・文字・余白', '文字色や背景色、余白で見た目を整えます。', ['css-color', 'css-background-color', 'css-margin', 'css-padding']],
+    ['ボックスモデル', 'すべての要素は箱。内容・padding・border・marginの関係を理解します。', ['css-margin', 'css-padding', 'css-border', 'css-box-sizing']] ] },
+  { num: '02', name: '中級者', en: 'INTERMEDIATE', desc: 'Flexbox・Gridでレイアウトを組み、スマートフォンにも対応させる段階。実際のサイト制作に必要な技術がそろいます。', steps: [
+    ['Flexbox', '要素を横に並べ、配置や間隔を自在に調整します。', ['css-display', 'css-justify-content', 'css-align-items', 'css-gap']],
+    ['CSS Grid', '行と列による2次元のレイアウトをつくります。', ['css-grid-template-columns', 'css-gap', 'css-place-items']],
+    ['レスポンシブデザイン', '画面幅に応じてレイアウトを切り替えます。', ['css-media', 'css-max-width', 'css-clamp']],
+    ['フォーム', '入力欄やボタンを使った、送信フォームの組み立て方。', ['html-form', 'html-input', 'html-label', 'html-button']],
+    ['疑似クラス・疑似要素', 'ホバー時の変化や、装飾用の要素の追加。', ['css-hover', 'css-before']],
+    ['CSSアニメーションの基本', '状態の変化をなめらかに見せる方法。', ['css-transition', 'css-transform']],
+    ['実践的なレイアウト制作', 'ヘッダー・メイン・フッターからなるページを組み立てます。', ['html-header', 'html-main', 'html-footer', 'css-position']] ] },
+  { num: '03', name: '上級者', en: 'ADVANCED', desc: '保守しやすいCSS設計、アクセシビリティ、パフォーマンスまで。品質の高いサイトを長く運用するための知識です。', steps: [
+    ['高度なCSSレイアウト', '重なりや複雑なグリッドを組み合わせたレイアウト。', ['css-grid-template-columns', 'css-position', 'css-z-index']],
+    ['複雑なアニメーション', 'キーフレームを使った連続的な動き。', ['css-animation', 'css-keyframes']],
+    ['CSS設計', '命名規則とファイル構成で、崩れにくいCSSを書きます。', ['css-var', 'html-div']],
+    ['CSS変数', '色や余白を変数にまとめ、一括で管理します。', ['css-var']],
+    ['Container Queries', '親要素の幅に応じて、部品ごとにレイアウトを切り替えます。', ['css-container']],
+    ['アクセシビリティ', 'すべての人が使えるページにするための書き方。', ['html-img', 'html-label', 'html-button', 'css-outline']],
+    ['パフォーマンス最適化', '表示を速く、動きを軽くするための工夫。', ['css-transform', 'css-opacity', 'html-img']] ] }
+];
+
+const IMG_PH = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='200'><rect width='100%25' height='100%25' fill='%23d9d4cc'/><text x='50%25' y='50%25' font-family='sans-serif' font-size='14' fill='%23776f63' text-anchor='middle' dominant-baseline='middle'>photo.jpg</text></svg>";
+
+function tokHTML(src) {
+  const out = []; let i = 0; const n = src.length; const push = (t, c) => t && out.push({ t, c });
+  while (i < n) {
+    if (src.startsWith('<!--', i)) { const e = src.indexOf('-->', i); const j = e < 0 ? n : e + 3; push(src.slice(i, j), 'cmt'); i = j; continue; }
+    if (src[i] === '<') {
+      let j = i + 1; if (src[j] === '/' || src[j] === '!') j++;
+      push(src.slice(i, j), 'punct'); i = j;
+      const m = /^[A-Za-z][\w-]*/.exec(src.slice(i)); if (m) { push(m[0], 'tag'); i += m[0].length; }
+      while (i < n && src[i] !== '>') {
+        const rest = src.slice(i); let mm;
+        if ((mm = /^\s+/.exec(rest))) push(mm[0], 'text');
+        else if ((mm = /^\/(?=>)/.exec(rest))) push(mm[0], 'punct');
+        else if ((mm = /^("[^"]*"|'[^']*')/.exec(rest))) push(mm[0], 'val');
+        else if ((mm = /^[^\s=>\/"']+/.exec(rest))) push(mm[0], 'attr');
+        else { mm = [rest[0]]; push(rest[0], 'text'); }
+        i += mm[0].length;
+      }
+      if (i < n) { push('>', 'punct'); i++; }
+      continue;
+    }
+    let j = src.indexOf('<', i); if (j < 0) j = n; push(src.slice(i, j), 'text'); i = j;
+  }
+  return out;
+}
+function tokVal(s, push) {
+  const re = /(#[0-9a-fA-F]{3,8}\b)|("[^"]*"|'[^']*')|([\w-]+(?=\())|(-?\d*\.?\d+(?:px|em|rem|%|fr|s|ms|deg|vh|vw)?)/g;
+  let last = 0, m;
+  while ((m = re.exec(s))) {
+    push(s.slice(last, m.index), 'cval');
+    push(m[0], m[1] ? 'num' : m[2] ? 'cval' : m[3] ? 'fn' : 'num');
+    last = re.lastIndex;
+  }
+  push(s.slice(last), 'cval');
+}
+function tokCSS(src) {
+  const out = []; let i = 0; const n = src.length; const push = (t, c) => t && out.push({ t, c });
+  while (i < n) {
+    const ch = src[i];
+    if (src.startsWith('/*', i)) { let e = src.indexOf('*/', i + 2); e = e < 0 ? n : e + 2; push(src.slice(i, e), 'cmt'); i = e; continue; }
+    if (/\s/.test(ch)) { let j = i; while (j < n && /\s/.test(src[j])) j++; push(src.slice(i, j), 'text'); i = j; continue; }
+    if ('{};'.includes(ch)) { push(ch, 'punct'); i++; continue; }
+    let j = i; while (j < n && !';{}'.includes(src[j]) && !src.startsWith('/*', j)) j++;
+    const chunk = src.slice(i, j);
+    if (src[j] === '{') {
+      if (chunk[0] === '@') { const m = /^@[\w-]+/.exec(chunk); push(m[0], 'kw'); tokVal(chunk.slice(m[0].length), push); }
+      else push(chunk, 'sel');
+    } else {
+      const k = chunk.indexOf(':');
+      if (k < 0) push(chunk, 'text'); else { push(chunk.slice(0, k), 'prop'); push(':', 'text'); tokVal(chunk.slice(k + 1), push); }
+    }
+    i = j;
+  }
+  return out;
+}
+function toLines(toks) {
+  const lines = [[]];
+  toks.forEach(tk => tk.t.split('\n').forEach((p, k) => { if (k > 0) lines.push([]); if (p) lines[lines.length - 1].push({ t: p, c: 'var(--c-' + tk.c + ')' }); }));
+  return lines.map((l, k) => ({ n: k + 1, toks: l }));
+}
+const segs = s => s.split(/`([^`]+)`/).map((t, k) => ({ t, code: k % 2 === 1, plain: k % 2 === 0 })).filter(x => x.t);
+const label = it => it.name;
+const titleOf = it => it.type === 'html' ? '<' + it.name + '>' : it.name;
+
+class Component extends DCLogic {
+  outerRef = React.createRef(); scrollRef = React.createRef(); topInputRef = React.createRef(); hdrInputRef = React.createRef();
+  state = (() => {
+    let r = { page: 'top', id: null }, theme = (this.props && this.props.initialTheme) || 'light';
+    try { const s = JSON.parse(localStorage.getItem('hcg-route') || 'null'); if (s && s.page && (s.page !== 'detail' || INDEX[s.id])) r = s; } catch (e) {}
+    try { theme = localStorage.getItem('hcg-theme') || theme; } catch (e) {}
+    return { ...r, theme, w: 1280, q: '', sOpen: false, sIdx: 0, dictOpen: { html: { text: true }, css: { flexgrid: true } }, sideOpen: {}, sideType: null, drawer: false, mSearch: false, copied: null };
+  })();
+
+  componentDidMount() {
+    document.documentElement.dataset.theme = this.state.theme;
+    this._prev = { initialTheme: this.props.initialTheme };
+    if (this.outerRef.current && window.ResizeObserver) {
+      this.ro = new ResizeObserver(([e]) => { const w = Math.round(e.contentRect.width); cancelAnimationFrame(this.raf); this.raf = requestAnimationFrame(() => { if (w !== this.state.w) this.setState({ w }); }); });
+      this.ro.observe(this.outerRef.current);
+    }
+  }
+  componentWillUnmount() { this.ro && this.ro.disconnect(); }
+  componentDidUpdate() {
+    const p = this._prev || {}, it = this.props.initialTheme;
+    if (p.initialTheme !== undefined && p.initialTheme !== it && it) { document.documentElement.dataset.theme = it; this.setState({ theme: it }); }
+    this._prev = { initialTheme: it };
+  }
+
+  go(page, id = null) {
+    try { localStorage.setItem('hcg-route', JSON.stringify({ page, id })); } catch (e) {}
+    this.setState({ page, id, q: '', sOpen: false, sIdx: 0, drawer: false, mSearch: false, sideOpen: {}, sideType: null });
+    const sc = this.scrollRef.current; if (sc) sc.scrollTop = 0;
+    window.scrollTo(0, 0);
+  }
+  nav = (page, id) => () => this.go(page, id);
+
+  search(q) {
+    q = q.trim().toLowerCase().replace(/[<>]/g, ''); if (!q) return [];
+    const res = [];
+    ALL.forEach(it => {
+      const n = it.name.toLowerCase(); let s = 0;
+      if (n === q || it.slug === q) s = 100; else if (n.startsWith(q)) s = 70; else if (n.includes(q)) s = 50;
+      if (it.kw.toLowerCase().includes(q)) s = Math.max(s, 40);
+      if (it.summary.includes(q)) s = Math.max(s, 30);
+      if (it.cat.toLowerCase().includes(q)) s = Math.max(s, 15);
+      if (s) res.push([s + (DETAILS[it.id] ? 1 : 0), it]);
+    });
+    return res.sort((a, b) => b[0] - a[0]).slice(0, 8).map(x => x[1]);
+  }
+
+  copy(key, text) {
+    try { navigator.clipboard && navigator.clipboard.writeText(text).catch(() => {}); } catch (e) {}
+    this.setState({ copied: key });
+    clearTimeout(this.ct); this.ct = setTimeout(() => this.setState({ copied: null }), 1600);
+  }
+  block(key, lang, code) {
+    const copied = this.state.copied === key;
+    return { key, lang, lines: toLines(lang === 'HTML' ? tokHTML(code) : tokCSS(code)), copied, notCopied: !copied, copyLabel: copied ? 'コピーしました' : 'コピー', copy: () => this.copy(key, code) };
+  }
+  scrollToId(id) {
+    const el = document.getElementById(id); if (!el) return;
+    const sc = this.scrollRef.current; const frame = this.isFrame();
+    if (frame && sc) sc.scrollTop += el.getBoundingClientRect().top - sc.getBoundingClientRect().top - 70;
+    else window.scrollTo({ top: window.scrollY + el.getBoundingClientRect().top - 110, behavior: 'smooth' });
+  }
+  isFrame() { return this.props.frame === 'mobile'; }
+
+  renderVals() {
+    const st = this.state, frame = this.isFrame();
+    const mobile = frame || st.w < 760, tablet = !mobile && st.w < 1100;
+    const single = !!this.props.accordionSingle;
+    const showLn = this.props.lineNumbers ?? true;
+    const L = {
+      mobile, desktop: !mobile,
+      outerBg: frame ? 'var(--backdrop)' : 'var(--color-bg)', outerPad: frame ? '32px 16px' : '0',
+      frameW: frame ? '390px' : '100%', frameH: frame ? '844px' : 'auto', frameRadius: frame ? '30px' : '0',
+      frameShadow: frame ? 'var(--shadow-lg)' : 'none', frameBorder: frame ? '1px solid var(--color-divider)' : '0',
+      frameTransform: frame ? 'translateZ(0)' : 'none', frameOverflow: frame ? 'hidden' : 'visible',
+      scrollH: frame ? '100%' : 'auto', scrollOverflow: frame ? 'auto' : 'visible',
+      padX: mobile ? '18px' : '40px', topMinH: frame ? '100%' : '100vh', topPad: mobile ? '24px 22px 56px' : '40px 40px 80px',
+      heroSize: mobile ? '46px' : tablet ? '66px' : '80px', h1Size: mobile ? '36px' : '48px',
+      pagePad: mobile ? '36px 18px 72px' : '56px 40px 96px', catSize: mobile ? '20px' : '23px',
+      listIndent: mobile ? '0' : '44px', codeW: mobile ? '100%' : '170px',
+      hdrGap: mobile ? '8px' : '20px',
+      hdrSearchDisplay: mobile ? (st.mSearch ? 'block' : 'none') : 'block', hdrSearchOrder: mobile ? 10 : 0,
+      hdrSearchBasis: mobile ? '100%' : 'auto', hdrSearchPad: mobile ? '0 0 12px' : '0',
+      hdrIconTop: '10px', hdrInputW: mobile ? '100%' : tablet ? '180px' : '240px', dropW: mobile ? '100%' : '400px',
+      showMenuBtn: mobile && st.page === 'detail',
+      detailCols: mobile ? 'minmax(0,1fr)' : tablet ? '250px minmax(0,1fr)' : '290px minmax(0,1fr)',
+      sbPos: mobile ? 'fixed' : 'sticky', sbTop: mobile ? '0' : '61px', sbH: mobile ? '100%' : 'calc(100vh - 61px)',
+      sbW: mobile ? 'min(86%, 340px)' : 'auto', sbZ: mobile ? 50 : 1, sbDisplay: mobile && !st.drawer ? 'none' : 'block',
+      sbShadow: mobile ? 'var(--shadow-lg)' : 'none', sbPad: mobile ? '14px 0 32px' : '28px 0 40px',
+      articlePad: mobile ? '22px 18px 72px' : tablet ? '36px 36px 96px' : '40px 56px 96px', titleSize: mobile ? '30px' : '42px',
+      stageCols: mobile ? 'minmax(0,1fr)' : '240px minmax(0,1fr)', stageLabelPos: mobile ? 'static' : 'sticky',
+      overviewCols: mobile ? '1fr' : 'repeat(3,1fr)'
+    };
+
+    const results = st.sOpen && st.q.trim() ? this.search(st.q) : [];
+    const S = {
+      open: !!(st.sOpen && st.q.trim()), empty: results.length === 0,
+      label: `「${st.q.trim()}」の検索結果 ${results.length}件`,
+      results: results.map((it, k) => ({ typeLabel: it.type.toUpperCase(), name: it.name, cat: it.cat, summary: it.summary, bg: k === st.sIdx ? 'var(--hl-bg)' : 'transparent', go: e => { e.preventDefault(); this.go('detail', it.id); } }))
+    };
+    this.lastResults = results;
+
+    const v = {
+      L, S, showLn, codePadL: showLn ? '0' : '16px', theme: st.theme, q: st.q,
+      isLight: st.theme === 'light', isDark: st.theme === 'dark', themeLabel: st.theme === 'light' ? 'ダークモード' : 'ライトモード',
+      isTop: st.page === 'top', isInner: st.page !== 'top', isDict: st.page === 'html' || st.page === 'css', isDetail: st.page === 'detail', isRoadmap: st.page === 'roadmap',
+      outerRef: this.outerRef, scrollRef: this.scrollRef, topInputRef: this.topInputRef, hdrInputRef: this.hdrInputRef,
+      toggleTheme: () => { const t = st.theme === 'light' ? 'dark' : 'light'; document.documentElement.dataset.theme = t; try { localStorage.setItem('hcg-theme', t); } catch (e) {} this.setState({ theme: t }); },
+      goTop: this.nav('top'),
+      onQ: e => this.setState({ q: e.target.value, sOpen: true, sIdx: 0 }),
+      onSFocus: () => this.setState({ sOpen: true }),
+      onSBlur: () => setTimeout(() => this.setState({ sOpen: false }), 120),
+      onSKey: e => {
+        const r = this.lastResults || [];
+        if (e.key === 'ArrowDown') { e.preventDefault(); this.setState(s => ({ sIdx: Math.min(s.sIdx + 1, r.length - 1) })); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); this.setState(s => ({ sIdx: Math.max(s.sIdx - 1, 0) })); }
+        else if (e.key === 'Enter' && r[st.sIdx]) this.go('detail', r[st.sIdx].id);
+        else if (e.key === 'Escape') this.setState({ sOpen: false });
+      },
+      toggleMSearch: () => this.setState(s => ({ mSearch: !s.mSearch }), () => this.state.mSearch && this.hdrInputRef.current && this.hdrInputRef.current.focus()),
+      openDrawer: () => this.setState({ drawer: true }), closeDrawer: () => this.setState({ drawer: false }),
+      drawerBackdrop: mobile && st.drawer,
+      countLabel: `HTML ${ORDER.html.length}項目 ・ CSS ${ORDER.css.length}項目を収録`,
+      quickWords: ['flex', 'margin', '中央寄せ', '画像', '見出し'].map(w => ({ label: w, pick: () => { this.setState({ q: w, sOpen: true, sIdx: 0 }); this.topInputRef.current && this.topInputRef.current.focus(); } })),
+      entries: [
+        { num: '01', sub: 'ROADMAP', title: '学習する', desc: '初心者・中級者・上級者の3段階で、学ぶ順番に沿って進めます。', go: this.nav('roadmap') },
+        { num: '02', sub: 'HTML', title: 'HTML辞典', desc: `${ORDER.html.length}のタグを、基本構造からメディアまでカテゴリ別に。`, go: this.nav('html') },
+        { num: '03', sub: 'CSS', title: 'CSS辞典', desc: `${ORDER.css.length}のプロパティを、文字からレスポンシブまでカテゴリ別に。`, go: this.nav('css') }
+      ]
+    };
+    const curType = st.page === 'detail' && INDEX[st.id] ? INDEX[st.id].type : st.page;
+    v.navLinks = [['roadmap', '学習する'], ['html', 'HTML辞典'], ['css', 'CSS辞典']].map(([p, l]) => {
+      const cur = curType === p; return { label: l, go: this.nav(p), current: cur ? 'page' : 'false', color: cur ? 'var(--color-accent)' : 'var(--color-text)', line: cur ? 'var(--color-accent)' : 'transparent' };
+    });
+
+    if (v.isDict) {
+      const type = st.page, open = st.dictOpen[type] || {};
+      const setOpen = o => this.setState(s => ({ dictOpen: { ...s.dictOpen, [type]: o } }));
+      v.D = {
+        kicker: type === 'html' ? 'DICTIONARY — HTML' : 'DICTIONARY — CSS',
+        title: type === 'html' ? 'HTML辞典' : 'CSS辞典',
+        lead: type === 'html' ? 'HTMLタグをカテゴリ別にまとめた一覧です。カテゴリを開いてタグを選ぶと、サンプルコードと実際の表示結果、詳しい解説を確認できます。' : 'CSSプロパティをカテゴリ別にまとめた一覧です。カテゴリを開いてプロパティを選ぶと、サンプルコードと実際の表示結果、詳しい解説を確認できます。',
+        countLabel: `${CATS[type].length}カテゴリ ・ ${ORDER[type].length}項目`,
+        expandAll: () => setOpen(Object.fromEntries(CATS[type].map(c => [c.id, true]))),
+        collapseAll: () => setOpen({}),
+        cats: CATS[type].map((c, k) => ({
+          num: String(k + 1).padStart(2, '0'), name: c.name, countLabel: `${c.items.length}項目`, open: !!open[c.id], rot: open[c.id] ? '180deg' : '0deg',
+          toggle: () => setOpen(single ? (open[c.id] ? {} : { [c.id]: true }) : { ...open, [c.id]: !open[c.id] }),
+          items: c.items.map(([slug, name, summary]) => ({ label: name, summary, go: this.nav('detail', type + '-' + slug) }))
+        }))
+      };
+    }
+
+    if (v.isDetail && INDEX[st.id]) {
+      const it = INDEX[st.id], d = DETAILS[it.id], sbType = st.sideType || it.type;
+      v.SB = {
+        isHtml: sbType === 'html', isCss: sbType === 'css',
+        setHtml: () => this.setState({ sideType: 'html' }), setCss: () => this.setState({ sideType: 'css' }),
+        cats: CATS[sbType].map(c => {
+          const has = c.items.some(x => sbType + '-' + x[0] === it.id);
+          const op = st.sideOpen[sbType + c.id] ?? has;
+          return {
+            name: c.name, count: c.items.length, open: op, rot: op ? '180deg' : '0deg', color: has ? 'var(--strong-accent)' : 'var(--color-text)',
+            toggle: () => this.setState(s => {
+              const next = single ? {} : { ...s.sideOpen };
+              if (single) CATS[sbType].forEach(cc => next[sbType + cc.id] = false);
+              next[sbType + c.id] = !op; return { sideOpen: next };
+            }),
+            items: c.items.map(([slug, name, summary]) => {
+              const id = sbType + '-' + slug, cur = id === it.id;
+              return { label: name, summary, current: cur ? 'page' : 'false', bg: cur ? 'var(--hl-bg)' : 'transparent', color: cur ? 'var(--hl-text)' : 'var(--color-text)', go: this.nav('detail', id) };
+            })
+          };
+        })
+      };
+      const rel = (d ? d.related : ORDER[it.type].filter(x => INDEX[x].catId === it.catId && x !== it.id).slice(0, 4)).filter(x => INDEX[x]);
+      const ord = ORDER[it.type], pos = ord.indexOf(it.id);
+      const nb = id => id ? { label: label(INDEX[id]), go: this.nav('detail', id) } : null;
+      const X = {
+        dictName: it.type === 'html' ? 'HTML辞典' : 'CSS辞典', goDict: this.nav(it.type), catName: it.cat, label: it.name,
+        kicker: (it.type === 'html' ? 'HTML要素' : 'CSS') + ' ・ ' + it.cat, title: (d && d.title) || titleOf(it),
+        ja: d ? d.ja : it.summary, lead: d ? d.lead : `${it.summary}を指定・表現するための${it.type === 'html' ? 'タグ' : 'プロパティ'}です。`,
+        full: !!d, pending: !d, hasMeta: !!d, meta: d ? d.meta.map(([k, val]) => ({ k, v: val })) : [],
+        relNum: d ? '05' : '01',
+        related: rel.map(id => ({ typeLabel: INDEX[id].type.toUpperCase(), label: label(INDEX[id]), summary: INDEX[id].summary, go: this.nav('detail', id) })),
+        prev: nb(ord[pos - 1]), next: nb(ord[pos + 1])
+      };
+      if (d) {
+        X.blocks = [d.html && this.block(it.id + ':html', 'HTML', d.html), d.css && this.block(it.id + ':css', 'CSS', d.css)].filter(Boolean);
+        const body = it.type === 'html' && !d.css && !d.html ? '' : (d.html || '').replace(/photo\.jpg/g, IMG_PH);
+        X.srcdoc = `<!doctype html><html lang="ja"><head><meta charset="utf-8"><style>body{margin:0;padding:20px 24px;font-family:system-ui,-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;color:#1a1a1a;background:#fff;line-height:1.6;font-size:15px}${d.css || ''}</style></head><body>${body}</body></html>`;
+        if (d.raw) X.srcdoc = d.html.replace('</head>', '<style>body{margin:0;padding:20px 24px;font-family:system-ui,-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;color:#1a1a1a;background:#fff}</style></head>');
+        X.previewH = (d.previewH || 160) + 'px';
+        X.previewNote = d.previewNote || '';
+        X.explain = d.explain.map(p => ({ segs: segs(p) }));
+        X.valuesLabel = d.valuesLabel; X.valuesHead = d.valuesHead;
+        X.values = d.values.map(([k, val]) => ({ k, d: val }));
+        X.usages = d.usages.map((u, k) => ({ title: u.title, desc: u.desc, blocks: [u.html && this.block(it.id + ':u' + k + 'h', 'HTML', u.html), u.css && this.block(it.id + ':u' + k + 'c', 'CSS', u.css)].filter(Boolean) }));
+        X.notes = d.notes.map((t, k) => ({ n: String(k + 1).padStart(2, '0'), t }));
+      }
+      v.X = X;
+    }
+
+    if (v.isRoadmap) {
+      let n = 0;
+      v.stages = STAGES.map((s, si) => {
+        const start = n + 1;
+        const steps = s.steps.map(([title, desc, links], k) => {
+          n++;
+          return { num: String(n).padStart(2, '0'), title, desc, lineDisplay: k === s.steps.length - 1 ? 'none' : 'block',
+            links: [...new Set(links)].filter(id => INDEX[id]).map(id => ({ label: INDEX[id].type === 'html' ? titleOf(INDEX[id]) : INDEX[id].name, go: this.nav('detail', id) })) };
+        });
+        const anchor = 'stage-' + s.num;
+        return { ...s, anchor, steps, range: `STEP ${String(start).padStart(2, '0')}–${String(n).padStart(2, '0')}`, jump: () => this.scrollToId(anchor) };
+      });
+    }
+    return v;
+  }
+}
+</script>
+</body>
+</html>
