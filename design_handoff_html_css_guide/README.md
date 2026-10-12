@@ -64,7 +64,7 @@ WordPress移行時の対応：一覧＝カスタム投稿タイプ（html_tag / 
 - SP（<760px）：ナビはヘッダー下段に3等分グリッドで表示。検索はアイコンボタンでヘッダー下に全幅展開。
 
 ### ① トップ
-- 1画面完結（min-height 100vh）、中央寄せの単一カラム max-width 780px。右上にテーマ切替ボタン（`.btn.btn-secondary`、アイコン＋「ダークモード」）。
+- 1画面完結（min-height 100vh）、中央寄せの単一カラム max-width 1024px（左右padding 40pxを含む）。右上にテーマ切替ボタン（`.btn.btn-secondary`、アイコン＋「ダークモード」）。
 - キッカー「学ぶ・調べる・理解する」12px、字間.18em、`--strong-accent`。
 - タイトル「HTML & CSS GUIDE」80px（タブレット66 / SP46）weight 400、字間-.02em、行高1。
 - 説明文 15.5px / 行高1.95 / muted。
