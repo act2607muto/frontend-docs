@@ -37,7 +37,7 @@ WordPress移行時の対応：一覧＝カスタム投稿タイプ（html_tag / 
 ## データ構造（`data/`）
 - `categories.json` … `{ html: [{id, name}], css: [...] }`（表示順）
 - `items.json` … 全項目 `{ id: "html-h1", type: "html"|"css", slug, name, summary, keywords[], category }`（100件）
-- `details.json` … 解説済み項目（12件）
+- `details.json` … 解説済み項目（全100件）
   ```
   { id, title?(見出しの上書き 例 "<!DOCTYPE html>"), ja, lead,
     meta: [{label, value}],
@@ -50,7 +50,7 @@ WordPress移行時の対応：一覧＝カスタム投稿タイプ（html_tag / 
     related: [itemId] }
   ```
 - `roadmap.json` … `[{ num, name, en, desc, steps: [{ title, desc, links: [itemId] }] }]`
-- details が無い項目の詳細ページは「準備中」カード＋同カテゴリの関連項目を表示。
+- details が無い項目の詳細ページは「準備中」カード＋同カテゴリの関連項目を表示（現在は全項目が解説済み。項目を追加したときの表示）。
 
 ---
 
@@ -79,7 +79,7 @@ WordPress移行時の対応：一覧＝カスタム投稿タイプ（html_tag / 
 - ツールバー：左「8カテゴリ ・ n項目」、右「すべて開く」「すべて閉じる」。下に1px文字色罫線。
 - **アコーディオン**：各カテゴリ行＝番号（01…、tabular）＋カテゴリ名 23px/700 ＋「n項目」＋シェブロン（開で180°回転、0.15s）。行間はヘアライン。
 - 展開リスト（カード不可・リスト型）：左インデント44px（SP 0）。各行 `コード名（等幅14px、--strong-accent、幅170px）｜説明 14px｜›`、行上ヘアライン、hoverで薄い背景（文字色5%）。クリックで詳細へ。
-- 初期展開：HTML＝見出し・文章、CSS＝Flexbox・Grid。
+- 初期展開：なし（すべて閉じた状態で表示）。
 
 ### ④ / ⑤ 詳細ページ（最重要）
 **レイアウト**：PC 2カラム `290px | 1fr`（タブレット 250px）、max-width 1320px。
@@ -97,7 +97,7 @@ WordPress移行時の対応：一覧＝カスタム投稿タイプ（html_tag / 
 4. **01 サンプルコード**：HTMLブロック → CSSブロック（必要な場合のみ）
    - ブロック：枠1px divider、角4px、背景 `--code-bg`。ヘッダー行に言語名（HTML/CSS 11.5px 字間.1em）＋**コピーボタン**（押下で✓「コピーしました」1.6秒）。
    - 本文：等幅13.5px / 行高1.7、行番号（右揃え40px幅、選択不可）、横スクロール。
-5. **02 実行結果**：アクセント色1px枠のボックス。ヘッダー「ブラウザでの表示」＋右に補足（例：「リンクにマウスを乗せると下線が消えます」）。中身は **sandbox付き iframe（srcdoc）** に code.html と code.css を流し込んだ実レンダリング。背景は常に白、body padding 20px 24px、system-uiフォント。`fullDocument:true` の場合は code.html をそのまま文書として使う。高さは preview.height。
+5. **02 実行結果**：アクセント色1px枠のボックス。ヘッダー「ブラウザでの表示」＋右に補足（例：「リンクにマウスを乗せると下線が消えます」）。中身は **sandbox付き iframe（srcdoc）** に code.html と code.css を流し込んだ実レンダリング。背景は常に白、body padding 20px 24px、system-uiフォント。`fullDocument:true` の場合は code.html をそのまま文書として使い、code.css は外部CSS（style.css）を読み込んだ状態として head に差し込む。サンプル中の画像ファイル名（photo.jpg など）はプレースホルダー画像に置き換える。高さは preview.height を初期値とし、読み込み後は中身の高さに自動で合わせる（iframe は `sandbox="allow-scripts"`、中から postMessage で高さを通知）。
 6. **03 解説**：段落 15.5px / 行高2、両端揃え。`バッククォート` はインラインコード（等幅.88em、ヘアライン枠、アクセント文字色）。
 7. **04 応用例・注意点**：値／属性の表（`.table`、2列）→ 応用例（h3 21px＋説明＋コードブロック）→ 注意点（番号付きリスト、各行ヘアライン区切り）
 8. **05 関連項目**：リスト行（種類タグ HTML/CSS ＋ コード名 ＋ 説明）、クリックで遷移
