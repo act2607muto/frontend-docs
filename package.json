@@ -1,0 +1,10 @@
+{
+  "name": "html-css-guide",
+  "private": true,
+  "type": "module",
+  "description": "HTML & CSS GUIDE — HTMLタグ・CSSプロパティの辞典と学習ロードマップ",
+  "scripts": {
+    "build": "node scripts/build-pages.mjs",
+    "start": "node scripts/serve.mjs"
+  }
+}
