@@ -192,6 +192,110 @@
     "category": "text"
   },
   {
+    "id": "html-small",
+    "type": "html",
+    "slug": "small",
+    "name": "small",
+    "summary": "注釈・小さな補足",
+    "keywords": [
+      "注釈",
+      "著作権",
+      "コピーライト",
+      "補足",
+      "小さい文字"
+    ],
+    "category": "text"
+  },
+  {
+    "id": "html-time",
+    "type": "html",
+    "slug": "time",
+    "name": "time",
+    "summary": "日付・時刻",
+    "keywords": [
+      "日付",
+      "時刻",
+      "datetime",
+      "投稿日",
+      "日時"
+    ],
+    "category": "text"
+  },
+  {
+    "id": "html-dfn",
+    "type": "html",
+    "slug": "dfn",
+    "name": "dfn",
+    "summary": "用語の定義",
+    "keywords": [
+      "定義",
+      "用語",
+      "専門用語",
+      "説明",
+      "初出"
+    ],
+    "category": "text"
+  },
+  {
+    "id": "html-abbr",
+    "type": "html",
+    "slug": "abbr",
+    "name": "abbr",
+    "summary": "略語",
+    "keywords": [
+      "略語",
+      "省略形",
+      "頭字語",
+      "title",
+      "正式名称"
+    ],
+    "category": "text"
+  },
+  {
+    "id": "html-ruby",
+    "type": "html",
+    "slug": "ruby",
+    "name": "ruby",
+    "summary": "ふりがな（ルビ）",
+    "keywords": [
+      "ルビ",
+      "ふりがな",
+      "読み仮名",
+      "漢字",
+      "振り仮名"
+    ],
+    "category": "text"
+  },
+  {
+    "id": "html-rt",
+    "type": "html",
+    "slug": "rt",
+    "name": "rt",
+    "summary": "ルビのテキスト",
+    "keywords": [
+      "ルビ",
+      "ふりがな",
+      "読み",
+      "ruby text"
+    ],
+    "category": "text"
+  },
+  {
+    "id": "html-rp",
+    "type": "html",
+    "slug": "rp",
+    "name": "rp",
+    "summary": "ルビ非対応時の括弧",
+    "keywords": [
+      "ルビ",
+      "括弧",
+      "ふりがな",
+      "フォールバック",
+      "ruby parenthesis"
+    ],
+    "category": "text"
+  },
+  {
     "id": "html-a",
     "type": "html",
     "slug": "a",
@@ -529,6 +633,21 @@
     "category": "structure"
   },
   {
+    "id": "html-address",
+    "type": "html",
+    "slug": "address",
+    "name": "address",
+    "summary": "連絡先情報",
+    "keywords": [
+      "連絡先",
+      "住所",
+      "問い合わせ",
+      "メール",
+      "電話番号"
+    ],
+    "category": "structure"
+  },
+  {
     "id": "html-video",
     "type": "html",
     "slug": "video",
@@ -640,6 +759,21 @@
     "keywords": [
       "コード",
       "空白"
+    ],
+    "category": "other"
+  },
+  {
+    "id": "html-comment",
+    "type": "html",
+    "slug": "comment",
+    "name": "!-- --",
+    "summary": "コメント（画面に表示されないメモ）",
+    "keywords": [
+      "コメント",
+      "コメントアウト",
+      "メモ",
+      "注釈",
+      "非表示"
     ],
     "category": "other"
   },

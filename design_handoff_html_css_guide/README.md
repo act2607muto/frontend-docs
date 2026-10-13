@@ -36,8 +36,8 @@ WordPress移行時の対応：一覧＝カスタム投稿タイプ（html_tag / 
 
 ## データ構造（`data/`）
 - `categories.json` … `{ html: [{id, name}], css: [...] }`（表示順）
-- `items.json` … 全項目 `{ id: "html-h1", type: "html"|"css", slug, name, summary, keywords[], category }`（100件）
-- `details.json` … 解説済み項目（全100件）
+- `items.json` … 全項目 `{ id: "html-h1", type: "html"|"css", slug, name, summary, keywords[], category }`（109件：HTML 64・CSS 45）
+- `details.json` … 解説済み項目（全109件）
   ```
   { id, title?(見出しの上書き 例 "<!DOCTYPE html>"), ja, lead,
     meta: [{label, value}],
