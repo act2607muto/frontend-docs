@@ -36,8 +36,8 @@ WordPress移行時の対応：一覧＝カスタム投稿タイプ（html_tag / 
 
 ## データ構造（`data/`）
 - `categories.json` … `{ html: [{id, name}], css: [...], js: [...] }`（表示順）
-- `items.json` … 全項目 `{ id: "html-h1", type: "html"|"css"|"js", slug, name, summary, keywords[], category }`（120件：HTML 55・CSS 45・JS 20）
-- `details.json` … 解説済み項目（全100件）
+- `items.json` … 全項目 `{ id: "html-h1", type: "html"|"css"|"js", slug, name, summary, keywords[], category }`（144件：HTML 64・CSS 60・JS 20）
+- `details.json` … 解説済み項目（全144件）
   ```
   { id, title?(見出しの上書き 例 "<!DOCTYPE html>"), ja, lead,
     meta: [{label, value}],
@@ -111,6 +111,11 @@ WordPress移行時の対応：一覧＝カスタム投稿タイプ（html_tag / 
 - 進捗率・完了チェック・ポイントは**付けない**。
 
 ---
+
+### CSS辞典「CSSの記法」カテゴリ（追加）
+- CSS辞典の最初のカテゴリ。プロパティではなく、CSSの書き方・セレクタの基本を解説する（15項目）。
+- 外部スタイルシート / 内部スタイルシート / インラインスタイル、詳細度、継承、`#id` / `.class` / 要素セレクタ、`A, B`（複数指定）、`A B` / `A > B` / `A + B` / `A ~ B`、疑似クラス / 疑似要素。
+- 詳細度の目安：インライン 1-0-0-0 ≒ 1000点、id 1-0-0 ≒ 100点、クラス・属性・疑似クラス 0-1-0 ≒ 10点、要素・疑似要素 0-0-1 ≒ 1点、`*` 0点。
 
 ### ⑦ JS辞典（追加）
 - 一覧・詳細ページの構成は HTML / CSS 辞典と同じ（`/js/index.html`、`/js/{slug}.html`）。キッカーは「JavaScript ・ カテゴリ名」。

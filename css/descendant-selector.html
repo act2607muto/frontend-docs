@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A B 子孫セレクタ（中にある要素すべて） | HTML &amp; CSS GUIDE</title>
+  <meta name="description" content="セレクタを半角スペースで区切ると、「A の中にある B」をすべて指定できます。子だけでなく、孫やそれより深い要素も対象になります。">
+  <script>
+    // テーマをちらつき前に適用（保存値 → OS設定の順）
+    (function () {
+      var t; try { t = localStorage.getItem('hcg-theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <script type="module" src="../assets/js/main.js"></script>
+</head>
+<body data-page="detail" data-id="css-descendant-selector">
+  <div id="app"><noscript>このサイトの表示には JavaScript が必要です。</noscript></div>
+</body>
+</html>

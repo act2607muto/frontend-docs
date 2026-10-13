@@ -35,6 +35,10 @@
   ],
   "css": [
     {
+      "id": "syntax",
+      "name": "CSSの記法"
+    },
+    {
       "id": "font",
       "name": "文字・フォント"
     },

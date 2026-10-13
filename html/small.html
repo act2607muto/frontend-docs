@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>&lt;small&gt; 注釈・小さな補足 | HTML &amp; CSS GUIDE</title>
+  <meta name="description" content="著作権表示や注意書き、法的な但し書きなど、本文に添える「小さな補足」を表します。ブラウザは既定で少し小さな文字で表示します。">
+  <script>
+    // テーマをちらつき前に適用（保存値 → OS設定の順）
+    (function () {
+      var t; try { t = localStorage.getItem('hcg-theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <script type="module" src="../assets/js/main.js"></script>
+</head>
+<body data-page="detail" data-id="html-small">
+  <div id="app"><noscript>このサイトの表示には JavaScript が必要です。</noscript></div>
+</body>
+</html>
