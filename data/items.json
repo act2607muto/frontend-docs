@@ -840,6 +840,21 @@
     "category": "syntax"
   },
   {
+    "id": "css-inheritance",
+    "type": "css",
+    "slug": "inheritance",
+    "name": "継承",
+    "summary": "親のスタイルを子が受け継ぐ仕組み",
+    "keywords": [
+      "継承",
+      "inherit",
+      "受け継ぐ",
+      "親子",
+      "引き継ぎ"
+    ],
+    "category": "syntax"
+  },
+  {
     "id": "css-id-selector",
     "type": "css",
     "slug": "id-selector",

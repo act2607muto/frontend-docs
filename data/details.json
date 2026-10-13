@@ -5045,6 +5045,98 @@
     ]
   },
   {
+    "id": "css-inheritance",
+    "title": null,
+    "ja": "親のスタイルを子が受け継ぐ仕組み",
+    "lead": "親要素に指定したスタイルの一部が、中にある子要素・孫要素にも自動で受け継がれる仕組みです。文字の色や大きさなど、主に文字に関するプロパティが継承されます。",
+    "meta": [
+      {
+        "label": "仕組み",
+        "value": "親 → 子 → 孫へ値が受け継がれる"
+      },
+      {
+        "label": "主な対象",
+        "value": "文字に関するプロパティ"
+      },
+      {
+        "label": "強さ",
+        "value": "直接の指定より常に弱い"
+      }
+    ],
+    "code": {
+      "html": "<div class=\"card\">\n  <h3>カードの見出し</h3>\n  <p>本文の段落です。<a href=\"#\">リンク</a></p>\n</div>",
+      "css": ".card {\n  color: #7d5411;             /* 継承される */\n  font-weight: bold;          /* 継承される */\n  border: 2px solid #b68235;  /* 継承されない */\n  padding: 12px 16px;         /* 継承されない */\n}"
+    },
+    "preview": {
+      "height": 170,
+      "note": "枠線は .card にだけ付き、文字色と太字は中の見出しと段落にも受け継がれています",
+      "fullDocument": false
+    },
+    "explain": [
+      "CSSには、親要素に指定したスタイルが、その中にある子要素や孫要素にも自動で受け継がれる「継承」という仕組みがあります。上の例では `.card` にしか指定していないのに、中の見出しと段落も同じ色・太字になっています。",
+      "ただし、すべてのプロパティが継承されるわけではありません。`color` や `font-size` のような文字に関するものは継承されますが、`border`・`padding`・`margin`・`background` のような箱に関するものは継承されません。例でも、枠線は `.card` の外側に1つ付いているだけで、見出しや段落にはそれぞれ付いていません。",
+      "継承された値は、その要素に直接指定されたスタイルにいつも負けます。例のリンクが青いままなのは、ブラウザが `a` 要素にあらかじめ色を指定しているためです。この仕組みを利用して、`body` に基本の文字色や書体を指定し、ページ全体に行き渡らせるのが一般的です。"
+    ],
+    "values": {
+      "label": "主なプロパティの継承",
+      "head": "プロパティ",
+      "rows": [
+        {
+          "key": "color",
+          "desc": "継承される"
+        },
+        {
+          "key": "font-size / font-family / font-weight",
+          "desc": "継承される"
+        },
+        {
+          "key": "line-height / text-align / letter-spacing",
+          "desc": "継承される"
+        },
+        {
+          "key": "list-style / cursor / visibility",
+          "desc": "継承される"
+        },
+        {
+          "key": "margin / padding / border",
+          "desc": "継承されない"
+        },
+        {
+          "key": "width / height / display / position",
+          "desc": "継承されない"
+        },
+        {
+          "key": "background",
+          "desc": "継承されない（初期値が透明なので、親の背景が透けて見える）"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "inherit で親と同じ値にする",
+        "desc": "値に inherit と書くと、そのプロパティを親と同じ値にできます。リンクの色を周りの文字と同じにするときの定番の書き方です。",
+        "html": "<p class=\"note\">詳しくは<a href=\"#\">こちら</a>をご覧ください。</p>",
+        "css": ".note {\n  color: #7d5411;\n}\n.note a {\n  color: inherit;\n}"
+      },
+      {
+        "title": "body に基本のスタイルを指定する",
+        "desc": "body に指定した文字のスタイルは、継承によってページ内のほぼすべての要素に行き渡ります。",
+        "css": "body {\n  color: #201f1d;\n  font-family: \"Noto Sans JP\", sans-serif;\n  line-height: 1.8;\n}"
+      }
+    ],
+    "notes": [
+      "継承された値は、詳細度に関係なく、その要素に直接当たっているスタイル（ブラウザが最初から持っているスタイルを含む）に負けます。",
+      "見出しの文字サイズは、ブラウザの既定では「親の文字サイズの何倍」という指定になっているため、親の font-size を変えると見出しの大きさも一緒に変わります。",
+      "そのプロパティが継承されるかどうかは、この辞典の各プロパティのページの「継承」欄で確認できます。"
+    ],
+    "related": [
+      "css-child-selector",
+      "css-descendant-selector",
+      "css-specificity",
+      "css-color"
+    ]
+  },
+  {
     "id": "css-id-selector",
     "title": null,
     "ja": "idセレクタ（1つだけの要素を指定）",
@@ -5431,12 +5523,13 @@
     ],
     "notes": [
       "階層を深くつなげすぎる（.main .content .box ul li a など）と、詳細度が上がり、HTMLの構造を変えたときに効かなくなります。2〜3段程度にとどめます。",
-      "孫要素まで効いてほしくない場合は、子セレクタ（A > B）を使います。"
+      "孫要素まで効いてほしくない場合は、子セレクタ（A > B）を使います。",
+      "color や font-size などは継承されるため、セレクタが直接当たっていない要素の文字にも影響することがあります（「継承」の項目を参照）。"
     ],
     "related": [
       "css-child-selector",
+      "css-inheritance",
       "css-adjacent-sibling-selector",
-      "css-general-sibling-selector",
       "css-type-selector"
     ]
   },
@@ -5471,7 +5564,7 @@
     "explain": [
       "`A > B` と書くと、A のすぐ下の階層にある子要素の B だけが対象になります。これを「子セレクタ」と呼びます。",
       "上の例では、`.box` の直下にある2つの「子の段落」だけが赤くなり、`div` の中の「孫の段落」は元の色のままです。子孫セレクタ（`.box p`）との違いを見比べてみましょう。",
-      "入れ子になったメニューやリストで、1段目だけにスタイルを当てたいときに便利です。ただし `color` のように親から子へ受け継がれる（継承される）プロパティは、子に指定した値が孫にも引き継がれる点に注意します。"
+      "ただし `color` のように親から子へ受け継がれる（継承される）プロパティには注意が必要です。セレクタが当たるのは子要素だけでも、孫要素がその子要素の中にあれば、子の色がそのまま孫にも受け継がれて同じ色に見えます。上の例で孫の段落が元の色のままなのは、孫の段落が子の `p` の中ではなく、別の `div` の中にあるためです（下の応用例も参照）。"
     ],
     "values": {
       "label": "関係を表すセレクタ（結合子）",
@@ -5497,6 +5590,12 @@
     },
     "usages": [
       {
+        "title": "継承によって孫も同じ色になる例",
+        "desc": "li の中に孫の li がある場合、セレクタが当たるのは直下の li だけですが、color は継承されるため孫の li も赤く表示されます。孫を元の色に戻したいときは、孫の側に色を指定します。",
+        "html": "<ul class=\"menu\">\n  <li>カフェラテ\n    <ul>\n      <li>ホット</li>  <!-- 親の li から赤を受け継ぐ -->\n    </ul>\n  </li>\n</ul>",
+        "css": ".menu > li {\n  color: #c0392b;\n}\n/* 孫の li は元の色に戻す */\n.menu > li li {\n  color: #201f1d;\n}"
+      },
+      {
         "title": "カードの直下の要素に余白をそろえる",
         "desc": "子セレクタとユニバーサルセレクタ（*）を組み合わせると、直下の子すべてを指定できます。",
         "css": ".card > * {\n  margin: 0 0 8px;\n}\n.card > *:last-child {\n  margin-bottom: 0;\n}"
@@ -5508,9 +5607,9 @@
     ],
     "related": [
       "css-descendant-selector",
+      "css-inheritance",
       "css-adjacent-sibling-selector",
-      "css-general-sibling-selector",
-      "html-li"
+      "css-general-sibling-selector"
     ]
   },
   {
