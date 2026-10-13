@@ -4749,6 +4749,1095 @@
     ]
   },
   {
+    "id": "css-external-stylesheet",
+    "title": null,
+    "ja": "CSSファイルを読み込む",
+    "lead": "CSSを別のファイル（.css）に書き、HTMLの head で link 要素を使って読み込む方法です。いちばん基本となる書き方です。",
+    "meta": [
+      {
+        "label": "書く場所",
+        "value": "別ファイル（style.css など）"
+      },
+      {
+        "label": "読み込み",
+        "value": "<link rel=\"stylesheet\" href=\"…\">"
+      },
+      {
+        "label": "おすすめ度",
+        "value": "◎ 基本はこの方法"
+      }
+    ],
+    "code": {
+      "html": "<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>外部スタイルシート</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <h1>メニュー</h1>\n  <p class=\"lead\">見た目は style.css にまとめて書いています。</p>\n</body>\n</html>",
+      "css": "/* style.css */\nh1 {\n  color: #7d5411;\n  border-bottom: 2px solid #b68235;\n}\n.lead {\n  color: #555;\n}"
+    },
+    "preview": {
+      "height": 160,
+      "note": "CSS欄の内容を style.css として読み込んだ状態で表示しています",
+      "fullDocument": true
+    },
+    "explain": [
+      "外部スタイルシートは、CSSを `.css` ファイルに書き、HTMLの `head` の中で `link` 要素を使って読み込む方法です。上の例では、CSS欄の内容を `style.css` として読み込んだ状態を表示しています。",
+      "HTML（構造）とCSS（見た目）を別のファイルに分けられるため、どちらも読みやすくなります。複数のページで同じ `style.css` を読み込めば、1つのファイルを直すだけでサイト全体のデザインを変更できます。",
+      "ブラウザは一度読み込んだCSSファイルを保存（キャッシュ）しておくので、2ページ目以降の表示も速くなります。実際のサイト制作では、この方法が基本です。"
+    ],
+    "values": {
+      "label": "3つの書き方の比較",
+      "head": "書き方",
+      "rows": [
+        {
+          "key": "外部スタイルシート",
+          "desc": "別ファイルに書いて link で読み込む。複数ページで共有でき、管理しやすい"
+        },
+        {
+          "key": "内部スタイルシート",
+          "desc": "HTMLの head 内の style 要素に書く。そのページだけに効く"
+        },
+        {
+          "key": "インラインスタイル",
+          "desc": "要素の style 属性に直接書く。その要素だけに効き、詳細度が非常に高い"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "複数のCSSファイルを読み込む",
+        "desc": "後に読み込んだファイルの指定ほど優先されます（詳細度が同じ場合）。共通のCSSを先に、ページ専用のCSSを後に書きます。",
+        "html": "<link rel=\"stylesheet\" href=\"css/base.css\">\n<link rel=\"stylesheet\" href=\"css/components.css\">\n<link rel=\"stylesheet\" href=\"css/top.css\">"
+      }
+    ],
+    "notes": [
+      "href のパスは、HTMLファイルの場所を基準に書きます。フォルダ構成に注意します。",
+      "CSSファイルの中には style タグは書きません。CSSの記述だけを書きます。",
+      "link は head の中に書きます。body の途中に書くと、表示がちらつく原因になります。"
+    ],
+    "related": [
+      "css-internal-stylesheet",
+      "css-inline-style",
+      "html-link",
+      "css-specificity"
+    ]
+  },
+  {
+    "id": "css-internal-stylesheet",
+    "title": null,
+    "ja": "style要素にCSSを書く",
+    "lead": "HTMLファイルの head の中に style 要素を置き、その中にCSSを書く方法です。そのページだけに適用されます。",
+    "meta": [
+      {
+        "label": "書く場所",
+        "value": "HTMLの head 内の <style>"
+      },
+      {
+        "label": "効く範囲",
+        "value": "そのページだけ"
+      },
+      {
+        "label": "おすすめ度",
+        "value": "○ 1ページだけの小さな調整に"
+      }
+    ],
+    "code": {
+      "html": "<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>内部スタイルシート</title>\n  <style>\n    h1 {\n      color: #7d5411;\n    }\n    .lead {\n      background: #fff3e4;\n      padding: 8px 12px;\n    }\n  </style>\n</head>\n<body>\n  <h1>メニュー</h1>\n  <p class=\"lead\">このページの見た目は head の style に書いています。</p>\n</body>\n</html>",
+      "css": null
+    },
+    "preview": {
+      "height": 160,
+      "note": "head の style 要素に書いたCSSが適用されています",
+      "fullDocument": true
+    },
+    "explain": [
+      "内部スタイルシートは、HTMLの `head` の中に `style` 要素を書き、その中にCSSを記述する方法です。「埋め込みスタイルシート」とも呼ばれます。",
+      "CSSを別ファイルにしないので、HTMLファイル1つで完結します。練習用のページや、そのページだけで使う小さなスタイルを書くときに便利です。",
+      "一方で、複数のページで同じCSSを使い回せないため、ページが増えると同じ記述をあちこちに書くことになります。サイト全体で使うスタイルは外部スタイルシートにまとめましょう。"
+    ],
+    "values": {
+      "label": "3つの書き方の比較",
+      "head": "書き方",
+      "rows": [
+        {
+          "key": "外部スタイルシート",
+          "desc": "別ファイル。複数ページで共有でき、管理しやすい"
+        },
+        {
+          "key": "内部スタイルシート",
+          "desc": "head の style 要素に書く。そのページだけに効く"
+        },
+        {
+          "key": "インラインスタイル",
+          "desc": "要素の style 属性に書く。その要素だけに効く"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "外部スタイルシートと組み合わせる",
+        "desc": "共通部分は外部CSS、そのページだけの調整は style で書けます。後に書いたほうが優先されます（詳細度が同じ場合）。",
+        "html": "<head>\n  <link rel=\"stylesheet\" href=\"style.css\">\n  <style>\n    /* このページだけの調整 */\n    .hero { background: #201f1d; }\n  </style>\n</head>"
+      }
+    ],
+    "notes": [
+      "style 要素の中にはCSSだけを書きます。HTMLのタグは書けません。",
+      "同じスタイルを複数のページの style に書いていたら、外部スタイルシートに移すサインです。"
+    ],
+    "related": [
+      "css-external-stylesheet",
+      "css-inline-style",
+      "html-head",
+      "css-specificity"
+    ]
+  },
+  {
+    "id": "css-inline-style",
+    "title": null,
+    "ja": "style属性にCSSを書く",
+    "lead": "HTMLの要素に style 属性を付けて、その要素だけに直接CSSを書く方法です。インラインスタイルシートとも呼ばれます。",
+    "meta": [
+      {
+        "label": "書く場所",
+        "value": "要素の style 属性"
+      },
+      {
+        "label": "効く範囲",
+        "value": "その要素だけ"
+      },
+      {
+        "label": "詳細度",
+        "value": "1-0-0-0（≒1000点）"
+      }
+    ],
+    "code": {
+      "html": "<p>ふつうの段落です。</p>\n<p style=\"color: #c0392b; font-weight: bold;\">この段落だけ style 属性で赤く太字にしています。</p>\n<p class=\"note\" style=\"color: #2e7d5b;\">クラスの指定より style 属性が優先されます。</p>",
+      "css": ".note {\n  color: #7d5411;\n}"
+    },
+    "preview": {
+      "height": 150,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "インラインスタイルは、要素に `style` 属性を付け、その値に「プロパティ: 値;」を直接書く方法です。セレクタは書きません。",
+      "その要素だけにスタイルが適用され、詳細度が非常に高い（1-0-0-0、約1000点）ため、CSSファイルの指定よりも優先されます。上の3つ目の段落では、`.note` の色より `style` 属性の色が勝っています。",
+      "優先度が高すぎて後から上書きしにくく、HTMLとデザインが混ざって管理しづらくなるため、通常のサイト制作ではなるべく使いません。JavaScriptで一時的に見た目を変えるときなどに使われます。"
+    ],
+    "values": {
+      "label": "3つの書き方の比較",
+      "head": "書き方",
+      "rows": [
+        {
+          "key": "外部スタイルシート",
+          "desc": "別ファイル。基本はこれ"
+        },
+        {
+          "key": "内部スタイルシート",
+          "desc": "head の style 要素。そのページだけ"
+        },
+        {
+          "key": "インラインスタイル",
+          "desc": "style 属性。その要素だけ・最も優先される"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "JavaScript で一時的に変更する",
+        "desc": "JavaScript の style プロパティで変えた値は、インラインスタイルとして要素に書き込まれます。",
+        "html": "<p id=\"msg\">メッセージ</p>\n<script>\n  document.getElementById('msg').style.color = 'red';\n  // → <p id=\"msg\" style=\"color: red;\"> になる\n</script>"
+      }
+    ],
+    "notes": [
+      "インラインスタイルを上書きするには !important が必要になり、CSSがどんどん複雑になります。多用しないようにします。",
+      "style 属性には :hover などの疑似クラスやメディアクエリは書けません。",
+      "メールの本文（HTMLメール）など、外部CSSが使えない場面ではインラインスタイルが使われます。"
+    ],
+    "related": [
+      "css-specificity",
+      "css-external-stylesheet",
+      "css-internal-stylesheet",
+      "css-class-selector"
+    ]
+  },
+  {
+    "id": "css-specificity",
+    "title": null,
+    "ja": "どの指定が優先されるかの決まり",
+    "lead": "同じ要素に複数のCSSが当たったとき、どれが優先されるかを決める「強さ」の決まりです。セレクタの種類ごとに点数のように数えて比べます。",
+    "meta": [
+      {
+        "label": "比べる単位",
+        "value": "インライン - id - class - 要素"
+      },
+      {
+        "label": "同じ強さのとき",
+        "value": "後に書いたほうが優先"
+      },
+      {
+        "label": "例外",
+        "value": "!important"
+      }
+    ],
+    "code": {
+      "html": "<p id=\"lead\" class=\"text\">この文字は何色になるでしょう？</p>",
+      "css": "/* 要素セレクタ：0-0-1 ≒ 1点 */\np {\n  color: blue;\n}\n/* クラスセレクタ：0-1-0 ≒ 10点 */\n.text {\n  color: green;\n}\n/* idセレクタ：1-0-0 ≒ 100点 → これが勝つ */\n#lead {\n  color: #c0392b;\n}"
+    },
+    "preview": {
+      "height": 90,
+      "note": "#lead（id）の指定が最も強いため、文字は赤になります",
+      "fullDocument": false
+    },
+    "explain": [
+      "同じ要素に複数のスタイルが指定されたとき、ブラウザは「詳細度」が高いほうを使います。上の例では、`p`・`.text`・`#lead` の3つが同じ段落を指定していますが、最も詳細度が高い `#lead` の赤が使われます。",
+      "詳細度は、セレクタに含まれる「id」「クラス・属性・疑似クラス」「要素・疑似要素」の数を、それぞれ別の桁として数えます。インラインスタイル（style属性）はさらに上の桁です。目安として 1000点・100点・10点・1点 と考えると分かりやすくなります。",
+      "ただし点数は桁の比較なので、繰り上がりはありません。クラスを11個つなげても（0-11-0）、id 1つ（1-0-0）には勝てません。詳細度が同じときは、CSSの中で後に書いたほうが優先されます。"
+    ],
+    "values": {
+      "label": "詳細度の目安",
+      "head": "セレクタの種類",
+      "rows": [
+        {
+          "key": "インラインスタイル（style 属性）",
+          "desc": "1-0-0-0 ≒ 1000点"
+        },
+        {
+          "key": "id セレクタ（#id）",
+          "desc": "1-0-0 ≒ 100点"
+        },
+        {
+          "key": "クラス・属性セレクタ・疑似クラス（.class / [type] / :hover）",
+          "desc": "0-1-0 ≒ 10点"
+        },
+        {
+          "key": "要素・疑似要素（p / ::before）",
+          "desc": "0-0-1 ≒ 1点"
+        },
+        {
+          "key": "*（ユニバーサルセレクタ）",
+          "desc": "0点"
+        },
+        {
+          "key": "!important",
+          "desc": "詳細度に関係なく最優先（多用しない）"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "セレクタの詳細度を数える",
+        "desc": "セレクタに含まれる種類ごとに数えて、左の桁から比べます。",
+        "css": "/* 0-0-1  ≒ 1点 */\nli { }\n/* 0-0-2  ≒ 2点 */\nul li { }\n/* 0-1-1  ≒ 11点 */\nli.active { }\n/* 0-2-1  ≒ 21点 */\n.menu li:hover { }\n/* 1-0-1  ≒ 101点 */\n#nav li { }"
+      },
+      {
+        "title": "詳細度を上げずに上書きする",
+        "desc": "上書きできないときは、詳細度を上げるより、後に書く・クラスを1つ足す程度にとどめます。id や !important に頼るとさらに上書きしにくくなります。",
+        "css": "/* △ 上書きのために強くしすぎない */\n#main .content .box p { }\n\n/* ○ クラス1つで指定し、後に書く */\n.box-text { }"
+      }
+    ],
+    "notes": [
+      "!important はどんな詳細度にも勝ってしまうため、使うと後から上書きできなくなります。最終手段にとどめます。",
+      "継承された値（親から引き継いだ color など）は、詳細度に関係なく、直接指定したスタイルに負けます。",
+      "詳細度を低く・そろえておくと、CSSが上書きしやすく管理しやすくなります。スタイルは基本的にクラスで指定するのがおすすめです。"
+    ],
+    "related": [
+      "css-id-selector",
+      "css-class-selector",
+      "css-type-selector",
+      "css-inline-style"
+    ]
+  },
+  {
+    "id": "css-id-selector",
+    "title": null,
+    "ja": "idセレクタ（1つだけの要素を指定）",
+    "lead": "HTMLの id 属性の値に「#」を付けて、その要素を指定するセレクタです。id はページ内で1つだけの要素に付ける名前です。",
+    "meta": [
+      {
+        "label": "書き方",
+        "value": "#id名 { }"
+      },
+      {
+        "label": "詳細度",
+        "value": "1-0-0（≒100点）"
+      },
+      {
+        "label": "ページ内の数",
+        "value": "同じ id は1つだけ"
+      }
+    ],
+    "code": {
+      "html": "<header id=\"site-header\">カフェ・ミモザ</header>\n<p>id は1ページに1つだけの要素に付けます。</p>",
+      "css": "#site-header {\n  padding: 12px 16px;\n  background: #201f1d;\n  color: #fff;\n  font-weight: bold;\n}"
+    },
+    "preview": {
+      "height": 130,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "id セレクタは、HTMLの `id` 属性の値の前に `#` を付けて書きます。`id=\"site-header\"` の要素なら `#site-header` です。",
+      "`id` は「ページ内で1つだけ」の要素に付ける名前で、同じ値をページ内で2回以上使ってはいけません。ページ内リンク（`<a href=\"#site-header\">`）や JavaScript で要素を取得するときの目印にもなります。",
+      "id セレクタは詳細度がとても高い（≒100点）ため、後からクラスで上書きしにくくなります。見た目の指定には基本的にクラスを使い、id はリンク先や JavaScript 用に使うのがおすすめです。"
+    ],
+    "values": {
+      "label": "id と class の違い",
+      "head": "項目",
+      "rows": [
+        {
+          "key": "書き方",
+          "desc": "id は #名前、class は .名前"
+        },
+        {
+          "key": "ページ内の数",
+          "desc": "id は1つだけ、class は何度でも使える"
+        },
+        {
+          "key": "1つの要素に付ける数",
+          "desc": "id は1つ、class は複数（空白区切り）"
+        },
+        {
+          "key": "詳細度",
+          "desc": "id ≒ 100点、class ≒ 10点"
+        },
+        {
+          "key": "主な用途",
+          "desc": "id はページ内リンク・JavaScript、class はスタイル指定"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "ページ内リンクの移動先にする",
+        "desc": "id を付けた要素へ、# 付きのリンクでジャンプできます。",
+        "html": "<a href=\"#access\">アクセスへ移動</a>\n…\n<section id=\"access\">\n  <h2>アクセス</h2>\n</section>"
+      }
+    ],
+    "notes": [
+      "同じ id を1ページで複数回使うと、ページ内リンクや JavaScript が正しく動きません。",
+      "id 名の先頭に数字は使わないようにします（CSSで指定しにくくなるため）。",
+      "id 名は英小文字とハイフンでつなぐ書き方（site-header など）が一般的です。"
+    ],
+    "related": [
+      "css-class-selector",
+      "css-specificity",
+      "css-type-selector",
+      "html-a"
+    ]
+  },
+  {
+    "id": "css-class-selector",
+    "title": null,
+    "ja": "クラスセレクタ（グループを指定）",
+    "lead": "HTMLの class 属性の値に「.」を付けて、そのクラスを持つ要素をまとめて指定するセレクタです。スタイル指定の基本です。",
+    "meta": [
+      {
+        "label": "書き方",
+        "value": ".class名 { }"
+      },
+      {
+        "label": "詳細度",
+        "value": "0-1-0（≒10点）"
+      },
+      {
+        "label": "ページ内の数",
+        "value": "何度でも使える"
+      }
+    ],
+    "code": {
+      "html": "<p class=\"badge\">NEW</p>\n<p class=\"badge\">人気</p>\n<p class=\"badge sale\">SALE</p>",
+      "css": ".badge {\n  display: inline-block;\n  margin: 0 6px 0 0;\n  padding: 2px 10px;\n  border: 1px solid #b68235;\n  border-radius: 999px;\n  color: #7d5411;\n  font-size: 13px;\n}\n.sale {\n  background: #c0392b;\n  border-color: #c0392b;\n  color: #fff;\n}"
+    },
+    "preview": {
+      "height": 80,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "クラスセレクタは、HTMLの `class` 属性の値の前に `.` を付けて書きます。`class=\"badge\"` の要素なら `.badge` です。",
+      "同じクラスはページ内で何度でも使えるため、「同じ見た目にしたい要素のグループ」に名前を付ける感覚で使います。1つの要素に、空白で区切って複数のクラスを付けることもできます（`class=\"badge sale\"`）。",
+      "詳細度がほどよく低く（≒10点）、上書きもしやすいため、スタイルの指定は基本的にクラスで行うのがおすすめです。"
+    ],
+    "values": {
+      "label": "クラスの付け方・指定の仕方",
+      "head": "書き方",
+      "rows": [
+        {
+          "key": "class=\"badge\"",
+          "desc": "クラスを1つ付ける"
+        },
+        {
+          "key": "class=\"badge sale\"",
+          "desc": "複数のクラスを空白区切りで付ける"
+        },
+        {
+          "key": ".badge { }",
+          "desc": "そのクラスを持つ要素すべて"
+        },
+        {
+          "key": ".badge.sale { }",
+          "desc": "両方のクラスを持つ要素だけ（間に空白を入れない）"
+        },
+        {
+          "key": "p.badge { }",
+          "desc": "p 要素で、かつ badge クラスを持つもの"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "状態を表すクラスを付け外しする",
+        "desc": "is- で始まるクラスで状態を表し、JavaScript で付け外しするのが定番です。",
+        "html": "<li class=\"menu-item is-active\">ホーム</li>",
+        "css": ".menu-item.is-active {\n  color: #b68235;\n  font-weight: bold;\n}"
+      }
+    ],
+    "notes": [
+      "クラス名は見た目（red、big）ではなく役割（badge、notice）で付けると、デザインを変えても名前を変えずに済みます。",
+      "クラス名に . は含めません（HTMLでは class=\"badge\"、CSSでは .badge）。",
+      ".badge.sale（空白なし）と .badge .sale（空白あり）は意味が違います。空白ありは「子孫」の指定になります。"
+    ],
+    "related": [
+      "css-id-selector",
+      "css-type-selector",
+      "css-selector-list",
+      "css-specificity"
+    ]
+  },
+  {
+    "id": "css-type-selector",
+    "title": null,
+    "ja": "タグ名で直接指定する",
+    "lead": "p や h2 などの要素名（タグ名）をそのまま書いて、その要素すべてにスタイルを指定するセレクタです。タイプセレクタとも呼ばれます。",
+    "meta": [
+      {
+        "label": "書き方",
+        "value": "要素名 { }"
+      },
+      {
+        "label": "詳細度",
+        "value": "0-0-1（≒1点）"
+      },
+      {
+        "label": "効く範囲",
+        "value": "ページ内のその要素すべて"
+      }
+    ],
+    "code": {
+      "html": "<section class=\"news\">\n  <h2>お知らせ</h2>\n</section>\n<aside>\n  <h2>人気の記事</h2>\n</aside>",
+      "css": "/* △ すべての h2 に効いてしまう */\nh2 {\n  color: #fff;\n  background: #7d5411;\n  padding: 4px 12px;\n}"
+    },
+    "preview": {
+      "height": 150,
+      "note": "装飾したかったのは「お知らせ」だけですが、すべての h2 に効いています",
+      "fullDocument": false
+    },
+    "explain": [
+      "要素セレクタは、`p`・`h2`・`a` のように要素名をそのまま書きます。そのページにあるその要素すべてにスタイルが適用されます。",
+      "上の例では「お知らせ」の見出しだけを装飾したかったのに、別のセクションにある「人気の記事」の `h2` まで同じ見た目になっています。共通のCSSファイルなら、別のページの `h2` にも影響します。",
+      "このように影響範囲が広すぎるため、要素名への直接指定はできるだけ避けます。ページ全体の基本スタイル（`body` の文字色、`img` の `max-width` など）や、リセットCSSに限って使うのが一般的です。"
+    ],
+    "values": {
+      "label": "使ってよい場面・避けたい場面",
+      "head": "場面",
+      "rows": [
+        {
+          "key": "○ body / html",
+          "desc": "ページ全体の文字色・書体・背景"
+        },
+        {
+          "key": "○ img",
+          "desc": "max-width: 100% などの共通設定"
+        },
+        {
+          "key": "○ リセットCSS",
+          "desc": "ブラウザごとの差をなくす初期設定"
+        },
+        {
+          "key": "△ h2 / p / li など",
+          "desc": "特定の場所だけ装飾したいときはクラスを使う"
+        },
+        {
+          "key": "△ div / span",
+          "desc": "役割がないため、クラスで指定する"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "クラスで範囲を限定する",
+        "desc": "装飾したい要素だけにクラスを付けると、ほかの h2 に影響しません。",
+        "html": "<section class=\"news\">\n  <h2 class=\"news-title\">お知らせ</h2>\n</section>",
+        "css": ".news-title {\n  color: #fff;\n  background: #7d5411;\n}"
+      },
+      {
+        "title": "親のクラスで範囲を絞る",
+        "desc": "クラスを付けられない場合は、親のクラスと組み合わせて範囲を限定します。",
+        "css": ".news h2 {\n  color: #7d5411;\n}"
+      }
+    ],
+    "notes": [
+      "要素セレクタで細かくデザインすると、後から追加した部分にも意図しないスタイルが当たってしまいます。",
+      "要素セレクタは詳細度が低い（≒1点）ため、クラスの指定で簡単に上書きされます。"
+    ],
+    "related": [
+      "css-class-selector",
+      "css-descendant-selector",
+      "css-specificity",
+      "css-id-selector"
+    ]
+  },
+  {
+    "id": "css-selector-list",
+    "title": null,
+    "ja": "複数の要素にまとめて指定する",
+    "lead": "複数のセレクタを「,（カンマ）」で区切ると、同じスタイルをまとめて指定できます。要素名とid・classを組み合わせて範囲を絞る書き方もあります。",
+    "meta": [
+      {
+        "label": "書き方",
+        "value": "A, B { }"
+      },
+      {
+        "label": "詳細度",
+        "value": "セレクタごとに別々に計算"
+      },
+      {
+        "label": "組み合わせ",
+        "value": "p.note / h2#title など"
+      }
+    ],
+    "code": {
+      "html": "<h2 class=\"title\">見出し</h2>\n<p class=\"lead\">リード文</p>\n<p class=\"note\">注意書き（p.note）</p>\n<div class=\"note\">注意書き（div.note）</div>",
+      "css": "/* カンマ区切り：.title と .lead に同じ色 */\n.title,\n.lead {\n  color: #7d5411;\n}\n/* 要素＋クラス：p 要素の .note だけ */\np.note {\n  padding: 4px 8px;\n  background: #fff3e4;\n}"
+    },
+    "preview": {
+      "height": 200,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "複数のセレクタに同じスタイルを当てたいときは、`.title, .lead` のように `,` で区切って並べます。同じ指定を何度も書かずに済みます。読みやすさのため、カンマの後で改行して1行に1つずつ書くのが一般的です。",
+      "`p.note` のように、要素名の直後に（空白を入れずに）クラスや id を続けると、「p 要素で、かつ note クラスを持つもの」だけを指定できます。上の例では、同じ `.note` でも `div` には背景が付いていません。",
+      "カンマで区切ったセレクタは、詳細度もそれぞれ別に計算されます。"
+    ],
+    "values": {
+      "label": "書き方の違い",
+      "head": "セレクタ",
+      "rows": [
+        {
+          "key": ".a, .b",
+          "desc": "a または b（カンマ区切り：まとめて指定）"
+        },
+        {
+          "key": "p.note",
+          "desc": "p 要素で note クラスを持つもの"
+        },
+        {
+          "key": "h2#title",
+          "desc": "h2 要素で id が title のもの"
+        },
+        {
+          "key": ".a.b",
+          "desc": "a と b の両方のクラスを持つもの"
+        },
+        {
+          "key": ".a .b",
+          "desc": "a の中にある b（空白：子孫セレクタ）"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "見出しをまとめて指定する",
+        "desc": "h1〜h3 の書体や行の高さを一度に指定します。",
+        "css": "h1,\nh2,\nh3 {\n  font-weight: bold;\n  line-height: 1.3;\n}"
+      },
+      {
+        "title": "ホバーとフォーカスを同じ見た目に",
+        "desc": "疑似クラスもカンマで並べられます。",
+        "css": ".btn:hover,\n.btn:focus-visible {\n  background: #b68235;\n  color: #fff;\n}"
+      }
+    ],
+    "notes": [
+      "カンマで区切ったセレクタの1つに書き間違い（存在しない疑似クラスなど）があると、まとめて無効になることがあります。",
+      "p.note（空白なし）と p .note（空白あり）は意味が違います。空白ありは「p の中にある .note」になります。",
+      "最後のセレクタの後ろにはカンマを付けません。"
+    ],
+    "related": [
+      "css-class-selector",
+      "css-descendant-selector",
+      "css-type-selector",
+      "css-pseudo-class"
+    ]
+  },
+  {
+    "id": "css-descendant-selector",
+    "title": null,
+    "ja": "子孫セレクタ（中にある要素すべて）",
+    "lead": "セレクタを半角スペースで区切ると、「A の中にある B」をすべて指定できます。子だけでなく、孫やそれより深い要素も対象になります。",
+    "meta": [
+      {
+        "label": "書き方",
+        "value": "A B { }（半角スペース）"
+      },
+      {
+        "label": "対象",
+        "value": "子・孫・ひ孫…すべての子孫"
+      },
+      {
+        "label": "詳細度",
+        "value": "A と B の合計"
+      }
+    ],
+    "code": {
+      "html": "<div class=\"box\">\n  <p>子の段落</p>\n  <div class=\"inner\">\n    <p>孫の段落（div の中）</p>\n  </div>\n  <p>子の段落</p>\n</div>",
+      "css": ".inner {\n  margin-left: 24px;\n  padding-left: 12px;\n  border-left: 2px solid #ddd;\n}\n/* .box の中にある p すべて（孫の p も含む） */\n.box p {\n  color: #c0392b;\n  font-weight: bold;\n}"
+    },
+    "preview": {
+      "height": 190,
+      "note": "孫の段落も含めて、.box の中の p がすべて赤くなります",
+      "fullDocument": false
+    },
+    "explain": [
+      "`A B` のようにセレクタを半角スペースで区切ると、A の中に含まれるすべての B が対象になります。これを「子孫セレクタ」と呼びます。",
+      "直接の子どもだけでなく、孫やひ孫など、どれだけ深い階層にあっても当てはまります。上の例では、`.box` の直下にある `p` だけでなく、さらに `div` の中に入っている「孫の段落」も赤くなっています。",
+      "親のクラスで範囲を限定できるため、`.news h2` のように「このセクションの中の見出しだけ」を指定するときによく使います。"
+    ],
+    "values": {
+      "label": "関係を表すセレクタ（結合子）",
+      "head": "書き方",
+      "rows": [
+        {
+          "key": "A B",
+          "desc": "子孫：A の中にある B すべて（孫以降も含む）"
+        },
+        {
+          "key": "A > B",
+          "desc": "子：A の直下にある B だけ"
+        },
+        {
+          "key": "A + B",
+          "desc": "隣接兄弟：A のすぐ次にある B（1つだけ）"
+        },
+        {
+          "key": "A ~ B",
+          "desc": "一般兄弟：A より後ろにある兄弟の B すべて"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "セクションの中のリンクだけ色を変える",
+        "desc": "親のクラスで範囲を限定すると、ほかの場所のリンクに影響しません。",
+        "css": ".footer a {\n  color: #ccc;\n}"
+      }
+    ],
+    "notes": [
+      "階層を深くつなげすぎる（.main .content .box ul li a など）と、詳細度が上がり、HTMLの構造を変えたときに効かなくなります。2〜3段程度にとどめます。",
+      "孫要素まで効いてほしくない場合は、子セレクタ（A > B）を使います。"
+    ],
+    "related": [
+      "css-child-selector",
+      "css-adjacent-sibling-selector",
+      "css-general-sibling-selector",
+      "css-type-selector"
+    ]
+  },
+  {
+    "id": "css-child-selector",
+    "title": null,
+    "ja": "子セレクタ（直下の子要素だけ）",
+    "lead": "セレクタを「>」で区切ると、「A の直下にある子要素の B」だけを指定できます。孫やそれより深い要素は対象になりません。",
+    "meta": [
+      {
+        "label": "書き方",
+        "value": "A > B { }"
+      },
+      {
+        "label": "対象",
+        "value": "直下の子要素だけ"
+      },
+      {
+        "label": "詳細度",
+        "value": "A と B の合計"
+      }
+    ],
+    "code": {
+      "html": "<div class=\"box\">\n  <p>子の段落</p>\n  <div class=\"inner\">\n    <p>孫の段落（div の中）</p>\n  </div>\n  <p>子の段落</p>\n</div>",
+      "css": ".inner {\n  margin-left: 24px;\n  padding-left: 12px;\n  border-left: 2px solid #ddd;\n}\n/* .box の直下の p だけ（孫の p は含まない） */\n.box > p {\n  color: #c0392b;\n  font-weight: bold;\n}"
+    },
+    "preview": {
+      "height": 190,
+      "note": "直下の「子の段落」だけが赤くなり、「孫の段落」は元の色のままです",
+      "fullDocument": false
+    },
+    "explain": [
+      "`A > B` と書くと、A のすぐ下の階層にある子要素の B だけが対象になります。これを「子セレクタ」と呼びます。",
+      "上の例では、`.box` の直下にある2つの「子の段落」だけが赤くなり、`div` の中の「孫の段落」は元の色のままです。子孫セレクタ（`.box p`）との違いを見比べてみましょう。",
+      "入れ子になったメニューやリストで、1段目だけにスタイルを当てたいときに便利です。ただし `color` のように親から子へ受け継がれる（継承される）プロパティは、子に指定した値が孫にも引き継がれる点に注意します。"
+    ],
+    "values": {
+      "label": "関係を表すセレクタ（結合子）",
+      "head": "書き方",
+      "rows": [
+        {
+          "key": "A B",
+          "desc": "子孫：A の中にある B すべて"
+        },
+        {
+          "key": "A > B",
+          "desc": "子：A の直下にある B だけ"
+        },
+        {
+          "key": "A + B",
+          "desc": "隣接兄弟：A のすぐ次の B"
+        },
+        {
+          "key": "A ~ B",
+          "desc": "一般兄弟：A より後ろの兄弟の B すべて"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "カードの直下の要素に余白をそろえる",
+        "desc": "子セレクタとユニバーサルセレクタ（*）を組み合わせると、直下の子すべてを指定できます。",
+        "css": ".card > * {\n  margin: 0 0 8px;\n}\n.card > *:last-child {\n  margin-bottom: 0;\n}"
+      }
+    ],
+    "notes": [
+      "> の前後の空白はあってもなくても同じ意味ですが、読みやすさのため空白を入れて書くのが一般的です。",
+      "HTMLの構造（入れ子の段数）を変えると効かなくなるので、構造と合わせて管理します。"
+    ],
+    "related": [
+      "css-descendant-selector",
+      "css-adjacent-sibling-selector",
+      "css-general-sibling-selector",
+      "html-li"
+    ]
+  },
+  {
+    "id": "css-adjacent-sibling-selector",
+    "title": null,
+    "ja": "隣接兄弟セレクタ（すぐ次の要素）",
+    "lead": "セレクタを「+」で区切ると、「A のすぐ次にある兄弟要素の B」を1つだけ指定できます。兄弟要素とは、同じ親を持つ要素どうしのことです。",
+    "meta": [
+      {
+        "label": "書き方",
+        "value": "A + B { }"
+      },
+      {
+        "label": "対象",
+        "value": "A の直後にある B（1つだけ）"
+      },
+      {
+        "label": "条件",
+        "value": "A と B が同じ親を持つ"
+      }
+    ],
+    "code": {
+      "html": "<h2>メニュー</h2>\n<p>1つ目の段落</p>\n<p>2つ目の段落</p>\n<p>3つ目の段落</p>",
+      "css": "/* h2 のすぐ次にある p だけ */\nh2 + p {\n  color: #c0392b;\n  font-weight: bold;\n}"
+    },
+    "preview": {
+      "height": 200,
+      "note": "h2 のすぐ次にある「1つ目の段落」だけが赤くなります",
+      "fullDocument": false
+    },
+    "explain": [
+      "`A + B` と書くと、A の直後（すぐ次）にある兄弟要素の B だけが対象になります。これを「隣接兄弟セレクタ」と呼びます。",
+      "「兄弟要素」とは、同じ親要素の中に並んでいる要素どうしのことです。上の例では `h2` と3つの `p` が兄弟で、`h2` のすぐ次にある「1つ目の段落」だけが赤くなっています。",
+      "見出しの直後の段落だけ余白を変えたり、同じ要素が続くときに2つ目以降だけ間隔を空けたりするときに便利です。"
+    ],
+    "values": {
+      "label": "関係を表すセレクタ（結合子）",
+      "head": "書き方",
+      "rows": [
+        {
+          "key": "A B",
+          "desc": "子孫：A の中にある B すべて"
+        },
+        {
+          "key": "A > B",
+          "desc": "子：A の直下にある B だけ"
+        },
+        {
+          "key": "A + B",
+          "desc": "隣接兄弟：A のすぐ次の B（1つだけ）"
+        },
+        {
+          "key": "A ~ B",
+          "desc": "一般兄弟：A より後ろの兄弟の B すべて"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "2つ目以降のカードにだけ上の余白を付ける",
+        "desc": "「カードの次のカード」を指定すると、最初のカードには余白が付きません。",
+        "css": ".card + .card {\n  margin-top: 16px;\n}"
+      }
+    ],
+    "notes": [
+      "前にある要素は指定できません（B のすぐ前の A、という指定はできない）。",
+      "A と B の間にほかの要素が1つでも入ると当てはまりません。"
+    ],
+    "related": [
+      "css-general-sibling-selector",
+      "css-child-selector",
+      "css-descendant-selector",
+      "css-margin"
+    ]
+  },
+  {
+    "id": "css-general-sibling-selector",
+    "title": null,
+    "ja": "一般兄弟セレクタ（後ろにある兄弟すべて）",
+    "lead": "セレクタを「~（チルダ）」で区切ると、「A より後ろにある兄弟要素の B」をすべて指定できます。",
+    "meta": [
+      {
+        "label": "書き方",
+        "value": "A ~ B { }"
+      },
+      {
+        "label": "対象",
+        "value": "A より後ろの兄弟の B すべて"
+      },
+      {
+        "label": "条件",
+        "value": "A と B が同じ親を持つ"
+      }
+    ],
+    "code": {
+      "html": "<h2>メニュー</h2>\n<p>1つ目の段落</p>\n<p>2つ目の段落</p>\n<p>3つ目の段落</p>",
+      "css": "/* h2 より後ろにある兄弟の p すべて */\nh2 ~ p {\n  color: #c0392b;\n}"
+    },
+    "preview": {
+      "height": 200,
+      "note": "h2 より後ろにある段落がすべて赤くなります",
+      "fullDocument": false
+    },
+    "explain": [
+      "`A ~ B` と書くと、A と同じ親を持ち、A より後ろにあるすべての B が対象になります。これを「一般兄弟セレクタ」と呼びます。",
+      "隣接兄弟セレクタ（`A + B`）は直後の1つだけですが、一般兄弟セレクタは間にほかの要素があっても、後ろにあるものすべてに当てはまります。上の例では、3つの段落がすべて赤くなっています。",
+      "チェックボックスの状態に応じて後ろの要素の表示を切り替えるなど、CSSだけで簡単な動きを作るときにも使われます。"
+    ],
+    "values": {
+      "label": "関係を表すセレクタ（結合子）",
+      "head": "書き方",
+      "rows": [
+        {
+          "key": "A B",
+          "desc": "子孫：A の中にある B すべて"
+        },
+        {
+          "key": "A > B",
+          "desc": "子：A の直下にある B だけ"
+        },
+        {
+          "key": "A + B",
+          "desc": "隣接兄弟：A のすぐ次の B（1つだけ）"
+        },
+        {
+          "key": "A ~ B",
+          "desc": "一般兄弟：A より後ろの兄弟の B すべて"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "チェックで内容を表示する",
+        "desc": ":checked と ~ を組み合わせると、JavaScript を使わずに表示を切り替えられます。",
+        "html": "<input type=\"checkbox\" id=\"more\">\n<label for=\"more\">詳しく見る</label>\n<p class=\"detail\">詳しい説明です。</p>",
+        "css": ".detail {\n  display: none;\n}\n#more:checked ~ .detail {\n  display: block;\n}"
+      }
+    ],
+    "notes": [
+      "A より前にある兄弟は指定できません。",
+      "~ はキーボードの「へ」のキーを Shift と一緒に押すと入力できます（日本語配列の場合）。"
+    ],
+    "related": [
+      "css-adjacent-sibling-selector",
+      "css-child-selector",
+      "css-descendant-selector",
+      "css-pseudo-class"
+    ]
+  },
+  {
+    "id": "css-pseudo-class",
+    "title": null,
+    "ja": "要素の状態や位置で指定する",
+    "lead": "「マウスが乗っているとき」「最初の要素」のように、要素の状態や位置を条件にして指定する仕組みです。セレクタの後ろに「:（コロン1つ）」を付けて書きます。",
+    "meta": [
+      {
+        "label": "書き方",
+        "value": "セレクタ:疑似クラス名 { }"
+      },
+      {
+        "label": "記号",
+        "value": ":（コロン1つ）"
+      },
+      {
+        "label": "詳細度",
+        "value": "0-1-0（≒10点、クラスと同じ）"
+      }
+    ],
+    "code": {
+      "html": "<ul class=\"list\">\n  <li>ブレンド</li>\n  <li>カフェラテ</li>\n  <li>紅茶</li>\n  <li>ココア</li>\n</ul>\n<a href=\"#\" class=\"link\">マウスを乗せてください</a>",
+      "css": ".list li:first-child {\n  font-weight: bold;\n}\n.list li:nth-child(even) {\n  background: #f5efe6;\n}\n.link:hover {\n  color: #fff;\n  background: #b68235;\n}"
+    },
+    "preview": {
+      "height": 190,
+      "note": "リンクにマウスを乗せると背景色が変わります",
+      "fullDocument": false
+    },
+    "explain": [
+      "疑似クラスは、HTMLにクラスを書かなくても、要素の「状態」や「位置」を条件にして指定できる仕組みです。セレクタの後ろに `:` を1つ付けて書きます。",
+      "`:hover`（マウスが乗っている）や `:focus-visible`（キーボードで選択中）のような状態を表すものと、`:first-child`（最初の子）や `:nth-child(even)`（偶数番目）のような位置を表すものがあります。上の例では、最初の項目を太字に、偶数番目の行に背景色を付けています。",
+      "詳細度はクラスと同じ（≒10点）です。疑似要素（`::before` など）と名前が似ていますが、疑似クラスは「既にある要素を条件で選ぶ」もの、疑似要素は「要素の一部分や追加の部分を作る」ものです。"
+    ],
+    "values": {
+      "label": "よく使う疑似クラス",
+      "head": "疑似クラス",
+      "rows": [
+        {
+          "key": ":hover",
+          "desc": "マウスが乗っているとき"
+        },
+        {
+          "key": ":focus-visible",
+          "desc": "キーボードなどでフォーカスしたとき"
+        },
+        {
+          "key": ":first-child / :last-child",
+          "desc": "最初 / 最後の子要素"
+        },
+        {
+          "key": ":nth-child(n)",
+          "desc": "n 番目の子要素（odd・even・2n+1 なども可）"
+        },
+        {
+          "key": ":not(セレクタ)",
+          "desc": "そのセレクタに当てはまらないもの"
+        },
+        {
+          "key": ":checked / :disabled",
+          "desc": "チェックされている / 無効の入力欄"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "最後の項目だけ区切り線を消す",
+        "desc": ":not() を使うと「最後以外」を指定できます。",
+        "css": ".list li:not(:last-child) {\n  border-bottom: 1px solid #ddd;\n}"
+      },
+      {
+        "title": "3の倍数の項目を指定する",
+        "desc": ":nth-child() には計算式も書けます。",
+        "css": ".grid > *:nth-child(3n) {\n  margin-right: 0;\n}"
+      }
+    ],
+    "notes": [
+      "コロンの前後に空白を入れないでください（a :hover は「a の中の何かがホバーされたとき」という別の意味になります）。",
+      ":nth-child() は「同じ親の中で何番目か」を数えます。種類の違う要素も数に含まれる点に注意します（種類ごとに数えるなら :nth-of-type()）。"
+    ],
+    "related": [
+      "css-hover",
+      "css-pseudo-element",
+      "css-specificity",
+      "css-general-sibling-selector"
+    ]
+  },
+  {
+    "id": "css-pseudo-element",
+    "title": null,
+    "ja": "要素の一部分や追加部分を指定する",
+    "lead": "要素の「最初の1文字」「前後に追加する装飾」のように、HTMLには書かれていない部分を作って指定する仕組みです。セレクタの後ろに「::（コロン2つ）」を付けて書きます。",
+    "meta": [
+      {
+        "label": "書き方",
+        "value": "セレクタ::疑似要素名 { }"
+      },
+      {
+        "label": "記号",
+        "value": "::（コロン2つ）"
+      },
+      {
+        "label": "詳細度",
+        "value": "0-0-1（≒1点、要素と同じ）"
+      }
+    ],
+    "code": {
+      "html": "<p class=\"intro\">ようこそ、カフェ・ミモザへ。季節のケーキと自家焙煎のコーヒーをお楽しみください。</p>\n<h2 class=\"heading\">メニュー</h2>",
+      "css": ".intro::first-letter {\n  font-size: 2em;\n  font-weight: bold;\n  color: #b68235;\n}\n.heading::before {\n  content: \"■ \";\n  color: #b68235;\n}\n.heading::after {\n  content: \" ―\";\n  color: #ccc;\n}"
+    },
+    "preview": {
+      "height": 170,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "疑似要素は、要素の中の「一部分」や、要素の前後に「追加する部分」を、HTMLに書かずにCSSだけで作って装飾する仕組みです。セレクタの後ろに `::` を2つ付けて書きます。",
+      "上の例では、`::first-letter` で段落の最初の1文字だけを大きくし、`::before`・`::after` で見出しの前後に記号を追加しています。`::before` と `::after` は `content` プロパティで中身を指定しないと表示されません。",
+      "疑似クラス（`:hover` など）は「既にある要素を条件で選ぶ」もの、疑似要素は「要素の一部分や新しい部分を作る」ものです。古い書き方では疑似要素もコロン1つ（`:before`）で書かれていましたが、今は区別するために `::` を使います。"
+    ],
+    "values": {
+      "label": "よく使う疑似要素",
+      "head": "疑似要素",
+      "rows": [
+        {
+          "key": "::before",
+          "desc": "要素の中身の先頭に追加（content が必要）"
+        },
+        {
+          "key": "::after",
+          "desc": "要素の中身の末尾に追加（content が必要）"
+        },
+        {
+          "key": "::first-letter",
+          "desc": "最初の1文字"
+        },
+        {
+          "key": "::first-line",
+          "desc": "最初の1行"
+        },
+        {
+          "key": "::marker",
+          "desc": "リストの行頭記号・番号"
+        },
+        {
+          "key": "::placeholder",
+          "desc": "入力欄のプレースホルダー"
+        },
+        {
+          "key": "::selection",
+          "desc": "利用者が選択した部分"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "選択したときの色を変える",
+        "desc": "::selection で、文字を選択したときの背景色を変えられます。",
+        "css": "::selection {\n  background: #ffe3bf;\n  color: #201f1d;\n}"
+      },
+      {
+        "title": "疑似クラスと組み合わせる",
+        "desc": "疑似クラスの後ろに疑似要素を続けられます（順番は 疑似クラス → 疑似要素）。",
+        "css": ".link:hover::after {\n  content: \" →\";\n}"
+      }
+    ],
+    "notes": [
+      "1つのセレクタに書ける疑似要素は1つだけで、セレクタの最後に書きます。",
+      "::before・::after で追加した文字は、選択やコピーができず、読み上げも環境によって異なります。重要な情報はHTMLに書きます。",
+      "img や input など、中身を持たない要素には ::before・::after が使えません。"
+    ],
+    "related": [
+      "css-before",
+      "css-pseudo-class",
+      "css-specificity",
+      "html-li"
+    ]
+  },
+  {
     "id": "css-font-size",
     "title": null,
     "ja": "文字の大きさ",

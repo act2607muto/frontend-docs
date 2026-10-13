@@ -36,8 +36,8 @@ WordPress移行時の対応：一覧＝カスタム投稿タイプ（html_tag / 
 
 ## データ構造（`data/`）
 - `categories.json` … `{ html: [{id, name}], css: [...] }`（表示順）
-- `items.json` … 全項目 `{ id: "html-h1", type: "html"|"css", slug, name, summary, keywords[], category }`（109件：HTML 64・CSS 45）
-- `details.json` … 解説済み項目（全109件）
+- `items.json` … 全項目 `{ id: "html-h1", type: "html"|"css", slug, name, summary, keywords[], category }`（123件：HTML 64・CSS 59）
+- `details.json` … 解説済み項目（全123件）
   ```
   { id, title?(見出しの上書き 例 "<!DOCTYPE html>"), ja, lead,
     meta: [{label, value}],
@@ -111,6 +111,11 @@ WordPress移行時の対応：一覧＝カスタム投稿タイプ（html_tag / 
 - 進捗率・完了チェック・ポイントは**付けない**。
 
 ---
+
+### CSS辞典「CSSの記法」カテゴリ（追加）
+- CSS辞典の最初のカテゴリ。プロパティではなく、CSSの書き方・セレクタの基本を解説する（14項目）。
+- 外部スタイルシート / 内部スタイルシート / インラインスタイル、詳細度、`#id` / `.class` / 要素セレクタ、`A, B`（複数指定）、`A B` / `A > B` / `A + B` / `A ~ B`、疑似クラス / 疑似要素。
+- 詳細度の目安：インライン 1-0-0-0 ≒ 1000点、id 1-0-0 ≒ 100点、クラス・属性・疑似クラス 0-1-0 ≒ 10点、要素・疑似要素 0-0-1 ≒ 1点、`*` 0点。
 
 ## 操作・挙動
 - **テーマ切替**：`html[data-theme="light|dark"]`。localStorage `hcg-theme` に保存。初回は `prefers-color-scheme` に従ってよい。
