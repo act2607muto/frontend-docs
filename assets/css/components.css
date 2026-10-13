@@ -115,7 +115,7 @@
   .site-header__menu, .site-header__search-toggle { display: inline-flex; }
   .gnav--desktop { display: none; }
   .gnav--mobile {
-    display: grid; grid-template-columns: repeat(3, 1fr); height: auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); height: auto;
     border-top: 1px solid var(--color-divider); gap: 0;
   }
   .gnav--mobile a { justify-content: center; padding: 10px 0; font-size: 13px; }
@@ -429,6 +429,9 @@
 .t-kw { color: var(--c-kw); }
 .t-fn { color: var(--c-fn); }
 .t-text { color: var(--c-text); }
+.t-str { color: var(--c-str); }
+.t-stor { color: var(--c-stor); }
+.t-var { color: var(--c-var); }
 
 /* ==========================================================================
    実行結果プレビュー（共通部品）
@@ -499,3 +502,23 @@
 
 /* 見出しタグでラップしたアコーディオンボタン（文書構造用。見た目はボタン側で指定） */
 .dict-cat__h { font: inherit; letter-spacing: normal; line-height: inherit; }
+
+/* ==========================================================================
+   コンソール（JS のプレビュー）
+   ========================================================================== */
+.console { border-top: 1px solid var(--color-accent); background: var(--code-bg); }
+.preview--console-only .preview__frame { display: none; }
+.preview--console-only .console { border-top: 0; }
+.console__head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 4px 6px 4px 14px; border-bottom: 1px solid var(--color-divider);
+  font-size: 11.5px; letter-spacing: .08em; color: var(--muted);
+}
+.console__rerun { font-size: 12px; letter-spacing: 0; }
+.console__lines { max-height: 260px; overflow: auto; padding: 6px 0; font-family: var(--font-code); font-size: 13px; line-height: 1.6; }
+.console__line { padding: 3px 14px 3px 30px; position: relative; white-space: pre-wrap; word-break: break-all; color: var(--c-text); }
+.console__line + .console__line { border-top: 1px solid var(--color-divider); }
+.console__line::before { content: "›"; position: absolute; left: 14px; color: var(--c-ln); }
+.console__line--warn { color: var(--c-warn); background: color-mix(in srgb, var(--c-warn) 10%, transparent); }
+.console__line--error { color: var(--c-error); background: color-mix(in srgb, var(--c-error) 10%, transparent); }
+.console__empty { padding: 3px 14px; font-family: var(--font-body); font-size: 12.5px; color: var(--muted); }

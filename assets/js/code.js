@@ -91,9 +91,39 @@ export function tokCSS(src) {
   return out;
 }
 
+// JavaScript：宣言・値のキーワード（青）と制御構文のキーワード（紫）を色分けする
+const JS_STORAGE = new Set([
+  'const', 'let', 'var', 'function', 'class', 'new', 'this', 'true', 'false', 'null', 'undefined',
+  'typeof', 'instanceof', 'async', 'extends', 'static', 'get', 'set',
+]);
+const JS_CONTROL = new Set([
+  'if', 'else', 'for', 'while', 'do', 'return', 'break', 'continue', 'switch', 'case', 'default',
+  'try', 'catch', 'finally', 'throw', 'await', 'of', 'in', 'import', 'export', 'from',
+]);
+
+export function tokJS(src) {
+  const out = [];
+  const re = /(\/\/[^\n]*|\/\*[\s\S]*?\*\/)|(`(?:\\[\s\S]|[^`\\])*`|"(?:\\.|[^"\\\n])*"|'(?:\\.|[^'\\\n])*')|(\b\d+(?:\.\d+)?\b)|([A-Za-z_$][\w$]*)(\s*\()?|(\s+)|([\s\S])/g;
+  let m;
+  while ((m = re.exec(src))) {
+    const [, cmt, str, num, ident, call, ws, other] = m;
+    if (cmt) out.push({ t: cmt, c: 'cmt' });
+    else if (str) out.push({ t: str, c: 'str' });
+    else if (num) out.push({ t: num, c: 'num' });
+    else if (ident) {
+      const c = JS_CONTROL.has(ident) ? 'kw' : JS_STORAGE.has(ident) ? 'stor' : call ? 'fn' : 'var';
+      out.push({ t: ident, c });
+      if (call) out.push({ t: call, c: 'text' });
+    } else out.push({ t: ws || other, c: 'text' });
+  }
+  return out;
+}
+
+const TOKENIZERS = { HTML: tokHTML, CSS: tokCSS, JS: tokJS };
+
 /** トークン列を行ごとの HTML に変換 */
 export function highlight(lang, code) {
-  const toks = lang === 'HTML' ? tokHTML(code) : tokCSS(code);
+  const toks = TOKENIZERS[lang](code);
   const lines = [''];
   for (const tk of toks) {
     tk.t.split('\n').forEach((part, k) => {
@@ -128,7 +158,7 @@ const copyLabel = (copied) =>
 
 /**
  * コードブロック要素を生成
- * @param {'HTML'|'CSS'} lang
+ * @param {'HTML'|'CSS'|'JS'} lang
  * @param {string} code
  * @param {{ small?: boolean, lineNumbers?: boolean }} [opts]
  */
@@ -156,10 +186,11 @@ export function createCodeBlock(lang, code, { small = false, lineNumbers = CONFI
   return el;
 }
 
-/** html / css を持つオブジェクトからコードブロックを並べる */
-export function createCodeBlocks({ html, css }, opts) {
+/** html / css / js を持つオブジェクトからコードブロックを並べる */
+export function createCodeBlocks({ html, css, js }, opts) {
   const frag = document.createDocumentFragment();
   if (html) frag.append(createCodeBlock('HTML', html, opts));
   if (css) frag.append(createCodeBlock('CSS', css, opts));
+  if (js) frag.append(createCodeBlock('JS', js, opts));
   return frag;
 }

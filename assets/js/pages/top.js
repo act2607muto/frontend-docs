@@ -11,6 +11,7 @@ export function renderTop(app, data) {
     ['01', 'ROADMAP', '学習する', '初心者・中級者・上級者の3段階で、学ぶ順番に沿って進めます。', url.learn()],
     ['02', 'HTML', 'HTML辞典', `${data.order.html.length}のタグを、基本構造からメディアまでカテゴリ別に。`, url.dict('html')],
     ['03', 'CSS', 'CSS辞典', `${data.order.css.length}のプロパティを、文字からレスポンシブまでカテゴリ別に。`, url.dict('css')],
+    ['04', 'JavaScript', 'JS辞典', `${data.order.js.length}の構文・メソッドを、基本からDOM操作・イベントまで。`, url.dict('js')],
   ];
 
   const page = document.createElement('div');
@@ -20,7 +21,7 @@ export function renderTop(app, data) {
     <main class="top__main">
       <div class="top__kicker">学ぶ・調べる・理解する</div>
       <h1 class="top__title">HTML &amp; CSS GUIDE</h1>
-      <p class="top__lead">HTMLタグとCSSプロパティを網羅した辞典と、段階的に学べるロードマップ。すべての項目で、コードと実際の表示結果をあわせて確認できます。</p>
+      <p class="top__lead">HTMLタグ・CSSプロパティ・JavaScriptを網羅した辞典と、段階的に学べるロードマップ。すべての項目で、コードと実際の表示結果をあわせて確認できます。</p>
       <div data-slot="search"></div>
       <div class="top__quick">
         <span class="top__quick-label">よく調べるキーワード</span>

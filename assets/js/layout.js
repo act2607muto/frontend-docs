@@ -1,13 +1,12 @@
 // 共通レイアウト：ヘッダー・フッター（WordPress移行時は template-parts/header, footer に相当）
-import { url } from './util.js';
+import { TYPES, TYPE_INFO, url } from './util.js';
 import { icon } from './icons.js';
 import { createSearchBox } from './search.js';
 import { initThemeToggles } from './theme.js';
 
 const NAV = [
   ['learn', '学習する', () => url.learn()],
-  ['html', 'HTML辞典', () => url.dict('html')],
-  ['css', 'CSS辞典', () => url.dict('css')],
+  ...TYPES.map((t) => [t, TYPE_INFO[t].dict, () => url.dict(t)]),
 ];
 
 const navLinks = (current) =>
@@ -15,7 +14,7 @@ const navLinks = (current) =>
 
 /**
  * @param {object} data
- * @param {{ current: 'learn'|'html'|'css', menu?: boolean }} opts menu=true でSP用のサイドバー開閉ボタンを表示
+ * @param {{ current: 'learn'|'html'|'css'|'js', menu?: boolean }} opts menu=true でSP用のサイドバー開閉ボタンを表示
  */
 export function renderHeader(data, { current, menu = false }) {
   const header = document.createElement('header');
@@ -52,6 +51,6 @@ export function renderHeader(data, { current, menu = false }) {
 export function renderFooter(data, left = 'HTML & CSS GUIDE — 学ぶ・調べる・理解する') {
   const footer = document.createElement('footer');
   footer.className = 'site-footer';
-  footer.innerHTML = `<span>${left.replace(/&/g, '&amp;')}</span><span>HTML ${data.order.html.length}項目 ・ CSS ${data.order.css.length}項目を収録</span>`;
+  footer.innerHTML = `<span>${left.replace(/&/g, '&amp;')}</span><span>${TYPES.map((t) => `${TYPE_INFO[t].tag} ${data.order[t].length}項目`).join(' ・ ')}を収録</span>`;
   return footer;
 }

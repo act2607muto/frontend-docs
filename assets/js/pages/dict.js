@@ -14,6 +14,10 @@ const TEXT = {
     kicker: 'DICTIONARY — CSS', title: 'CSS辞典',
     lead: 'CSSプロパティをカテゴリ別にまとめた一覧です。カテゴリを開いてプロパティを選ぶと、サンプルコードと実際の表示結果、詳しい解説を確認できます。',
   },
+  js: {
+    kicker: 'DICTIONARY — JavaScript', title: 'JS辞典',
+    lead: 'JavaScriptの構文やメソッドをカテゴリ別にまとめた一覧です。項目を選ぶと、サンプルコードと実際の動き（画面とコンソールの出力）、詳しい解説を確認できます。',
+  },
 };
 
 export function renderDict(app, data, type) {

@@ -1,6 +1,6 @@
 // data/*.json から各ページの HTML を生成する
 //   node scripts/build-pages.mjs
-// 生成物：index.html / html/index.html / css/index.html / learn/index.html / html/{slug}.html / css/{slug}.html
+// 生成物：index.html / {html,css,js}/index.html / learn/index.html / {html,css,js}/{slug}.html
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -10,7 +10,7 @@ const read = (name) => JSON.parse(readFileSync(join(ROOT, 'data', `${name}.json`
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const SITE = 'HTML & CSS GUIDE';
-const DESCRIPTION = 'HTMLタグとCSSプロパティを、サンプルコードと実際の表示結果で学べる辞典・学習サイトです。';
+const DESCRIPTION = 'HTMLタグ・CSSプロパティ・JavaScriptを、サンプルコードと実際の表示結果で学べる辞典・学習サイトです。';
 
 function page({ root, title, description = DESCRIPTION, body }) {
   const attrs = Object.entries(body).map(([k, v]) => ` data-${k}="${esc(v)}"`).join('');
@@ -56,6 +56,7 @@ const details = Object.fromEntries(read('details').map((d) => [d.id, d]));
 write('index.html', page({ root: '', title: SITE, body: { page: 'top' } }));
 write('html/index.html', page({ root: '../', title: `HTML辞典 | ${SITE}`, body: { page: 'dict', type: 'html' } }));
 write('css/index.html', page({ root: '../', title: `CSS辞典 | ${SITE}`, body: { page: 'dict', type: 'css' } }));
+write('js/index.html', page({ root: '../', title: `JS辞典 | ${SITE}`, body: { page: 'dict', type: 'js' } }));
 write('learn/index.html', page({ root: '../', title: `学習ロードマップ | ${SITE}`, body: { page: 'learn' } }));
 
 for (const it of items) {
@@ -70,4 +71,4 @@ for (const it of items) {
   }));
 }
 
-console.log(`生成しました：一覧4ページ ＋ 詳細${items.length}ページ`);
+console.log(`生成しました：一覧5ページ ＋ 詳細${items.length}ページ`);

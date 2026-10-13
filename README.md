@@ -1,6 +1,6 @@
 # HTML & CSS GUIDE
 
-HTMLタグ・CSSプロパティの辞典と学習ロードマップのサイトです。素の HTML・CSS・JavaScript（フレームワーク・依存パッケージなし）で実装しています。
+HTMLタグ・CSSプロパティ・JavaScriptの辞典と学習ロードマップのサイトです。素の HTML・CSS・JavaScript（フレームワーク・依存パッケージなし）で実装しています。
 仕様は [`design_handoff_html_css_guide/README.md`](design_handoff_html_css_guide/README.md) を参照してください。
 
 ## 使い方
@@ -15,7 +15,7 @@ npm run build    # data/*.json から全ページの HTML を再生成
 ## 構成
 
 ```
-index.html / html/ / css/ / learn/   生成されたページ（中身は JS が data/ から描画）
+index.html / html/ / css/ / js/ / learn/   生成されたページ（中身は JS が data/ から描画）
 data/                                 辞典・ロードマップのデータ
 assets/css/  tokens.css  base.css  components.css
 assets/js/
@@ -26,8 +26,8 @@ assets/js/
   theme.js        テーマ切替
   search.js       検索
   accordion.js    アコーディオン
-  code.js         シンタックスハイライト・コピー
-  preview.js      iframe プレビュー（srcdoc の生成を独立させている）
+  code.js         シンタックスハイライト（HTML / CSS / JS）・コピー
+  preview.js      iframe プレビュー（srcdoc の生成を独立させている）・JS のコンソール出力
   pages/          トップ・辞典一覧・詳細・ロードマップ
 scripts/
   build-pages.mjs ページ生成

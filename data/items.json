@@ -1546,5 +1546,305 @@
       "マウス"
     ],
     "category": "other"
+  },
+  {
+    "id": "js-let-const",
+    "type": "js",
+    "slug": "let-const",
+    "name": "let / const",
+    "summary": "変数を宣言する",
+    "keywords": [
+      "変数",
+      "定数",
+      "宣言",
+      "var",
+      "代入"
+    ],
+    "category": "basic"
+  },
+  {
+    "id": "js-if",
+    "type": "js",
+    "slug": "if",
+    "name": "if",
+    "summary": "条件によって処理を分ける",
+    "keywords": [
+      "条件分岐",
+      "else",
+      "比較",
+      "もし",
+      "分岐"
+    ],
+    "category": "basic"
+  },
+  {
+    "id": "js-for",
+    "type": "js",
+    "slug": "for",
+    "name": "for",
+    "summary": "処理を繰り返す",
+    "keywords": [
+      "繰り返し",
+      "ループ",
+      "for...of",
+      "while",
+      "反復"
+    ],
+    "category": "basic"
+  },
+  {
+    "id": "js-function",
+    "type": "js",
+    "slug": "function",
+    "name": "function",
+    "summary": "処理をまとめて名前を付ける",
+    "keywords": [
+      "関数",
+      "引数",
+      "戻り値",
+      "return",
+      "定義"
+    ],
+    "category": "basic"
+  },
+  {
+    "id": "js-arrow-function",
+    "type": "js",
+    "slug": "arrow-function",
+    "name": "() =>",
+    "summary": "短く書ける関数（アロー関数）",
+    "keywords": [
+      "アロー関数",
+      "arrow",
+      "関数",
+      "=>",
+      "コールバック"
+    ],
+    "category": "basic"
+  },
+  {
+    "id": "js-array",
+    "type": "js",
+    "slug": "array",
+    "name": "Array",
+    "summary": "複数の値を順番に並べる（配列）",
+    "keywords": [
+      "配列",
+      "リスト",
+      "push",
+      "length",
+      "要素"
+    ],
+    "category": "data"
+  },
+  {
+    "id": "js-object",
+    "type": "js",
+    "slug": "object",
+    "name": "Object",
+    "summary": "名前と値の組をまとめる（オブジェクト）",
+    "keywords": [
+      "オブジェクト",
+      "プロパティ",
+      "キー",
+      "連想配列",
+      "ドット"
+    ],
+    "category": "data"
+  },
+  {
+    "id": "js-template-literal",
+    "type": "js",
+    "slug": "template-literal",
+    "name": "`${}`",
+    "summary": "変数を埋め込める文字列（テンプレート文字列）",
+    "keywords": [
+      "テンプレート文字列",
+      "テンプレートリテラル",
+      "バッククォート",
+      "文字列",
+      "埋め込み"
+    ],
+    "category": "data"
+  },
+  {
+    "id": "js-foreach",
+    "type": "js",
+    "slug": "foreach",
+    "name": "forEach()",
+    "summary": "配列の要素ごとに処理する",
+    "keywords": [
+      "forEach",
+      "繰り返し",
+      "配列",
+      "ループ",
+      "各要素"
+    ],
+    "category": "data"
+  },
+  {
+    "id": "js-map",
+    "type": "js",
+    "slug": "map",
+    "name": "map()",
+    "summary": "配列の各要素を変換した新しい配列を作る",
+    "keywords": [
+      "map",
+      "変換",
+      "配列",
+      "加工",
+      "新しい配列"
+    ],
+    "category": "data"
+  },
+  {
+    "id": "js-filter",
+    "type": "js",
+    "slug": "filter",
+    "name": "filter()",
+    "summary": "条件に合う要素だけを取り出す",
+    "keywords": [
+      "filter",
+      "絞り込み",
+      "検索",
+      "配列",
+      "条件"
+    ],
+    "category": "data"
+  },
+  {
+    "id": "js-query-selector",
+    "type": "js",
+    "slug": "query-selector",
+    "name": "querySelector()",
+    "summary": "CSSセレクタで要素を取得する",
+    "keywords": [
+      "要素の取得",
+      "セレクタ",
+      "querySelectorAll",
+      "getElementById",
+      "DOM"
+    ],
+    "category": "dom"
+  },
+  {
+    "id": "js-text-content",
+    "type": "js",
+    "slug": "text-content",
+    "name": "textContent",
+    "summary": "要素の文字を読み書きする",
+    "keywords": [
+      "テキスト",
+      "文字の書き換え",
+      "innerHTML",
+      "innerText",
+      "表示"
+    ],
+    "category": "dom"
+  },
+  {
+    "id": "js-class-list",
+    "type": "js",
+    "slug": "class-list",
+    "name": "classList",
+    "summary": "クラスの追加・削除・切り替え",
+    "keywords": [
+      "クラス",
+      "toggle",
+      "add",
+      "remove",
+      "切り替え"
+    ],
+    "category": "dom"
+  },
+  {
+    "id": "js-create-element",
+    "type": "js",
+    "slug": "create-element",
+    "name": "createElement()",
+    "summary": "新しい要素を作って追加する",
+    "keywords": [
+      "要素の作成",
+      "append",
+      "appendChild",
+      "追加",
+      "生成"
+    ],
+    "category": "dom"
+  },
+  {
+    "id": "js-add-event-listener",
+    "type": "js",
+    "slug": "add-event-listener",
+    "name": "addEventListener()",
+    "summary": "クリックなどの操作に反応する",
+    "keywords": [
+      "イベント",
+      "クリック",
+      "click",
+      "onclick",
+      "操作"
+    ],
+    "category": "event"
+  },
+  {
+    "id": "js-prevent-default",
+    "type": "js",
+    "slug": "prevent-default",
+    "name": "preventDefault()",
+    "summary": "ブラウザの標準の動作を止める",
+    "keywords": [
+      "既定の動作",
+      "フォーム送信",
+      "submit",
+      "リンク",
+      "キャンセル"
+    ],
+    "category": "event"
+  },
+  {
+    "id": "js-event-target",
+    "type": "js",
+    "slug": "event-target",
+    "name": "event.target",
+    "summary": "イベントが起きた要素を調べる",
+    "keywords": [
+      "イベントオブジェクト",
+      "target",
+      "委譲",
+      "クリックされた要素",
+      "closest"
+    ],
+    "category": "event"
+  },
+  {
+    "id": "js-set-timeout",
+    "type": "js",
+    "slug": "set-timeout",
+    "name": "setTimeout()",
+    "summary": "指定した時間のあとに実行する",
+    "keywords": [
+      "タイマー",
+      "遅延",
+      "setInterval",
+      "待つ",
+      "時間"
+    ],
+    "category": "async"
+  },
+  {
+    "id": "js-async-await",
+    "type": "js",
+    "slug": "async-await",
+    "name": "async / await",
+    "summary": "時間のかかる処理を順番に書く",
+    "keywords": [
+      "非同期",
+      "Promise",
+      "await",
+      "fetch",
+      "then"
+    ],
+    "category": "async"
   }
 ]

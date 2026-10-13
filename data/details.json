@@ -9346,5 +9346,1555 @@
       "css-opacity",
       "html-summary"
     ]
+  },
+  {
+    "id": "js-let-const",
+    "title": null,
+    "ja": "変数を宣言する",
+    "lead": "値に名前を付けて保存しておく「変数」を宣言します。あとから値を変えるなら let、変えないなら const を使います。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "宣言"
+      },
+      {
+        "label": "有効範囲",
+        "value": "ブロック（{ } の中）"
+      },
+      {
+        "label": "使い分け",
+        "value": "基本は const、再代入するときだけ let"
+      }
+    ],
+    "code": {
+      "html": null,
+      "css": null,
+      "js": "const siteName = 'HTML & CSS GUIDE';\nlet count = 0;\n\ncount = count + 1;\ncount += 1;\n\nconsole.log(siteName);\nconsole.log(count);"
+    },
+    "preview": {
+      "height": 120,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "変数は、値を入れておく名前付きの箱のようなものです。`const` や `let` のあとに名前を書き、`=` で値を入れます。",
+      "`const` で宣言した変数には、あとから別の値を代入できません。`let` は何度でも代入し直せます。まずは `const` で書き、値を変える必要があるときだけ `let` にすると、意図しない書き換えを防げます。",
+      "`let` と `const` の変数は、宣言した `{ }`（ブロック）の中でだけ使えます。古い書き方の `var` は範囲の扱いが分かりにくいため、今は使いません。"
+    ],
+    "values": {
+      "label": "宣言の種類",
+      "head": "キーワード",
+      "rows": [
+        {
+          "key": "const",
+          "desc": "再代入できない変数（基本はこちら）"
+        },
+        {
+          "key": "let",
+          "desc": "再代入できる変数"
+        },
+        {
+          "key": "var",
+          "desc": "古い書き方。今は使わない"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "const でも中身は変えられる",
+        "desc": "const で宣言した配列やオブジェクトは、変数そのものは差し替えられませんが、中身の追加・変更はできます。",
+        "js": "const fruits = ['りんご'];\nfruits.push('みかん');\nconsole.log(fruits);\n\n// fruits = []; ← これはエラー"
+      }
+    ],
+    "notes": [
+      "宣言する前に変数を使うとエラーになります。",
+      "変数名には、何が入っているか分かる名前を付けます（例：count、userName）。",
+      "同じ範囲で同じ名前の変数を2回宣言することはできません。"
+    ],
+    "related": [
+      "js-if",
+      "js-template-literal",
+      "js-array",
+      "js-object"
+    ]
+  },
+  {
+    "id": "js-if",
+    "title": null,
+    "ja": "条件によって処理を分ける",
+    "lead": "条件が正しい（true）ときだけ処理を実行します。else を続けると、条件に合わないときの処理も書けます。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "制御構文"
+      },
+      {
+        "label": "条件",
+        "value": "true / false になる式"
+      },
+      {
+        "label": "組み合わせ",
+        "value": "else if / else"
+      }
+    ],
+    "code": {
+      "html": null,
+      "css": null,
+      "js": "const hour = 15;\n\nif (hour < 12) {\n  console.log('おはようございます');\n} else if (hour < 18) {\n  console.log('こんにちは');\n} else {\n  console.log('こんばんは');\n}"
+    },
+    "preview": {
+      "height": 100,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`if (条件) { 処理 }` と書くと、条件が `true` のときだけ `{ }` の中が実行されます。",
+      "`else if` で条件を追加でき、上から順に調べて最初に当てはまったものだけが実行されます。どれにも当てはまらないときは `else` の処理が実行されます。",
+      "条件には `===`（等しい）や `<`（より小さい）などの比較演算子を使います。等しいかどうかは `==` ではなく `===` で比べるのが基本です。"
+    ],
+    "values": {
+      "label": "よく使う比較・論理演算子",
+      "head": "演算子",
+      "rows": [
+        {
+          "key": "a === b",
+          "desc": "等しい（型も含めて比較）"
+        },
+        {
+          "key": "a !== b",
+          "desc": "等しくない"
+        },
+        {
+          "key": "a < b / a >= b",
+          "desc": "より小さい / 以上"
+        },
+        {
+          "key": "a && b",
+          "desc": "かつ（両方 true）"
+        },
+        {
+          "key": "a || b",
+          "desc": "または（どちらか true）"
+        },
+        {
+          "key": "!a",
+          "desc": "否定（true と false を反転）"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "条件演算子で短く書く",
+        "desc": "値を2択で決めるだけなら、条件 ? 値1 : 値2 の形で1行に書けます。",
+        "js": "const stock = 0;\nconst label = stock > 0 ? '在庫あり' : '売り切れ';\nconsole.log(label);"
+      }
+    ],
+    "notes": [
+      "条件の中で = （代入）と === （比較）を間違えないようにします。",
+      "0、空の文字列 ''、null、undefined は false として扱われます。"
+    ],
+    "related": [
+      "js-for",
+      "js-let-const",
+      "js-function",
+      "js-filter"
+    ]
+  },
+  {
+    "id": "js-for",
+    "title": null,
+    "ja": "処理を繰り返す",
+    "lead": "同じ処理を決まった回数、または配列の要素の数だけ繰り返します。配列を順に処理するなら for...of が読みやすい書き方です。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "制御構文"
+      },
+      {
+        "label": "主な形",
+        "value": "for / for...of / while"
+      },
+      {
+        "label": "止める",
+        "value": "break / continue"
+      }
+    ],
+    "code": {
+      "html": null,
+      "css": null,
+      "js": "for (let i = 1; i <= 3; i++) {\n  console.log(i + '回目');\n}\n\nconst menu = ['ブレンド', 'カフェラテ'];\nfor (const name of menu) {\n  console.log(name);\n}"
+    },
+    "preview": {
+      "height": 100,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`for (初期化; 条件; 更新)` の形では、条件が `true` の間だけ処理を繰り返します。上の例では `i` を1から3まで1ずつ増やしながら3回実行しています。",
+      "`for (const 変数 of 配列)` の形（for...of）は、配列の要素を先頭から1つずつ取り出して処理します。番号が必要ないときはこちらが簡潔です。",
+      "`break` で繰り返しを途中で終了し、`continue` でその回の残りを飛ばして次の回に進みます。"
+    ],
+    "values": {
+      "label": "繰り返しの書き方",
+      "head": "構文",
+      "rows": [
+        {
+          "key": "for (let i = 0; i < n; i++)",
+          "desc": "回数を決めて繰り返す"
+        },
+        {
+          "key": "for (const x of 配列)",
+          "desc": "配列の要素を順に取り出す"
+        },
+        {
+          "key": "for (const key in オブジェクト)",
+          "desc": "オブジェクトのキーを順に取り出す"
+        },
+        {
+          "key": "while (条件)",
+          "desc": "条件が true の間繰り返す"
+        },
+        {
+          "key": "配列.forEach()",
+          "desc": "配列の各要素に関数を実行する"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "条件に合ったら途中で止める",
+        "desc": "break を使うと、見つかった時点で繰り返しを終了できます。",
+        "js": "const scores = [62, 85, 91, 40];\nfor (const s of scores) {\n  if (s >= 90) {\n    console.log('90点以上を見つけました：' + s);\n    break;\n  }\n}"
+      }
+    ],
+    "notes": [
+      "条件がずっと true のままだと無限ループになり、ページが固まります。",
+      "配列を加工するだけなら、map() や filter() を使うと短く書けます。"
+    ],
+    "related": [
+      "js-foreach",
+      "js-array",
+      "js-if",
+      "js-map"
+    ]
+  },
+  {
+    "id": "js-function",
+    "title": null,
+    "ja": "処理をまとめて名前を付ける",
+    "lead": "ひとまとまりの処理に名前を付けて、何度でも呼び出せるようにします。値を受け取る「引数」と、結果を返す「戻り値」を使えます。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "関数宣言"
+      },
+      {
+        "label": "受け取る値",
+        "value": "引数（パラメーター）"
+      },
+      {
+        "label": "返す値",
+        "value": "return で指定"
+      }
+    ],
+    "code": {
+      "html": null,
+      "css": null,
+      "js": "function withTax(price) {\n  return Math.round(price * 1.1);\n}\n\nconsole.log(withTax(480));\nconsole.log(withTax(550));"
+    },
+    "preview": {
+      "height": 100,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`function 名前(引数) { 処理 }` で関数を定義し、`名前(値)` で呼び出します。同じ処理を何度も書かずに済み、修正も1か所で済みます。",
+      "`( )` の中の引数で値を受け取り、`return` で結果を呼び出し元に返します。`return` に達するとそこで関数は終了します。",
+      "引数には既定値を付けられます。`function greet(name = 'ゲスト')` のように書くと、値が渡されなかったときに既定値が使われます。"
+    ],
+    "values": {
+      "label": "関数の書き方",
+      "head": "書き方",
+      "rows": [
+        {
+          "key": "function 名前() {}",
+          "desc": "関数宣言"
+        },
+        {
+          "key": "const 名前 = function() {}",
+          "desc": "関数式"
+        },
+        {
+          "key": "const 名前 = () => {}",
+          "desc": "アロー関数"
+        },
+        {
+          "key": "(a, b = 1)",
+          "desc": "引数と既定値"
+        },
+        {
+          "key": "return 値",
+          "desc": "結果を返して終了する"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "ボタンのクリックで関数を呼ぶ",
+        "desc": "処理を関数にしておくと、イベントにそのまま渡せます。",
+        "html": "<button type=\"button\" id=\"hello\">あいさつ</button>",
+        "js": "function sayHello() {\n  console.log('こんにちは');\n}\ndocument.querySelector('#hello').addEventListener('click', sayHello);"
+      }
+    ],
+    "notes": [
+      "return のない関数は undefined を返します。",
+      "関数名は「何をするか」が分かる動詞から始めると読みやすくなります（例：getPrice、showMenu）。"
+    ],
+    "related": [
+      "js-arrow-function",
+      "js-add-event-listener",
+      "js-let-const",
+      "js-map"
+    ]
+  },
+  {
+    "id": "js-arrow-function",
+    "title": null,
+    "ja": "短く書ける関数（アロー関数）",
+    "lead": "function の代わりに => を使って、関数を短く書く方法です。map() や addEventListener() に渡す小さな関数でよく使います。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "関数式"
+      },
+      {
+        "label": "書き方",
+        "value": "(引数) => 処理"
+      },
+      {
+        "label": "よく使う場面",
+        "value": "配列のメソッド・イベント"
+      }
+    ],
+    "code": {
+      "html": null,
+      "css": null,
+      "js": "const double = (n) => n * 2;\nconst greet = (name) => {\n  return name + 'さん、こんにちは';\n};\n\nconsole.log(double(21));\nconsole.log(greet('山田'));"
+    },
+    "preview": {
+      "height": 100,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`(引数) => { 処理 }` の形で関数を作ります。`function` と書くより短く、配列のメソッドなどに渡す関数を簡潔に書けます。",
+      "処理が1つの式だけなら、`{ }` と `return` を省略できます。`(n) => n * 2` は「n を受け取って n * 2 を返す」という意味です。",
+      "引数が1つなら `( )` も省略できます（`n => n * 2`）。引数がないときは `() =>` と書きます。"
+    ],
+    "values": {
+      "label": "省略の書き方",
+      "head": "書き方",
+      "rows": [
+        {
+          "key": "() => 処理",
+          "desc": "引数なし"
+        },
+        {
+          "key": "n => n * 2",
+          "desc": "引数1つ・式1つ（( ) と return を省略）"
+        },
+        {
+          "key": "(a, b) => a + b",
+          "desc": "引数2つ"
+        },
+        {
+          "key": "() => ({ x: 1 })",
+          "desc": "オブジェクトを返すときは ( ) で囲む"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "配列の処理に渡す",
+        "desc": "アロー関数は map() や filter() と組み合わせて使うことが多いです。",
+        "js": "const prices = [480, 550, 620];\nconst withTax = prices.map((p) => Math.round(p * 1.1));\nconsole.log(withTax);"
+      }
+    ],
+    "notes": [
+      "アロー関数の中の this は、外側の this をそのまま使います。オブジェクトのメソッドに使うときは注意します。",
+      "{ } を付けた場合は、値を返すのに return が必要です。"
+    ],
+    "related": [
+      "js-function",
+      "js-map",
+      "js-filter",
+      "js-add-event-listener"
+    ]
+  },
+  {
+    "id": "js-array",
+    "title": null,
+    "ja": "複数の値を順番に並べる（配列）",
+    "lead": "複数の値を1つにまとめ、順番（インデックス）で管理するデータの形です。[ ] の中にカンマ区切りで値を書きます。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "組み込みオブジェクト"
+      },
+      {
+        "label": "番号",
+        "value": "0 から始まる"
+      },
+      {
+        "label": "要素数",
+        "value": "length プロパティ"
+      }
+    ],
+    "code": {
+      "html": null,
+      "css": null,
+      "js": "const menu = ['ブレンド', 'カフェラテ', '紅茶'];\n\nconsole.log(menu[0]);\nconsole.log(menu.length);\n\nmenu.push('ココア');\nconsole.log(menu);"
+    },
+    "preview": {
+      "height": 100,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "配列は `[ ]` の中に値をカンマで区切って並べたものです。数値・文字列・オブジェクトなど、どんな値でも入れられます。",
+      "要素は `配列[番号]` で取り出します。番号（インデックス）は0から始まるため、最初の要素は `menu[0]` です。要素の数は `length` で分かります。",
+      "`push()` で末尾に追加、`pop()` で末尾を取り出すなど、配列には便利なメソッドがたくさん用意されています。"
+    ],
+    "values": {
+      "label": "よく使うメソッド・プロパティ",
+      "head": "名前",
+      "rows": [
+        {
+          "key": "length",
+          "desc": "要素の数"
+        },
+        {
+          "key": "push(値)",
+          "desc": "末尾に追加"
+        },
+        {
+          "key": "pop()",
+          "desc": "末尾を取り出して削除"
+        },
+        {
+          "key": "includes(値)",
+          "desc": "値が含まれているか（true / false）"
+        },
+        {
+          "key": "indexOf(値)",
+          "desc": "値の番号（ないときは -1）"
+        },
+        {
+          "key": "join(区切り)",
+          "desc": "要素をつないで文字列にする"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "配列からリストを作る",
+        "desc": "配列の要素を画面のリストに表示します。",
+        "html": "<ul id=\"list\"></ul>",
+        "js": "const menu = ['ブレンド', 'カフェラテ', '紅茶'];\nconst list = document.querySelector('#list');\nfor (const name of menu) {\n  const li = document.createElement('li');\n  li.textContent = name;\n  list.append(li);\n}"
+      }
+    ],
+    "notes": [
+      "存在しない番号を指定すると undefined になります（エラーにはなりません）。",
+      "const で宣言した配列でも、push などで中身は変更できます。"
+    ],
+    "related": [
+      "js-foreach",
+      "js-map",
+      "js-filter",
+      "js-object"
+    ]
+  },
+  {
+    "id": "js-object",
+    "title": null,
+    "ja": "名前と値の組をまとめる（オブジェクト）",
+    "lead": "「名前（キー）: 値」の組をまとめて1つのデータとして扱う形です。商品の名前と価格のように、関連する情報をひとまとめにできます。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "組み込みオブジェクト"
+      },
+      {
+        "label": "書き方",
+        "value": "{ キー: 値 }"
+      },
+      {
+        "label": "参照",
+        "value": "obj.key / obj['key']"
+      }
+    ],
+    "code": {
+      "html": null,
+      "css": null,
+      "js": "const item = {\n  name: 'カフェラテ',\n  price: 550,\n  hot: true,\n};\n\nconsole.log(item.name);\nitem.price = 580;\nconsole.log(item);"
+    },
+    "preview": {
+      "height": 100,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "オブジェクトは `{ キー: 値, … }` の形で書きます。キーはプロパティ名とも呼ばれ、値には数値・文字列・配列・関数など何でも入れられます。",
+      "値は `item.name` のように「.（ドット）」で取り出します。キーを変数で指定したいときは `item[key]` と書きます。",
+      "代入すると値を変更でき、存在しないキーに代入するとプロパティが追加されます。"
+    ],
+    "values": {
+      "label": "よく使う操作",
+      "head": "書き方",
+      "rows": [
+        {
+          "key": "obj.key",
+          "desc": "値を取り出す"
+        },
+        {
+          "key": "obj.key = 値",
+          "desc": "値を変更・追加する"
+        },
+        {
+          "key": "delete obj.key",
+          "desc": "プロパティを削除する"
+        },
+        {
+          "key": "'key' in obj",
+          "desc": "キーがあるか調べる"
+        },
+        {
+          "key": "Object.keys(obj)",
+          "desc": "キーの一覧を配列で取得"
+        },
+        {
+          "key": "const { name } = obj",
+          "desc": "分割代入で取り出す"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "オブジェクトの配列",
+        "desc": "同じ形のオブジェクトを配列に並べると、一覧データを扱えます。",
+        "js": "const menu = [\n  { name: 'ブレンド', price: 480 },\n  { name: 'カフェラテ', price: 550 },\n];\nfor (const m of menu) {\n  console.log(`${m.name}：${m.price}円`);\n}"
+      }
+    ],
+    "notes": [
+      "存在しないキーを参照すると undefined になります。さらにその先を参照するとエラーになるので、?. （オプショナルチェーン）を使うと安全です。",
+      "データを保存・送信するときは JSON.stringify() で文字列に変換します。"
+    ],
+    "related": [
+      "js-array",
+      "js-template-literal",
+      "js-let-const",
+      "js-map"
+    ]
+  },
+  {
+    "id": "js-template-literal",
+    "title": "`${}`",
+    "ja": "変数を埋め込める文字列",
+    "lead": "バッククォート（`）で囲んだ文字列の中に ${ } で変数や式を埋め込めます。改行もそのまま書けます。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "文字列の書き方"
+      },
+      {
+        "label": "囲む記号",
+        "value": "`（バッククォート）"
+      },
+      {
+        "label": "埋め込み",
+        "value": "${ 式 }"
+      }
+    ],
+    "code": {
+      "html": null,
+      "css": null,
+      "js": "const name = 'カフェラテ';\nconst price = 550;\n\nconsole.log(`${name}は${price}円です`);\nconsole.log(`税込：${Math.round(price * 1.1)}円`);"
+    },
+    "preview": {
+      "height": 100,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "バッククォート記号で囲んだ文字列を「テンプレート文字列（テンプレートリテラル）」と呼びます。`${ }` の中に書いた変数や式の値が、その位置に埋め込まれます。",
+      "`+` で文字列をつなぐよりも読みやすく、計算式や関数の呼び出しもそのまま書けます。",
+      "途中で改行すると、改行を含んだ文字列になります。HTMLの断片を組み立てるときにも便利です。"
+    ],
+    "values": {
+      "label": "文字列の書き方",
+      "head": "書き方",
+      "rows": [
+        {
+          "key": "'文字列' / \"文字列\"",
+          "desc": "ふつうの文字列"
+        },
+        {
+          "key": "`文字列`",
+          "desc": "テンプレート文字列"
+        },
+        {
+          "key": "`${式}`",
+          "desc": "式の値を埋め込む"
+        },
+        {
+          "key": "'a' + 'b'",
+          "desc": "+ でつなぐ（従来の書き方）"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "HTMLを組み立てる",
+        "desc": "テンプレート文字列で作った HTML を画面に表示します。",
+        "html": "<div id=\"card\"></div>",
+        "js": "const item = { name: 'カフェラテ', price: 550 };\ndocument.querySelector('#card').innerHTML = `\n  <strong>${item.name}</strong>\n  <span>${item.price}円</span>\n`;"
+      }
+    ],
+    "notes": [
+      "利用者が入力した文字を innerHTML で埋め込むと、悪意のあるスクリプトが実行される危険があります。文字だけなら textContent を使います。",
+      "バッククォートは、日本語キーボードでは Shift + @ で入力できます。"
+    ],
+    "related": [
+      "js-let-const",
+      "js-object",
+      "js-text-content",
+      "js-create-element"
+    ]
+  },
+  {
+    "id": "js-foreach",
+    "title": null,
+    "ja": "配列の要素ごとに処理する",
+    "lead": "配列の要素1つずつに対して、渡した関数を順番に実行します。要素と一緒に番号（インデックス）も受け取れます。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "配列のメソッド"
+      },
+      {
+        "label": "戻り値",
+        "value": "undefined"
+      },
+      {
+        "label": "引数",
+        "value": "要素・番号・配列"
+      }
+    ],
+    "code": {
+      "html": "<ol id=\"steps\"></ol>",
+      "css": null,
+      "js": "const steps = ['豆を挽く', 'お湯を注ぐ', '蒸らす'];\nconst ol = document.querySelector('#steps');\n\nsteps.forEach((step, i) => {\n  const li = document.createElement('li');\n  li.textContent = step;\n  ol.append(li);\n  console.log(i, step);\n});"
+    },
+    "preview": {
+      "height": 130,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`配列.forEach(関数)` は、配列の要素の数だけ関数を呼び出します。関数は1つ目の引数で要素を、2つ目の引数で番号を受け取れます。",
+      "上の例では、配列の手順を1つずつリスト項目にして画面に追加し、番号と内容をコンソールにも出力しています。",
+      "`forEach()` は何も返しません。新しい配列を作りたいときは `map()`、絞り込みたいときは `filter()` を使います。"
+    ],
+    "values": {
+      "label": "関数が受け取る引数",
+      "head": "引数",
+      "rows": [
+        {
+          "key": "1つ目",
+          "desc": "要素"
+        },
+        {
+          "key": "2つ目",
+          "desc": "番号（インデックス）"
+        },
+        {
+          "key": "3つ目",
+          "desc": "配列そのもの"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "複数の要素にまとめてイベントを付ける",
+        "desc": "querySelectorAll() の結果にも forEach() が使えます。",
+        "html": "<button type=\"button\" class=\"btn\">A</button>\n<button type=\"button\" class=\"btn\">B</button>",
+        "js": "document.querySelectorAll('.btn').forEach((btn) => {\n  btn.addEventListener('click', () => {\n    console.log(btn.textContent + ' が押されました');\n  });\n});"
+      }
+    ],
+    "notes": [
+      "forEach() は途中で止められません（break は使えない）。途中で止めたいときは for...of を使います。",
+      "forEach() の中で await しても、順番に待ってはくれません。"
+    ],
+    "related": [
+      "js-map",
+      "js-filter",
+      "js-for",
+      "js-array"
+    ]
+  },
+  {
+    "id": "js-map",
+    "title": null,
+    "ja": "配列の各要素を変換した新しい配列を作る",
+    "lead": "配列の要素1つずつに関数を実行し、その戻り値を集めた新しい配列を作ります。元の配列は変わりません。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "配列のメソッド"
+      },
+      {
+        "label": "戻り値",
+        "value": "新しい配列（要素数は同じ）"
+      },
+      {
+        "label": "元の配列",
+        "value": "変更しない"
+      }
+    ],
+    "code": {
+      "html": null,
+      "css": null,
+      "js": "const prices = [480, 550, 620];\n\nconst withTax = prices.map((p) => Math.round(p * 1.1));\nconst labels = prices.map((p) => `${p}円`);\n\nconsole.log(withTax);\nconsole.log(labels);\nconsole.log(prices);"
+    },
+    "preview": {
+      "height": 100,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`map()` は「すべての要素を同じルールで変換する」ためのメソッドです。関数が返した値を順に並べた、新しい配列が返ります。",
+      "要素の数は元の配列と同じになります。元の配列は変更されないため、元のデータを残したまま加工できます。",
+      "オブジェクトの配列から特定の値だけを取り出す（例：商品名の一覧を作る）といった使い方もよくします。"
+    ],
+    "values": {
+      "label": "配列を加工するメソッド",
+      "head": "メソッド",
+      "rows": [
+        {
+          "key": "map()",
+          "desc": "各要素を変換した配列を作る"
+        },
+        {
+          "key": "filter()",
+          "desc": "条件に合う要素だけの配列を作る"
+        },
+        {
+          "key": "find()",
+          "desc": "条件に合う最初の要素を取り出す"
+        },
+        {
+          "key": "reduce()",
+          "desc": "要素をまとめて1つの値にする（合計など）"
+        },
+        {
+          "key": "sort()",
+          "desc": "並べ替える（元の配列も変わる）"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "オブジェクトの配列から名前だけ取り出す",
+        "desc": "必要なプロパティだけを集めた配列を作れます。",
+        "js": "const menu = [\n  { name: 'ブレンド', price: 480 },\n  { name: 'カフェラテ', price: 550 },\n];\nconst names = menu.map((m) => m.name);\nconsole.log(names);"
+      }
+    ],
+    "notes": [
+      "関数で return を忘れると、要素がすべて undefined の配列になります。",
+      "画面への表示など、新しい配列が不要な処理には forEach() を使います。"
+    ],
+    "related": [
+      "js-filter",
+      "js-foreach",
+      "js-arrow-function",
+      "js-array"
+    ]
+  },
+  {
+    "id": "js-filter",
+    "title": null,
+    "ja": "条件に合う要素だけを取り出す",
+    "lead": "配列の要素のうち、関数が true を返したものだけを集めた新しい配列を作ります。検索や絞り込みに使います。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "配列のメソッド"
+      },
+      {
+        "label": "戻り値",
+        "value": "新しい配列（0個以上）"
+      },
+      {
+        "label": "元の配列",
+        "value": "変更しない"
+      }
+    ],
+    "code": {
+      "html": null,
+      "css": null,
+      "js": "const menu = [\n  { name: 'ブレンド', price: 480 },\n  { name: 'カフェラテ', price: 550 },\n  { name: 'ケーキセット', price: 900 },\n];\n\nconst cheap = menu.filter((m) => m.price < 600);\nconsole.log(cheap.map((m) => m.name));\nconsole.log(cheap.length + '件');"
+    },
+    "preview": {
+      "height": 100,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`filter()` は、要素ごとに関数を実行し、`true` を返した要素だけを残した新しい配列を返します。",
+      "上の例では、価格が600円未満の商品だけを取り出し、`map()` で名前の一覧に変換しています。このようにメソッドをつなげて書けるのも配列メソッドの便利な点です。",
+      "1件も当てはまらないときは空の配列 `[]` が返ります。最初の1件だけが欲しいときは `find()` を使います。"
+    ],
+    "values": {
+      "label": "似たメソッド",
+      "head": "メソッド",
+      "rows": [
+        {
+          "key": "filter()",
+          "desc": "条件に合う要素をすべて配列で返す"
+        },
+        {
+          "key": "find()",
+          "desc": "条件に合う最初の要素を返す（ないと undefined）"
+        },
+        {
+          "key": "some()",
+          "desc": "1つでも合えば true"
+        },
+        {
+          "key": "every()",
+          "desc": "すべて合えば true"
+        },
+        {
+          "key": "includes()",
+          "desc": "特定の値が含まれるか"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "入力した文字で絞り込む",
+        "desc": "入力欄の文字を含む項目だけを表示します。",
+        "html": "<input id=\"q\" placeholder=\"絞り込み\">\n<ul id=\"list\"></ul>",
+        "js": "const words = ['margin', 'padding', 'gap', 'grid'];\nconst list = document.querySelector('#list');\nconst render = (q) => {\n  list.innerHTML = '';\n  words.filter((w) => w.includes(q)).forEach((w) => {\n    const li = document.createElement('li');\n    li.textContent = w;\n    list.append(li);\n  });\n};\ndocument.querySelector('#q').addEventListener('input', (e) => render(e.target.value));\nrender('');"
+      }
+    ],
+    "notes": [
+      "関数は true / false を返すように書きます。",
+      "大文字・小文字を区別せずに探すときは、両方を toLowerCase() でそろえてから比べます。"
+    ],
+    "related": [
+      "js-map",
+      "js-foreach",
+      "js-if",
+      "js-array"
+    ]
+  },
+  {
+    "id": "js-query-selector",
+    "title": null,
+    "ja": "CSSセレクタで要素を取得する",
+    "lead": "CSSと同じセレクタを使って、HTMLの要素を取得します。JavaScriptで画面を操作するときの最初の一歩です。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "Document / Element のメソッド"
+      },
+      {
+        "label": "戻り値",
+        "value": "最初に見つかった要素（ないと null）"
+      },
+      {
+        "label": "複数取得",
+        "value": "querySelectorAll()"
+      }
+    ],
+    "code": {
+      "html": "<h1 id=\"title\">メニュー</h1>\n<ul>\n  <li class=\"item\">ブレンド</li>\n  <li class=\"item\">カフェラテ</li>\n</ul>",
+      "css": null,
+      "js": "const title = document.querySelector('#title');\ntitle.style.color = '#b68235';\n\nconst items = document.querySelectorAll('.item');\nconsole.log(items.length + '個の要素');\nconsole.log(items[0]);"
+    },
+    "preview": {
+      "height": 180,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`document.querySelector('セレクタ')` は、CSSと同じ書き方で要素を探し、最初に見つかった1つを返します。id なら `#title`、クラスなら `.item` のように書きます。",
+      "当てはまる要素をすべて取得するには `querySelectorAll()` を使います。結果は配列に似た NodeList で、`length` や `forEach()` が使えます。",
+      "見つからなかったときは `null` が返ります。そのまま操作するとエラーになるため、要素があるか確認してから使うと安全です。"
+    ],
+    "values": {
+      "label": "要素を取得する主なメソッド",
+      "head": "メソッド",
+      "rows": [
+        {
+          "key": "querySelector(セレクタ)",
+          "desc": "最初の1つを取得"
+        },
+        {
+          "key": "querySelectorAll(セレクタ)",
+          "desc": "すべてを NodeList で取得"
+        },
+        {
+          "key": "getElementById(id)",
+          "desc": "id で取得（# は付けない）"
+        },
+        {
+          "key": "要素.closest(セレクタ)",
+          "desc": "自分または祖先で最も近い要素"
+        },
+        {
+          "key": "要素.querySelector()",
+          "desc": "その要素の中だけを探す"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "要素があるときだけ処理する",
+        "desc": "?. （オプショナルチェーン）を使うと、要素がないときにエラーになりません。",
+        "js": "document.querySelector('#banner')?.remove();"
+      }
+    ],
+    "notes": [
+      "script を head に書くと、HTMLが読み込まれる前に実行されて要素が見つかりません。body の最後に書くか、defer を付けます。",
+      "querySelectorAll() の結果は配列そのものではないため、map() などを使うときは Array.from() で配列に変換します。"
+    ],
+    "related": [
+      "js-text-content",
+      "js-class-list",
+      "js-add-event-listener",
+      "css-hover"
+    ]
+  },
+  {
+    "id": "js-text-content",
+    "title": null,
+    "ja": "要素の文字を読み書きする",
+    "lead": "要素の中の文字を取得したり、別の文字に書き換えたりするプロパティです。タグを含めて書き換えるときは innerHTML を使います。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "Node のプロパティ"
+      },
+      {
+        "label": "値",
+        "value": "文字列"
+      },
+      {
+        "label": "HTMLの解釈",
+        "value": "しない（安全）"
+      }
+    ],
+    "code": {
+      "html": "<p id=\"msg\">ボタンを押してください</p>\n<button type=\"button\" id=\"btn\">押す</button>",
+      "css": "button {\n  padding: 6px 16px;\n  border: 1px solid #b68235;\n  border-radius: 4px;\n  background: #fff;\n  color: #7d5411;\n  font: inherit;\n  cursor: pointer;\n}",
+      "js": "const msg = document.querySelector('#msg');\nlet count = 0;\n\ndocument.querySelector('#btn').addEventListener('click', () => {\n  count++;\n  msg.textContent = `${count}回押しました`;\n  console.log(msg.textContent);\n});"
+    },
+    "preview": {
+      "height": 140,
+      "note": "ボタンを押すと文字が書き換わります",
+      "fullDocument": false
+    },
+    "explain": [
+      "`要素.textContent` で要素の中の文字を取得でき、代入するとその文字に書き換わります。",
+      "代入した文字に `<b>` などのタグが含まれていても、タグとして解釈されずにそのまま文字として表示されます。利用者の入力を表示するときも安全です。",
+      "タグを含むHTMLとして書き換えたいときは `innerHTML` を使います。ただし、外部から来た文字をそのまま入れるのは危険なので注意します。"
+    ],
+    "values": {
+      "label": "似たプロパティ",
+      "head": "プロパティ",
+      "rows": [
+        {
+          "key": "textContent",
+          "desc": "文字だけを読み書き（タグは解釈しない）"
+        },
+        {
+          "key": "innerHTML",
+          "desc": "HTMLとして読み書き（タグを解釈する）"
+        },
+        {
+          "key": "innerText",
+          "desc": "画面に見えている文字（CSSの影響を受ける）"
+        },
+        {
+          "key": "value",
+          "desc": "入力欄（input など）の値"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "入力した文字をそのまま表示する",
+        "desc": "input の value を読み取り、textContent で表示します。",
+        "html": "<input id=\"name\" placeholder=\"お名前\">\n<p>こんにちは、<span id=\"out\">ゲスト</span>さん</p>",
+        "js": "const out = document.querySelector('#out');\ndocument.querySelector('#name').addEventListener('input', (e) => {\n  out.textContent = e.target.value || 'ゲスト';\n});"
+      }
+    ],
+    "notes": [
+      "textContent に代入すると、要素の中にあった子要素はすべて消えます。",
+      "入力欄の文字は textContent ではなく value で読み取ります。"
+    ],
+    "related": [
+      "js-query-selector",
+      "js-create-element",
+      "js-template-literal",
+      "js-add-event-listener"
+    ]
+  },
+  {
+    "id": "js-class-list",
+    "title": null,
+    "ja": "クラスの追加・削除・切り替え",
+    "lead": "要素のクラスを追加・削除・切り替えするためのプロパティです。見た目の変更はCSSに任せ、JavaScriptではクラスの付け外しだけを行うのが定番です。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "Element のプロパティ"
+      },
+      {
+        "label": "主なメソッド",
+        "value": "add / remove / toggle / contains"
+      },
+      {
+        "label": "組み合わせ",
+        "value": "CSS のクラス指定"
+      }
+    ],
+    "code": {
+      "html": "<button type=\"button\" id=\"toggle\">詳細を表示</button>\n<p class=\"detail\">営業時間：10:00〜18:00</p>",
+      "css": "button {\n  padding: 6px 16px;\n  border: 1px solid #b68235;\n  border-radius: 4px;\n  background: #fff;\n  color: #7d5411;\n  font: inherit;\n  cursor: pointer;\n}\n.detail {\n  display: none;\n  margin-top: 12px;\n}\n.detail.is-open {\n  display: block;\n}",
+      "js": "const btn = document.querySelector('#toggle');\nconst detail = document.querySelector('.detail');\n\nbtn.addEventListener('click', () => {\n  const open = detail.classList.toggle('is-open');\n  btn.textContent = open ? '詳細を隠す' : '詳細を表示';\n  console.log('is-open:', open);\n});"
+    },
+    "preview": {
+      "height": 130,
+      "note": "ボタンを押すと詳細が表示・非表示になります",
+      "fullDocument": false
+    },
+    "explain": [
+      "`要素.classList` は、要素に付いているクラスの一覧です。`add()` で追加、`remove()` で削除、`toggle()` で付いていれば外し・なければ付けます。",
+      "上の例では、ボタンを押すたびに `is-open` クラスを付け外しし、CSSの `.detail.is-open` で表示を切り替えています。",
+      "JavaScriptで `style` を直接書き換えるよりも、見た目をCSSにまとめておけるため、管理しやすくなります。"
+    ],
+    "values": {
+      "label": "主なメソッド",
+      "head": "メソッド",
+      "rows": [
+        {
+          "key": "add('名前')",
+          "desc": "クラスを追加"
+        },
+        {
+          "key": "remove('名前')",
+          "desc": "クラスを削除"
+        },
+        {
+          "key": "toggle('名前')",
+          "desc": "付け外しを切り替え（付いた後の状態を true / false で返す）"
+        },
+        {
+          "key": "toggle('名前', 条件)",
+          "desc": "条件が true なら付け、false なら外す"
+        },
+        {
+          "key": "contains('名前')",
+          "desc": "付いているか調べる"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "ダークモードを切り替える",
+        "desc": "html 要素にクラスを付け、CSS変数で配色を切り替えます。",
+        "html": "<button type=\"button\" id=\"theme\">テーマ切替</button>",
+        "css": ":root.dark {\n  --bg: #1a1918;\n}\nbody {\n  background: var(--bg, #fff);\n}",
+        "js": "document.querySelector('#theme').addEventListener('click', () => {\n  document.documentElement.classList.toggle('dark');\n});"
+      }
+    ],
+    "notes": [
+      "クラス名に . （ドット）は付けません（add('.is-open') は誤り）。",
+      "状態を表すクラスには is- などの接頭辞を付けると、役割が分かりやすくなります。"
+    ],
+    "related": [
+      "js-query-selector",
+      "js-add-event-listener",
+      "css-display",
+      "css-transition"
+    ]
+  },
+  {
+    "id": "js-create-element",
+    "title": null,
+    "ja": "新しい要素を作って追加する",
+    "lead": "新しいHTML要素を作るメソッドです。作った要素は append() などでページに追加して、初めて画面に表示されます。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "Document のメソッド"
+      },
+      {
+        "label": "戻り値",
+        "value": "作成した要素"
+      },
+      {
+        "label": "追加",
+        "value": "append / prepend / before / after"
+      }
+    ],
+    "code": {
+      "html": "<input id=\"todo\" placeholder=\"やること\">\n<button type=\"button\" id=\"add\">追加</button>\n<ul id=\"list\"></ul>",
+      "css": "button {\n  padding: 6px 16px;\n  border: 1px solid #b68235;\n  border-radius: 4px;\n  background: #fff;\n  color: #7d5411;\n  font: inherit;\n  cursor: pointer;\n}\ninput {\n  padding: 6px 10px;\n  border: 1px solid #bbb;\n  border-radius: 4px;\n  font: inherit;\n}",
+      "js": "const input = document.querySelector('#todo');\nconst list = document.querySelector('#list');\n\ndocument.querySelector('#add').addEventListener('click', () => {\n  if (!input.value) return;\n  const li = document.createElement('li');\n  li.textContent = input.value;\n  list.append(li);\n  console.log('追加：' + input.value);\n  input.value = '';\n});"
+    },
+    "preview": {
+      "height": 130,
+      "note": "文字を入力して「追加」を押すと、リストに項目が増えます",
+      "fullDocument": false
+    },
+    "explain": [
+      "`document.createElement('タグ名')` で新しい要素を作ります。作っただけではページに表示されず、`append()` などで既存の要素の中に追加する必要があります。",
+      "作った要素には `textContent` で文字を入れたり、`classList` でクラスを付けたりしてから追加します。",
+      "上の例は、入力した文字をリスト項目として追加していく、簡単なやることリストです。"
+    ],
+    "values": {
+      "label": "追加・削除のメソッド",
+      "head": "メソッド",
+      "rows": [
+        {
+          "key": "親.append(要素)",
+          "desc": "親の中の最後に追加"
+        },
+        {
+          "key": "親.prepend(要素)",
+          "desc": "親の中の最初に追加"
+        },
+        {
+          "key": "要素.before(新要素)",
+          "desc": "要素の直前に追加"
+        },
+        {
+          "key": "要素.after(新要素)",
+          "desc": "要素の直後に追加"
+        },
+        {
+          "key": "要素.remove()",
+          "desc": "要素を削除"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "属性を設定してリンクを作る",
+        "desc": "href などの属性はプロパティや setAttribute() で設定します。",
+        "html": "<p id=\"area\"></p>",
+        "js": "const a = document.createElement('a');\na.href = 'https://example.com';\na.textContent = '公式サイト';\na.target = '_blank';\ndocument.querySelector('#area').append(a);"
+      }
+    ],
+    "notes": [
+      "同じ要素を2か所に append すると、最初の場所から移動します（複製はされません）。",
+      "大量の要素を1つずつ追加すると遅くなることがあります。まとめて追加するときは DocumentFragment を使います。"
+    ],
+    "related": [
+      "js-text-content",
+      "js-query-selector",
+      "js-foreach",
+      "html-li"
+    ]
+  },
+  {
+    "id": "js-add-event-listener",
+    "title": null,
+    "ja": "クリックなどの操作に反応する",
+    "lead": "クリックや入力などの「イベント」が起きたときに実行する関数を登録します。ボタンやフォームを動かすための基本のメソッドです。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "EventTarget のメソッド"
+      },
+      {
+        "label": "引数",
+        "value": "イベント名・関数・オプション"
+      },
+      {
+        "label": "よく使うイベント",
+        "value": "click / input / submit"
+      }
+    ],
+    "code": {
+      "html": "<button type=\"button\" id=\"like\">♡ いいね</button>\n<span id=\"count\">0</span>",
+      "css": "button {\n  padding: 6px 16px;\n  border: 1px solid #b68235;\n  border-radius: 4px;\n  background: #fff;\n  color: #7d5411;\n  font: inherit;\n  cursor: pointer;\n}",
+      "js": "const btn = document.querySelector('#like');\nconst count = document.querySelector('#count');\nlet n = 0;\n\nbtn.addEventListener('click', () => {\n  n++;\n  count.textContent = n;\n  console.log('click', n);\n});"
+    },
+    "preview": {
+      "height": 100,
+      "note": "ボタンを押すと数が増えます",
+      "fullDocument": false
+    },
+    "explain": [
+      "`要素.addEventListener('イベント名', 関数)` で、そのイベントが起きたときに関数が呼ばれるようになります。上の例では、ボタンがクリックされるたびに数を増やしています。",
+      "関数は引数でイベントの情報（イベントオブジェクト）を受け取れます。押された要素は `event.target`、押されたキーは `event.key` で分かります。",
+      "同じ要素に何個でも関数を登録できます。登録を解除するには `removeEventListener()` を使います。"
+    ],
+    "values": {
+      "label": "よく使うイベント",
+      "head": "イベント名",
+      "rows": [
+        {
+          "key": "click",
+          "desc": "クリック（タップ）したとき"
+        },
+        {
+          "key": "input",
+          "desc": "入力欄の値が変わるたび"
+        },
+        {
+          "key": "change",
+          "desc": "選択や入力が確定したとき"
+        },
+        {
+          "key": "submit",
+          "desc": "フォームを送信するとき"
+        },
+        {
+          "key": "keydown",
+          "desc": "キーを押したとき"
+        },
+        {
+          "key": "DOMContentLoaded",
+          "desc": "HTMLの読み込みが終わったとき"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "1回だけ反応させる",
+        "desc": "オプションの once: true を指定すると、1回実行したあと自動で解除されます。",
+        "html": "<button type=\"button\" id=\"once\">1回だけ</button>",
+        "js": "document.querySelector('#once').addEventListener('click', () => {\n  console.log('1回目だけ表示されます');\n}, { once: true });"
+      }
+    ],
+    "notes": [
+      "HTMLの onclick 属性に書くより、addEventListener を使うほうが複数の処理を管理しやすくなります。",
+      "addEventListener('click', fn()) のように ( ) を付けると、登録した瞬間に実行されてしまいます。関数そのもの（fn）を渡します。"
+    ],
+    "related": [
+      "js-prevent-default",
+      "js-event-target",
+      "js-function",
+      "html-button"
+    ]
+  },
+  {
+    "id": "js-prevent-default",
+    "title": null,
+    "ja": "ブラウザの標準の動作を止める",
+    "lead": "フォーム送信でのページ移動やリンクの遷移など、ブラウザが本来行う動作を取り消します。JavaScriptで独自の処理をしたいときに使います。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "Event のメソッド"
+      },
+      {
+        "label": "対象",
+        "value": "キャンセル可能なイベント"
+      },
+      {
+        "label": "よく使う場面",
+        "value": "submit / click（リンク）"
+      }
+    ],
+    "code": {
+      "html": "<form id=\"form\">\n  <input name=\"email\" type=\"email\" placeholder=\"メールアドレス\" required>\n  <button>登録</button>\n</form>\n<p id=\"result\"></p>",
+      "css": "button {\n  padding: 6px 16px;\n  border: 1px solid #b68235;\n  border-radius: 4px;\n  background: #fff;\n  color: #7d5411;\n  font: inherit;\n  cursor: pointer;\n}\ninput {\n  padding: 6px 10px;\n  border: 1px solid #bbb;\n  border-radius: 4px;\n  font: inherit;\n}",
+      "js": "const form = document.querySelector('#form');\n\nform.addEventListener('submit', (event) => {\n  event.preventDefault();\n  const email = form.elements.email.value;\n  document.querySelector('#result').textContent = `${email} で登録しました`;\n  console.log('送信を止めて、JavaScriptで処理しました');\n});"
+    },
+    "preview": {
+      "height": 140,
+      "note": "メールアドレスを入力して「登録」を押しても、ページは移動しません",
+      "fullDocument": false
+    },
+    "explain": [
+      "フォームを送信すると、ブラウザは通常ページを移動（再読み込み）します。`submit` イベントの中で `event.preventDefault()` を呼ぶと、この移動を止められます。",
+      "上の例では、送信を止めたうえで、入力されたメールアドレスを画面に表示しています。実際のサイトでは、ここで `fetch()` を使ってデータを送信します。",
+      "リンクの `click` イベントで呼ぶと、ページ移動を止めてアコーディオンの開閉などに使えます。"
+    ],
+    "values": {
+      "label": "関連するメソッド",
+      "head": "メソッド",
+      "rows": [
+        {
+          "key": "preventDefault()",
+          "desc": "ブラウザ標準の動作を止める"
+        },
+        {
+          "key": "stopPropagation()",
+          "desc": "親要素へイベントが伝わるのを止める"
+        },
+        {
+          "key": "event.defaultPrevented",
+          "desc": "止められたかどうか"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "ページ内リンクをなめらかにスクロール",
+        "desc": "リンクの移動を止め、scrollIntoView() で動かします。",
+        "html": "<a href=\"#bottom\" id=\"jump\">下へ</a>\n<div style=\"height:600px\"></div>\n<p id=\"bottom\">ここが下です</p>",
+        "js": "document.querySelector('#jump').addEventListener('click', (e) => {\n  e.preventDefault();\n  document.querySelector('#bottom').scrollIntoView({ behavior: 'smooth' });\n});"
+      }
+    ],
+    "notes": [
+      "preventDefault() を呼ぶと、ブラウザの入力チェック（required など）の後の送信も止まります。必要な処理は自分で書きます。",
+      "スクロールなど一部のイベントは、passive 指定などにより止められない場合があります。"
+    ],
+    "related": [
+      "js-add-event-listener",
+      "js-event-target",
+      "html-form",
+      "html-a"
+    ]
+  },
+  {
+    "id": "js-event-target",
+    "title": null,
+    "ja": "イベントが起きた要素を調べる",
+    "lead": "イベントオブジェクトの target プロパティには、実際にクリックなどの操作をされた要素が入っています。親要素にまとめてイベントを登録する「イベント委譲」でよく使います。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "Event のプロパティ"
+      },
+      {
+        "label": "値",
+        "value": "操作された要素"
+      },
+      {
+        "label": "似たもの",
+        "value": "currentTarget（登録した要素）"
+      }
+    ],
+    "code": {
+      "html": "<ul id=\"menu\">\n  <li>ブレンド</li>\n  <li>カフェラテ</li>\n  <li>紅茶</li>\n</ul>\n<p id=\"selected\">選んでください</p>",
+      "css": "li {\n  cursor: pointer;\n}\nli.is-active {\n  color: #b68235;\n  font-weight: bold;\n}",
+      "js": "const menu = document.querySelector('#menu');\n\nmenu.addEventListener('click', (event) => {\n  const li = event.target.closest('li');\n  if (!li) return;\n  menu.querySelectorAll('li').forEach((x) => x.classList.remove('is-active'));\n  li.classList.add('is-active');\n  document.querySelector('#selected').textContent = li.textContent + 'を選びました';\n  console.log(event.target);\n});"
+    },
+    "preview": {
+      "height": 180,
+      "note": "項目をクリックすると、選んだ項目が強調されます",
+      "fullDocument": false
+    },
+    "explain": [
+      "イベントの関数が受け取る `event` には、そのイベントの情報が入っています。`event.target` は、実際にクリックされた要素です。",
+      "上の例では、`li` 1つずつではなく親の `ul` にだけイベントを登録し、`event.target` からどの項目が押されたかを判断しています。この方法を「イベント委譲」と呼び、項目が後から増えてもそのまま動きます。",
+      "クリックされたのが中の子要素の場合もあるため、`closest('li')` で目的の要素までさかのぼると確実です。"
+    ],
+    "values": {
+      "label": "イベントオブジェクトの主なプロパティ",
+      "head": "プロパティ",
+      "rows": [
+        {
+          "key": "target",
+          "desc": "実際に操作された要素"
+        },
+        {
+          "key": "currentTarget",
+          "desc": "イベントを登録した要素"
+        },
+        {
+          "key": "type",
+          "desc": "イベントの種類（click など）"
+        },
+        {
+          "key": "key",
+          "desc": "押されたキー（キーボードイベント）"
+        },
+        {
+          "key": "clientX / clientY",
+          "desc": "クリックした位置"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "押されたキーで処理を分ける",
+        "desc": "keydown イベントの key で、どのキーが押されたか分かります。",
+        "html": "<input id=\"search\" placeholder=\"Enterで検索\">",
+        "js": "document.querySelector('#search').addEventListener('keydown', (e) => {\n  if (e.key === 'Enter') {\n    console.log('検索：' + e.target.value);\n  }\n});"
+      }
+    ],
+    "notes": [
+      "target は子要素になることがあるため、closest() で確認せずに使うと意図しない要素を操作してしまいます。",
+      "アロー関数ではなく function で書いた場合、this は currentTarget と同じ要素になります。"
+    ],
+    "related": [
+      "js-add-event-listener",
+      "js-class-list",
+      "js-prevent-default",
+      "js-query-selector"
+    ]
+  },
+  {
+    "id": "js-set-timeout",
+    "title": null,
+    "ja": "指定した時間のあとに実行する",
+    "lead": "指定したミリ秒だけ待ってから、関数を1回実行します。一定間隔で繰り返すときは setInterval() を使います。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "グローバル関数"
+      },
+      {
+        "label": "時間の単位",
+        "value": "ミリ秒（1000 = 1秒）"
+      },
+      {
+        "label": "取り消し",
+        "value": "clearTimeout()"
+      }
+    ],
+    "code": {
+      "html": "<p id=\"msg\">3秒後にメッセージが変わります</p>",
+      "css": null,
+      "js": "console.log('開始');\n\nsetTimeout(() => {\n  document.querySelector('#msg').textContent = '3秒たちました';\n  console.log('3秒後');\n}, 3000);\n\nconsole.log('setTimeout の次の行');"
+    },
+    "preview": {
+      "height": 80,
+      "note": "3秒後に文字が変わります。「もう一度実行」で最初から確認できます",
+      "fullDocument": false
+    },
+    "explain": [
+      "`setTimeout(関数, ミリ秒)` は、指定した時間が過ぎたあとに関数を1回だけ実行します。1000ミリ秒が1秒です。",
+      "待っている間も、後に続く処理は止まらずに先に進みます。上の例のコンソールでは、「setTimeout の次の行」が「3秒後」より先に表示されます。",
+      "`setTimeout()` は番号（タイマーID）を返します。その番号を `clearTimeout()` に渡すと、実行前に取り消せます。"
+    ],
+    "values": {
+      "label": "タイマーの関数",
+      "head": "関数",
+      "rows": [
+        {
+          "key": "setTimeout(fn, ms)",
+          "desc": "ms ミリ秒後に1回実行"
+        },
+        {
+          "key": "clearTimeout(id)",
+          "desc": "setTimeout を取り消す"
+        },
+        {
+          "key": "setInterval(fn, ms)",
+          "desc": "ms ミリ秒ごとに繰り返し実行"
+        },
+        {
+          "key": "clearInterval(id)",
+          "desc": "setInterval を止める"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "1秒ごとにカウントダウンする",
+        "desc": "setInterval で繰り返し、0になったら止めます。",
+        "html": "<p id=\"count\">5</p>",
+        "js": "let n = 5;\nconst timer = setInterval(() => {\n  n--;\n  document.querySelector('#count').textContent = n;\n  if (n === 0) clearInterval(timer);\n}, 1000);"
+      }
+    ],
+    "notes": [
+      "指定した時間ちょうどに実行される保証はありません。ほかの処理が重いと遅れることがあります。",
+      "アニメーションには、setInterval より CSS の transition や requestAnimationFrame() が向いています。"
+    ],
+    "related": [
+      "js-async-await",
+      "js-function",
+      "js-arrow-function",
+      "css-transition"
+    ]
+  },
+  {
+    "id": "js-async-await",
+    "title": null,
+    "ja": "時間のかかる処理を順番に書く",
+    "lead": "通信など時間のかかる処理（非同期処理）を、上から順に実行するように書ける仕組みです。async を付けた関数の中で、await で結果を待ちます。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "構文"
+      },
+      {
+        "label": "対象",
+        "value": "Promise を返す処理"
+      },
+      {
+        "label": "エラー処理",
+        "value": "try...catch"
+      }
+    ],
+    "code": {
+      "html": "<button type=\"button\" id=\"load\">データを読み込む</button>\n<p id=\"status\"></p>",
+      "css": "button {\n  padding: 6px 16px;\n  border: 1px solid #b68235;\n  border-radius: 4px;\n  background: #fff;\n  color: #7d5411;\n  font: inherit;\n  cursor: pointer;\n}",
+      "js": "const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));\n\nasync function loadData() {\n  const status = document.querySelector('#status');\n  status.textContent = '読み込み中…';\n  console.log('読み込み開始');\n  await wait(1500);\n  status.textContent = '読み込みが完了しました';\n  console.log('読み込み完了');\n}\n\ndocument.querySelector('#load').addEventListener('click', loadData);"
+    },
+    "preview": {
+      "height": 120,
+      "note": "ボタンを押すと、1.5秒後に表示が変わります",
+      "fullDocument": false
+    },
+    "explain": [
+      "JavaScriptでは、通信やタイマーなど時間のかかる処理は、終わるのを待たずに次へ進みます（非同期処理）。こうした処理の多くは、結果を後で受け取るための `Promise` を返します。",
+      "関数の前に `async` を付けると、その中で `await` が使えるようになります。`await` は Promise の結果が出るまで待ち、結果を値として受け取ります。",
+      "上の例では、1.5秒待つ処理を `await` で待ってから、表示を「完了」に変えています。実際のサイトでは `fetch()` でサーバーからデータを取得するときによく使います。"
+    ],
+    "values": {
+      "label": "関連する書き方",
+      "head": "書き方",
+      "rows": [
+        {
+          "key": "async function 名前() {}",
+          "desc": "非同期関数を定義する"
+        },
+        {
+          "key": "await Promise",
+          "desc": "結果が出るまで待つ"
+        },
+        {
+          "key": "try { } catch (e) { }",
+          "desc": "エラーを受け取る"
+        },
+        {
+          "key": "Promise.all([...])",
+          "desc": "複数の処理をまとめて待つ"
+        },
+        {
+          "key": "fetch(url)",
+          "desc": "サーバーからデータを取得する（Promise を返す）"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "fetch でデータを取得する",
+        "desc": "サーバーから JSON を取得する定番の書き方です。失敗に備えて try...catch で囲みます。",
+        "js": "async function getMenu() {\n  try {\n    const res = await fetch('/api/menu.json');\n    if (!res.ok) throw new Error('取得に失敗しました');\n    const menu = await res.json();\n    console.log(menu);\n  } catch (error) {\n    console.error(error);\n  }\n}"
+      }
+    ],
+    "notes": [
+      "await は async を付けた関数の中（またはモジュールの最上位）でしか使えません。",
+      "await を付け忘れると、結果の値ではなく Promise そのものを受け取ってしまいます。"
+    ],
+    "related": [
+      "js-set-timeout",
+      "js-function",
+      "js-prevent-default",
+      "js-object"
+    ]
   }
 ]
