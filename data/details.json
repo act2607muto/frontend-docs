@@ -1183,6 +1183,511 @@
     ]
   },
   {
+    "id": "html-small",
+    "title": null,
+    "ja": "注釈・小さな補足",
+    "lead": "著作権表示や注意書き、法的な但し書きなど、本文に添える「小さな補足」を表します。ブラウザは既定で少し小さな文字で表示します。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "インライン要素"
+      },
+      {
+        "label": "終了タグ",
+        "value": "必須"
+      },
+      {
+        "label": "既定の表示",
+        "value": "ひと回り小さい文字"
+      }
+    ],
+    "code": {
+      "html": "<p>ブレンドコーヒー ¥480 <small>（税込）</small></p>\n<p><small>※ 価格は予告なく変更になる場合があります。</small></p>\n<footer><small>&copy; 2026 Cafe Mimosa</small></footer>",
+      "css": "small {\n  color: #666;\n}"
+    },
+    "preview": {
+      "height": 150,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`small` は、本文に添える注釈・但し書き・著作権表示など、「付け足しの小さな情報」を表す要素です。",
+      "見た目が小さくなるのはブラウザの既定のスタイルで、本来の役割は「補足である」という意味を伝えることです。",
+      "ただ文字を小さくしたいだけなら、`span` などにCSSの `font-size` を指定します。"
+    ],
+    "values": {
+      "label": "使いどころ",
+      "head": "用途",
+      "rows": [
+        {
+          "key": "著作権表示",
+          "desc": "© 年 サイト名"
+        },
+        {
+          "key": "価格の注記",
+          "desc": "（税込）・※送料別"
+        },
+        {
+          "key": "注意書き",
+          "desc": "※ 予告なく変更になる場合があります"
+        },
+        {
+          "key": "ライセンス表記",
+          "desc": "画像やコードの利用条件"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "フッターの著作権表示",
+        "desc": "サイトのフッターでは small で著作権表示を書くのが定番です。",
+        "html": "<footer>\n  <small>&copy; 2026 Cafe Mimosa. All rights reserved.</small>\n</footer>",
+        "css": "footer {\n  text-align: center;\n}"
+      }
+    ],
+    "notes": [
+      "段落全体や長い文章を small で囲まないでください。補足の短い文に使います。",
+      "見出しの副題（サブタイトル）には small ではなく p などを使います。"
+    ],
+    "related": [
+      "html-footer",
+      "html-span",
+      "css-font-size",
+      "html-strong"
+    ]
+  },
+  {
+    "id": "html-time",
+    "title": null,
+    "ja": "日付・時刻",
+    "lead": "日付や時刻を表す要素です。datetime 属性に機械が読み取れる形式で日時を書くと、検索エンジンやカレンダーアプリが正しく理解できます。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "インライン要素"
+      },
+      {
+        "label": "終了タグ",
+        "value": "必須"
+      },
+      {
+        "label": "主な属性",
+        "value": "datetime"
+      }
+    ],
+    "code": {
+      "html": "<p>投稿日：<time datetime=\"2026-04-01\">2026年4月1日</time></p>\n<p>営業時間：<time datetime=\"10:00\">午前10時</time>〜<time datetime=\"18:00\">午後6時</time></p>\n<p>イベント開始：<time datetime=\"2026-05-05T13:00+09:00\">5月5日 13時</time></p>",
+      "css": null
+    },
+    "preview": {
+      "height": 150,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`time` は、文章中の日付や時刻を示す要素です。見た目は変わりませんが、そこが日時であることがコンピューターに伝わります。",
+      "画面に表示する文字は「2026年4月1日」のように自由に書けます。そのかわり `datetime` 属性に `2026-04-01` のような決まった形式で日時を書いておきます。",
+      "ブログの投稿日やイベントの開催日時などに使うと、検索エンジンが日付を正しく認識しやすくなります。"
+    ],
+    "values": {
+      "label": "datetime の書き方",
+      "head": "値",
+      "rows": [
+        {
+          "key": "2026-04-01",
+          "desc": "日付（年-月-日）"
+        },
+        {
+          "key": "13:00",
+          "desc": "時刻（時:分）"
+        },
+        {
+          "key": "2026-04-01T13:00",
+          "desc": "日付と時刻（間に T）"
+        },
+        {
+          "key": "2026-04-01T13:00+09:00",
+          "desc": "タイムゾーン付き（日本時間）"
+        },
+        {
+          "key": "2026-04",
+          "desc": "年月だけ"
+        },
+        {
+          "key": "PT2H30M",
+          "desc": "期間（2時間30分）"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "記事の投稿日と更新日",
+        "desc": "article の header に投稿日を time で書きます。",
+        "html": "<article>\n  <header>\n    <h2>春の新メニュー</h2>\n    <p>公開：<time datetime=\"2026-04-01\">2026.04.01</time></p>\n  </header>\n</article>"
+      }
+    ],
+    "notes": [
+      "datetime 属性の形式が正しくないと、日時として認識されません。",
+      "文字自体が決まった形式（例：2026-04-01）なら、datetime 属性は省略できます。"
+    ],
+    "related": [
+      "html-article",
+      "html-p",
+      "html-span",
+      "html-small"
+    ]
+  },
+  {
+    "id": "html-dfn",
+    "title": null,
+    "ja": "用語の定義",
+    "lead": "文章の中で、その場で意味を説明している用語を示します。専門用語が初めて登場して定義する箇所に使います。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "インライン要素"
+      },
+      {
+        "label": "終了タグ",
+        "value": "必須"
+      },
+      {
+        "label": "既定の表示",
+        "value": "斜体"
+      }
+    ],
+    "code": {
+      "html": "<p><dfn>レスポンシブデザイン</dfn>とは、画面の幅に合わせてレイアウトを変え、どの端末でも見やすく表示する作り方のことです。</p>\n<p><dfn><abbr title=\"Cascading Style Sheets\">CSS</abbr></dfn>は、Webページの見た目を指定する言語です。</p>",
+      "css": "dfn {\n  font-style: normal;\n  font-weight: bold;\n  color: #7d5411;\n}"
+    },
+    "preview": {
+      "height": 150,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`dfn` は \"definition\"（定義）の略で、その文の中で意味を説明している用語を示します。囲むのは用語の部分だけで、説明文は同じ段落の中に書きます。",
+      "1つの用語につき、定義している1か所だけに使います。2回目以降に登場するときは `dfn` で囲みません。",
+      "略語を定義するときは、上の2つ目の例のように `abbr` と組み合わせることもできます。"
+    ],
+    "values": {
+      "label": "主な属性",
+      "head": "属性",
+      "rows": [
+        {
+          "key": "title",
+          "desc": "定義している用語を別の書き方で示す"
+        },
+        {
+          "key": "id",
+          "desc": "ほかの場所からリンクで参照する"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "用語集にリンクする",
+        "desc": "dfn に id を付けておくと、別の場所からその定義へリンクできます。",
+        "html": "<p><dfn id=\"def-flex\">Flexbox</dfn>は、要素を1方向に並べるレイアウトの仕組みです。</p>\n<p>詳しくは<a href=\"#def-flex\">Flexbox</a>の説明を参照してください。</p>"
+      }
+    ],
+    "notes": [
+      "強調や太字のために dfn を使わないでください。",
+      "同じ用語を何度も dfn で囲まず、定義している箇所だけに使います。"
+    ],
+    "related": [
+      "html-abbr",
+      "html-dl",
+      "html-em",
+      "html-p"
+    ]
+  },
+  {
+    "id": "html-abbr",
+    "title": null,
+    "ja": "略語",
+    "lead": "HTML や CSS のような略語を示します。title 属性に正式名称を書くと、マウスを乗せたときに表示されます。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "インライン要素"
+      },
+      {
+        "label": "終了タグ",
+        "value": "必須"
+      },
+      {
+        "label": "主な属性",
+        "value": "title"
+      }
+    ],
+    "code": {
+      "html": "<p><abbr title=\"HyperText Markup Language\">HTML</abbr>で構造をつくり、<abbr title=\"Cascading Style Sheets\">CSS</abbr>で見た目を整えます。</p>\n<p>締め切りは<abbr title=\"as soon as possible\">ASAP</abbr>でお願いします。</p>",
+      "css": "abbr[title] {\n  text-decoration: underline dotted;\n  cursor: help;\n}"
+    },
+    "preview": {
+      "height": 120,
+      "note": "点線の付いた略語にマウスを乗せると、正式名称が表示されます",
+      "fullDocument": false
+    },
+    "explain": [
+      "`abbr` は \"abbreviation\"（略語）の略で、文章中の略語を示す要素です。",
+      "`title` 属性に正式名称を書くと、多くのブラウザではマウスを乗せたときに表示されます。多くのブラウザは、`title` 付きの `abbr` に点線の下線を表示します。",
+      "ただし `title` はタッチ操作の端末では表示されません。初めて出てくる略語は、本文の中で正式名称も書いておくと親切です。"
+    ],
+    "values": {
+      "label": "主な属性・CSS",
+      "head": "名前",
+      "rows": [
+        {
+          "key": "title 属性",
+          "desc": "正式名称や説明"
+        },
+        {
+          "key": "text-decoration: underline dotted",
+          "desc": "点線の下線で略語であることを示す"
+        },
+        {
+          "key": "cursor: help",
+          "desc": "マウスを乗せたときにヘルプのカーソルにする"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "初出で正式名称を書く",
+        "desc": "本文で正式名称を書き、以降は略語だけにする書き方です。",
+        "html": "<p><abbr>SEO</abbr>（Search Engine Optimization：検索エンジン最適化）の基本を紹介します。</p>"
+      }
+    ],
+    "notes": [
+      "title の内容は読み上げソフトで読まれない場合があります。重要な説明は本文に書きます。",
+      "すべての略語に abbr を付ける必要はありません。読者が知らなそうなものに使います。"
+    ],
+    "related": [
+      "html-dfn",
+      "html-span",
+      "css-cursor",
+      "css-text-decoration"
+    ]
+  },
+  {
+    "id": "html-ruby",
+    "title": null,
+    "ja": "ふりがな（ルビ）",
+    "lead": "漢字などの文字の上に、ふりがな（ルビ）を表示します。読み方は rt 要素で書き、ruby 要素で全体を囲みます。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "インライン要素"
+      },
+      {
+        "label": "終了タグ",
+        "value": "必須"
+      },
+      {
+        "label": "中に入れる",
+        "value": "親文字 ＋ rt（＋ rp）"
+      }
+    ],
+    "code": {
+      "html": "<p><ruby>漢字<rp>（</rp><rt>かんじ</rt><rp>）</rp></ruby>にふりがなを付けます。</p>\n<p><ruby>東<rt>とう</rt>京<rt>きょう</rt></ruby>のように、1文字ずつ付けることもできます。</p>",
+      "css": "p {\n  font-size: 20px;\n  line-height: 2.4;\n}"
+    },
+    "preview": {
+      "height": 160,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`ruby` は、文字にふりがな（ルビ）を付けるための要素です。ふりがなを付けたい文字（親文字）と、読みを書いた `rt` を `ruby` で囲みます。",
+      "上の1つ目の例のように熟語全体に付けることも、2つ目の例のように1文字ずつ `rt` を付けることもできます。",
+      "`rp` はルビに対応していない環境でだけ表示される括弧です。対応していれば非表示になり、対応していなければ「漢字（かんじ）」のように表示されます。"
+    ],
+    "values": {
+      "label": "関連する要素・CSS",
+      "head": "名前",
+      "rows": [
+        {
+          "key": "ruby",
+          "desc": "ルビ全体を囲む"
+        },
+        {
+          "key": "rt",
+          "desc": "ふりがなの部分"
+        },
+        {
+          "key": "rp",
+          "desc": "非対応環境向けの括弧"
+        },
+        {
+          "key": "ruby-position",
+          "desc": "ルビの位置（over / under）"
+        },
+        {
+          "key": "ruby-align",
+          "desc": "ルビの揃え方"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "ルビの色と大きさを変える",
+        "desc": "rt にスタイルを指定すると、ふりがなだけを装飾できます。",
+        "html": "<ruby>躑躅<rp>（</rp><rt>つつじ</rt><rp>）</rp></ruby>",
+        "css": "rt {\n  font-size: .5em;\n  color: #a06f24;\n}"
+      }
+    ],
+    "notes": [
+      "ルビを付けると行の高さが増えます。行間（line-height）を広めにしておくと読みやすくなります。",
+      "rp は省略できますが、付けておくと古い環境でも読みが伝わります。"
+    ],
+    "related": [
+      "html-rt",
+      "html-rp",
+      "css-line-height",
+      "css-font-size"
+    ]
+  },
+  {
+    "id": "html-rt",
+    "title": null,
+    "ja": "ルビのテキスト",
+    "lead": "ruby 要素の中で、ふりがな（ルビ）の文字そのものを書く要素です。直前の親文字の上に小さく表示されます。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "ruby の子要素"
+      },
+      {
+        "label": "終了タグ",
+        "value": "省略可（書くのが一般的）"
+      },
+      {
+        "label": "記述位置",
+        "value": "ruby の中、親文字の後"
+      }
+    ],
+    "code": {
+      "html": "<p><ruby>明日<rt>あした</rt></ruby>は<ruby>晴<rt>は</rt></ruby>れるでしょう。</p>\n<p class=\"under\"><ruby>Mimosa<rt>ミモザ</rt></ruby></p>",
+      "css": "p {\n  font-size: 20px;\n  line-height: 2.4;\n}\nrt {\n  color: #a06f24;\n}\n.under ruby {\n  ruby-position: under;\n}"
+    },
+    "preview": {
+      "height": 160,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`rt` は \"ruby text\" の略で、ルビとして表示する読みの文字を書きます。必ず `ruby` の中に、ふりがなを付けたい文字の後に書きます。",
+      "ブラウザは `rt` を親文字の上に、親文字より小さい文字で表示します。",
+      "CSSの `ruby-position: under` を `ruby` に指定すると、ルビを下に表示できます。英単語に読みを添えるときなどに使えます。"
+    ],
+    "values": {
+      "label": "よく指定するCSS",
+      "head": "プロパティ",
+      "rows": [
+        {
+          "key": "font-size",
+          "desc": "ルビの文字の大きさ（既定は親文字の約半分）"
+        },
+        {
+          "key": "color",
+          "desc": "ルビの文字色"
+        },
+        {
+          "key": "ruby-position",
+          "desc": "over（上）/ under（下）※ ruby に指定"
+        },
+        {
+          "key": "letter-spacing",
+          "desc": "ルビの字間"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "ルビを選択・コピーさせない",
+        "desc": "本文をコピーしたときにふりがなが混ざらないようにします。",
+        "css": "rt {\n  user-select: none;\n}"
+      }
+    ],
+    "notes": [
+      "ruby の外で rt は使えません。",
+      "ふりがなを括弧で表示したい環境向けには、rp を前後に添えます。"
+    ],
+    "related": [
+      "html-ruby",
+      "html-rp",
+      "css-font-size",
+      "css-color"
+    ]
+  },
+  {
+    "id": "html-rp",
+    "title": null,
+    "ja": "ルビ非対応時の括弧",
+    "lead": "ルビに対応していない環境でだけ表示される括弧を書く要素です。rt の前後に置き、対応環境では非表示になります。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "ruby の子要素"
+      },
+      {
+        "label": "終了タグ",
+        "value": "省略可（書くのが一般的）"
+      },
+      {
+        "label": "記述位置",
+        "value": "rt の直前と直後"
+      }
+    ],
+    "code": {
+      "html": "<p><ruby>紫陽花<rp>（</rp><rt>あじさい</rt><rp>）</rp></ruby></p>\n<p class=\"fallback\"><ruby>紫陽花<rp>（</rp><rt>あじさい</rt><rp>）</rp></ruby></p>",
+      "css": "p {\n  font-size: 20px;\n  line-height: 2.4;\n}\n/* ルビ非対応の環境を再現 */\n.fallback ruby, .fallback rt, .fallback rp {\n  display: inline;\n  font-size: inherit;\n}"
+    },
+    "preview": {
+      "height": 150,
+      "note": "2行目はルビ非対応の環境の表示を、CSSで再現しています",
+      "fullDocument": false
+    },
+    "explain": [
+      "`rp` は \"ruby parenthesis\"（ルビの括弧）の略です。ルビに対応したブラウザでは表示されず、対応していない環境でだけ表示されます。",
+      "上の例の2行目は、CSSでルビに対応していない環境を再現したものです。このとき `rp` の括弧が表示され、「紫陽花（あじさい）」と読みが括弧書きで伝わります。",
+      "現在の主要なブラウザはすべてルビに対応していますが、読み上げソフトやテキストを取り出す仕組みでは括弧があると意味が伝わりやすくなります。"
+    ],
+    "values": {
+      "label": "書き方",
+      "head": "パターン",
+      "rows": [
+        {
+          "key": "<rp>（</rp><rt>…</rt><rp>）</rp>",
+          "desc": "全角の括弧で囲む（日本語向け）"
+        },
+        {
+          "key": "<rp>(</rp><rt>…</rt><rp>)</rp>",
+          "desc": "半角の括弧で囲む"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "熟語全体にルビを付ける基本形",
+        "desc": "ruby・rt・rp をそろえた、もっとも安全な書き方です。",
+        "html": "<ruby>\n  薔薇<rp>（</rp><rt>ばら</rt><rp>）</rp>\n</ruby>"
+      }
+    ],
+    "notes": [
+      "rp には括弧などの記号だけを書きます。",
+      "rp は rt の直前・直後に置きます。離れた場所に置くと意味がありません。"
+    ],
+    "related": [
+      "html-ruby",
+      "html-rt",
+      "html-span",
+      "css-display"
+    ]
+  },
+  {
     "id": "html-a",
     "title": null,
     "ja": "ハイパーリンク",
@@ -3334,6 +3839,79 @@
     ]
   },
   {
+    "id": "html-address",
+    "title": null,
+    "ja": "連絡先情報",
+    "lead": "ページや記事の作者・運営者への連絡先（メールアドレス、電話番号、住所など）を表します。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "ブロック要素"
+      },
+      {
+        "label": "終了タグ",
+        "value": "必須"
+      },
+      {
+        "label": "既定の表示",
+        "value": "斜体"
+      }
+    ],
+    "code": {
+      "html": "<footer>\n  <address>\n    カフェ・ミモザ<br>\n    〒100-0001 東京都千代田区千代田1-1<br>\n    TEL：<a href=\"tel:0312345678\">03-1234-5678</a><br>\n    <a href=\"mailto:info@example.com\">info@example.com</a>\n  </address>\n</footer>",
+      "css": "address {\n  font-style: normal;\n  line-height: 1.8;\n}"
+    },
+    "preview": {
+      "height": 170,
+      "note": null,
+      "fullDocument": false
+    },
+    "explain": [
+      "`address` は、そのページ（または記事）の作者や運営者に連絡するための情報をまとめる要素です。フッターに置くことが多いです。",
+      "`article` の中に置くと、その記事の著者の連絡先を表します。",
+      "ブラウザは既定で斜体にしますが、日本語では読みにくいため `font-style: normal` で戻すのが一般的です。"
+    ],
+    "values": {
+      "label": "中に書く主な内容",
+      "head": "内容",
+      "rows": [
+        {
+          "key": "メールアドレス",
+          "desc": "<a href=\"mailto:…\"> でリンクにする"
+        },
+        {
+          "key": "電話番号",
+          "desc": "<a href=\"tel:…\"> で発信できるリンクにする"
+        },
+        {
+          "key": "住所",
+          "desc": "運営者・店舗の所在地"
+        },
+        {
+          "key": "SNSなど",
+          "desc": "連絡手段となるアカウントへのリンク"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "記事の著者の連絡先",
+        "desc": "article の footer に著者情報として書きます。",
+        "html": "<article>\n  <h2>コーヒーの淹れ方</h2>\n  <p>…</p>\n  <footer>\n    <address>文：<a href=\"mailto:writer@example.com\">山田 花子</a></address>\n  </footer>\n</article>"
+      }
+    ],
+    "notes": [
+      "連絡先とは関係のない住所（例：イベント会場の住所）には address を使いません。p などで書きます。",
+      "address の中に見出しや header・footer などは入れられません。"
+    ],
+    "related": [
+      "html-footer",
+      "html-a",
+      "html-br",
+      "html-article"
+    ]
+  },
+  {
     "id": "html-video",
     "title": null,
     "ja": "動画を埋め込む",
@@ -4098,6 +4676,76 @@
       "html-br",
       "css-overflow",
       "css-font-family"
+    ]
+  },
+  {
+    "id": "html-comment",
+    "title": "<!-- -->",
+    "ja": "コメント（画面に表示されないメモ）",
+    "lead": "HTMLの中に書く、画面に表示されないメモです。<!-- と --> で囲んだ部分はブラウザに無視されます。",
+    "meta": [
+      {
+        "label": "種類",
+        "value": "コメント（要素ではない）"
+      },
+      {
+        "label": "書き方",
+        "value": "<!-- 内容 -->"
+      },
+      {
+        "label": "表示",
+        "value": "画面には表示されない"
+      }
+    ],
+    "code": {
+      "html": "<!-- ヘッダー ここから -->\n<header>\n  <p>カフェ・ミモザ</p>\n</header>\n<!-- ヘッダー ここまで -->\n\n<p>表示される文章です。</p>\n<!-- <p>一時的に非表示にしている文章です。</p> -->",
+      "css": null
+    },
+    "preview": {
+      "height": 120,
+      "note": "コメント部分は表示されず、「表示される文章です。」だけが見えます",
+      "fullDocument": false
+    },
+    "explain": [
+      "`<!--` と `-->` で囲んだ部分は「コメント」になり、ブラウザの画面には表示されません。複数行にまたがって書くこともできます。",
+      "コードの区切りや説明を書いておくと、あとから読む自分や他の人が構造を理解しやすくなります。",
+      "上の例の最後の行のように、要素をコメントで囲むと一時的に表示しないようにできます（コメントアウト）。"
+    ],
+    "values": {
+      "label": "言語ごとのコメントの書き方",
+      "head": "言語",
+      "rows": [
+        {
+          "key": "HTML",
+          "desc": "<!-- コメント -->"
+        },
+        {
+          "key": "CSS",
+          "desc": "/* コメント */"
+        },
+        {
+          "key": "JavaScript",
+          "desc": "// 1行コメント ／ /* 複数行 */"
+        }
+      ]
+    },
+    "usages": [
+      {
+        "title": "CSSのコメント",
+        "desc": "CSSでは /* と */ で囲みます。HTMLの書き方とは違うので注意します。",
+        "css": "/* ボタンの基本スタイル */\n.btn {\n  padding: 8px 16px; /* 上下 左右 */\n}"
+      }
+    ],
+    "notes": [
+      "コメントは画面に出ませんが、ページのソースを表示すれば誰でも読めます。パスワードや個人情報は書かないでください。",
+      "コメントの中に -- （ハイフン2つ）を書くと、コメントが途中で終わったと解釈されることがあります。",
+      "コメントを入れ子にすることはできません。"
+    ],
+    "related": [
+      "html-doctype",
+      "html-html",
+      "html-pre",
+      "html-code"
     ]
   },
   {
