@@ -25,6 +25,7 @@ assets/js/
   layout.js       ヘッダー・フッター
   theme.js        テーマ切替
   search.js       検索
+  search-dialog.js  Ctrl / ⌘ + K で開く検索ウィンドウ
   accordion.js    アコーディオン
   code.js         シンタックスハイライト（HTML / CSS / JS）・コピー
   preview.js      iframe プレビュー（srcdoc の生成を独立させている）・JS のコンソール出力

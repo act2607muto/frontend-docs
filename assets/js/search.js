@@ -31,17 +31,19 @@ let uid = 0;
 /**
  * 検索ボックス部品を生成する
  * @param {object} data loadData() の結果
- * @param {{ placeholder: string, className?: string, emptyText: string }} opts
+ * @param {{ placeholder: string, className?: string, emptyText: string, hint?: string }} opts
+ *   hint を渡すと入力欄の右端にショートカットの目印（例：⌘K）を表示する
  * @returns {{ el: HTMLElement, input: HTMLInputElement, setQuery: (q: string) => void }}
  */
-export function createSearchBox(data, { placeholder, className = '', emptyText }) {
+export function createSearchBox(data, { placeholder, className = '', emptyText, hint = '' }) {
   const id = `search-list-${++uid}`;
   const el = document.createElement('div');
   el.className = `search ${className}`;
   el.innerHTML = `
     ${icon('search', 'search__icon')}
     <input class="input" type="search" placeholder="${esc(placeholder)}" aria-label="検索"
-      role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="${id}" autocomplete="off">
+      role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="${id}" autocomplete="off"${hint ? ` aria-keyshortcuts="${hint.startsWith('⌘') ? 'Meta+K' : 'Control+K'}"` : ''}>
+    ${hint ? `<kbd class="search__kbd" aria-hidden="true">${esc(hint)}</kbd>` : ''}
     <div class="search__dropdown" id="${id}" hidden></div>`;
   const input = el.querySelector('input');
   const drop = el.querySelector('.search__dropdown');

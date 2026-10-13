@@ -2,6 +2,7 @@
 import { TYPES, TYPE_INFO, url } from './util.js';
 import { icon } from './icons.js';
 import { createSearchBox } from './search.js';
+import { shortcutLabel } from './search-dialog.js';
 import { initThemeToggles } from './theme.js';
 
 const NAV = [
@@ -34,7 +35,7 @@ export function renderHeader(data, { current, menu = false }) {
     </div>
     <nav class="gnav gnav--mobile" aria-label="メイン">${navLinks(current)}</nav>`;
 
-  const box = createSearchBox(data, { placeholder: '検索（flex、余白…）', className: 'hdr-search', emptyText: '一致する項目は見つかりませんでした。' });
+  const box = createSearchBox(data, { placeholder: '検索（flex、余白…）', className: 'hdr-search', emptyText: '一致する項目は見つかりませんでした。', hint: shortcutLabel });
   header.querySelector('.site-header__spacer').after(box.el);
 
   const toggle = header.querySelector('.site-header__search-toggle');

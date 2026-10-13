@@ -4,6 +4,7 @@ import { renderTop } from './pages/top.js';
 import { renderDict } from './pages/dict.js';
 import { renderDetail } from './pages/detail.js';
 import { renderRoadmap } from './pages/roadmap.js';
+import { initSearchShortcut } from './search-dialog.js';
 
 const app = document.getElementById('app');
 const { page, type, id } = document.body.dataset;
@@ -15,6 +16,7 @@ loadData()
     else if (page === 'dict') renderDict(app, data, type);
     else if (page === 'detail') renderDetail(app, data, id);
     else if (page === 'learn') renderRoadmap(app, data);
+    initSearchShortcut(data);
     // ハッシュ付きで開いた場合は描画後に該当位置へ
     if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
   })

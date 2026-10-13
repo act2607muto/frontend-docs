@@ -3,6 +3,7 @@ import { CONFIG } from '../config.js';
 import { esc, url } from '../util.js';
 import { icon } from '../icons.js';
 import { createSearchBox } from '../search.js';
+import { shortcutLabel } from '../search-dialog.js';
 import { initThemeToggles } from '../theme.js';
 import { renderFooter } from '../layout.js';
 
@@ -40,6 +41,7 @@ export function renderTop(app, data) {
   const box = createSearchBox(data, {
     placeholder: 'タグ・プロパティ・やりたいことで検索（例：flex、中央寄せ）',
     className: 'top__search',
+    hint: shortcutLabel,
     emptyText: '一致する項目は見つかりませんでした。別のキーワードをお試しください。',
   });
   page.querySelector('[data-slot="search"]').replaceWith(box.el);
