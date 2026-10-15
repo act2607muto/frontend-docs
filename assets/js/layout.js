@@ -24,7 +24,7 @@ export function renderHeader(data, { current, menu = false }) {
     <div class="site-header__inner">
       <div class="site-header__brand">
         ${menu ? `<button type="button" class="btn btn-icon site-header__menu" aria-label="カテゴリメニュー" aria-controls="sidebar" aria-expanded="false" data-drawer-open>${icon('menu')}</button>` : ''}
-        <a class="logo" href="${url.top()}">frontend docs</a>
+        <a class="logo" href="${url.top()}">FRONTEND-DOCS</a>
       </div>
       <nav class="gnav gnav--desktop" aria-label="メイン">${navLinks(current)}</nav>
       <div class="site-header__spacer"></div>
@@ -49,7 +49,7 @@ export function renderHeader(data, { current, menu = false }) {
   return header;
 }
 
-export function renderFooter(data, left = 'frontend docs — 学ぶ・調べる・理解する') {
+export function renderFooter(data, left = 'FRONTEND-DOCS — 学ぶ・調べる・理解する') {
   const footer = document.createElement('footer');
   footer.className = 'site-footer';
   footer.innerHTML = `<span>${left.replace(/&/g, '&amp;')}</span><span>${TYPES.map((t) => `${TYPE_INFO[t].tag} ${data.order[t].length}項目`).join(' ・ ')}を収録</span>`;

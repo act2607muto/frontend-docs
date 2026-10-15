@@ -2,7 +2,7 @@
   "name": "frontend-docs",
   "private": true,
   "type": "module",
-  "description": "frontend docs — HTMLタグ・CSSプロパティ・JavaScriptの辞典と学習ロードマップ",
+  "description": "FRONTEND-DOCS — HTMLタグ・CSSプロパティ・JavaScriptの辞典と学習ロードマップ",
   "scripts": {
     "build": "node scripts/build-pages.mjs",
     "start": "node scripts/serve.mjs"

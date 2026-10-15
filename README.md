@@ -1,4 +1,4 @@
-# frontend docs
+# FRONTEND-DOCS
 
 HTMLタグ・CSSプロパティ・JavaScriptの辞典と学習ロードマップのサイトです。素の HTML・CSS・JavaScript（フレームワーク・依存パッケージなし）で実装しています。
 仕様は [`design_handoff_html_css_guide/README.md`](design_handoff_html_css_guide/README.md) を参照してください。

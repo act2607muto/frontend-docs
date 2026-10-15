@@ -198,7 +198,7 @@
 @media (max-width: 1099px) { .top__title { font-size: 66px; } }
 @media (max-width: 759px) {
   .top__main { padding: 24px 22px 56px; }
-  .top__title { font-size: 46px; }
+  .top__title { font-size: min(46px, 10vw); white-space: nowrap; }
 }
 
 /* ==========================================================================

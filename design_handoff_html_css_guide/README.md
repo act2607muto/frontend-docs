@@ -1,4 +1,4 @@
-# Handoff: frontend docs（旧 HTML & CSS GUIDE。HTML・CSS・JS 学習／辞典サイト）
+# Handoff: FRONTEND-DOCS（旧 HTML & CSS GUIDE。HTML・CSS・JS 学習／辞典サイト）
 
 ## 概要
 HTMLタグ・CSSプロパティ・JavaScriptの辞典と、初心者〜上級者向け学習ロードマップを組み合わせた個人用学習サイト。コンセプトは「学ぶ・調べる・理解する」。すべての詳細ページで **コードと実際のブラウザ表示（ライブプレビュー）をセットで掲載** することが最重要要件。
