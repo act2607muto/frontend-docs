@@ -174,7 +174,9 @@
 }
 .top__kicker { font-size: 12px; letter-spacing: .18em; color: var(--strong-accent); }
 .top__title { font-size: 80px; font-weight: 400; letter-spacing: -.02em; line-height: 1; margin: 16px 0 20px; }
-.top__lead { font-size: 15.5px; line-height: 1.95; color: var(--muted); max-width: 580px; margin-bottom: 36px; text-wrap: pretty; }
+.top__lead { font-size: 15.5px; line-height: 1.95; color: var(--muted); max-width: 720px; margin-bottom: 36px; text-wrap: pretty; }
+/* PC・タブレットだけで改行する（スマホでは自然に折り返す） */
+@media (max-width: 759px) { .pc-only { display: none; } }
 .top__search .input { min-height: 52px; padding-left: 46px; font-size: 15px; }
 .top__quick { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; margin-top: 14px; font-size: 12.5px; }
 .top__quick-label { color: var(--muted); margin-right: 4px; }

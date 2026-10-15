@@ -21,8 +21,8 @@ export function renderTop(app, data) {
     <div class="top__bar"><button type="button" class="btn btn-secondary" data-theme-toggle="label"></button></div>
     <main class="top__main">
       <div class="top__kicker">学ぶ・調べる・理解する</div>
-      <h1 class="top__title">HTML &amp; CSS GUIDE</h1>
-      <p class="top__lead">HTMLタグ・CSSプロパティ・JavaScriptを網羅した辞典と、段階的に学べるロードマップ。すべての項目で、コードと実際の表示結果をあわせて確認できます。</p>
+      <h1 class="top__title">frontend docs</h1>
+      <p class="top__lead">HTMLタグ・CSSプロパティ・JavaScriptを網羅した辞典と、<br class="pc-only">段階的に学べるロードマップ。すべての項目で、<br class="pc-only">コードと実際の表示結果をあわせて確認できます。</p>
       <div data-slot="search"></div>
       <div class="top__quick">
         <span class="top__quick-label">よく調べるキーワード</span>
@@ -47,7 +47,7 @@ export function renderTop(app, data) {
   page.querySelector('[data-slot="search"]').replaceWith(box.el);
   page.querySelectorAll('[data-word]').forEach((b) => b.addEventListener('click', () => box.setQuery(b.dataset.word)));
 
-  page.append(renderFooter(data, 'HTML & CSS GUIDE'));
+  page.append(renderFooter(data, 'frontend docs'));
   initThemeToggles(page);
   app.append(page);
 }
