@@ -2,6 +2,7 @@
 import { TYPES, TYPE_INFO, url } from './util.js';
 import { icon } from './icons.js';
 import { createSearchBox } from './search.js';
+import { shortcutLabel } from './search-dialog.js';
 import { initThemeToggles } from './theme.js';
 
 const NAV = [
@@ -23,7 +24,7 @@ export function renderHeader(data, { current, menu = false }) {
     <div class="site-header__inner">
       <div class="site-header__brand">
         ${menu ? `<button type="button" class="btn btn-icon site-header__menu" aria-label="カテゴリメニュー" aria-controls="sidebar" aria-expanded="false" data-drawer-open>${icon('menu')}</button>` : ''}
-        <a class="logo" href="${url.top()}">HTML &amp; CSS GUIDE</a>
+        <a class="logo" href="${url.top()}">FRONTEND-DOCS</a>
       </div>
       <nav class="gnav gnav--desktop" aria-label="メイン">${navLinks(current)}</nav>
       <div class="site-header__spacer"></div>
@@ -34,7 +35,7 @@ export function renderHeader(data, { current, menu = false }) {
     </div>
     <nav class="gnav gnav--mobile" aria-label="メイン">${navLinks(current)}</nav>`;
 
-  const box = createSearchBox(data, { placeholder: '検索（flex、余白…）', className: 'hdr-search', emptyText: '一致する項目は見つかりませんでした。' });
+  const box = createSearchBox(data, { placeholder: '検索（flex、余白…）', className: 'hdr-search', emptyText: '一致する項目は見つかりませんでした。', hint: shortcutLabel });
   header.querySelector('.site-header__spacer').after(box.el);
 
   const toggle = header.querySelector('.site-header__search-toggle');
@@ -48,7 +49,7 @@ export function renderHeader(data, { current, menu = false }) {
   return header;
 }
 
-export function renderFooter(data, left = 'HTML & CSS GUIDE — 学ぶ・調べる・理解する') {
+export function renderFooter(data, left = 'FRONTEND-DOCS — 学ぶ・調べる・理解する') {
   const footer = document.createElement('footer');
   footer.className = 'site-footer';
   footer.innerHTML = `<span>${left.replace(/&/g, '&amp;')}</span><span>${TYPES.map((t) => `${TYPE_INFO[t].tag} ${data.order[t].length}項目`).join(' ・ ')}を収録</span>`;

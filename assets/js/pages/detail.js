@@ -166,7 +166,7 @@ export function renderDetail(app, data, id) {
     return;
   }
   const d = data.details[id];
-  document.title = `${d?.title || titleOf(item)} ${d ? d.ja : item.summary} | HTML & CSS GUIDE`;
+  document.title = `${d?.title || titleOf(item)} ${d ? d.ja : item.summary} | FRONTEND-DOCS`;
 
   const header = renderHeader(data, { current: item.type, menu: true });
   const wrap = document.createElement('div');

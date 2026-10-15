@@ -2,6 +2,7 @@
 import { CONFIG } from './config.js';
 import { esc, url } from './util.js';
 import { icon } from './icons.js';
+import { logSearch } from './search-log.js';
 
 /**
  * スコア：完全一致100 > 前方一致70 > 部分一致50 > キーワード40 > 説明30 > カテゴリ15
@@ -31,17 +32,19 @@ let uid = 0;
 /**
  * 検索ボックス部品を生成する
  * @param {object} data loadData() の結果
- * @param {{ placeholder: string, className?: string, emptyText: string }} opts
+ * @param {{ placeholder: string, className?: string, emptyText: string, hint?: string }} opts
+ *   hint を渡すと入力欄の右端にショートカットの目印（例：⌘K）を表示する
  * @returns {{ el: HTMLElement, input: HTMLInputElement, setQuery: (q: string) => void }}
  */
-export function createSearchBox(data, { placeholder, className = '', emptyText }) {
+export function createSearchBox(data, { placeholder, className = '', emptyText, hint = '' }) {
   const id = `search-list-${++uid}`;
   const el = document.createElement('div');
   el.className = `search ${className}`;
   el.innerHTML = `
     ${icon('search', 'search__icon')}
     <input class="input" type="search" placeholder="${esc(placeholder)}" aria-label="検索"
-      role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="${id}" autocomplete="off">
+      role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="${id}" autocomplete="off"${hint ? ` aria-keyshortcuts="${hint.startsWith('⌘') ? 'Meta+K' : 'Control+K'}"` : ''}>
+    ${hint ? `<kbd class="search__kbd" aria-hidden="true">${esc(hint)}</kbd>` : ''}
     <div class="search__dropdown" id="${id}" hidden></div>`;
   const input = el.querySelector('input');
   const drop = el.querySelector('.search__dropdown');
@@ -92,11 +95,13 @@ export function createSearchBox(data, { placeholder, className = '', emptyText }
     if (e.isComposing) return; // 日本語変換中のEnterは無視
     if (e.key === 'ArrowDown') { e.preventDefault(); if (drop.hidden) render(); else move(1); }
     else if (e.key === 'ArrowUp') { e.preventDefault(); move(-1); }
-    else if (e.key === 'Enter' && !drop.hidden && results[active]) { e.preventDefault(); location.href = url.item(results[active]); }
+    else if (e.key === 'Enter' && !drop.hidden && results[active]) { e.preventDefault(); logSearch(input.value); location.href = url.item(results[active]); }
     else if (e.key === 'Escape') close();
   });
   // クリック時に入力欄のフォーカスを外さない（Safari ではリンクにフォーカスが移らないため）
   drop.addEventListener('mousedown', (e) => e.preventDefault());
+  // 候補をクリックして項目を開いたときも検索語を記録する
+  drop.addEventListener('click', (e) => { if (e.target.closest('.search__result')) logSearch(input.value); });
   el.addEventListener('focusout', (e) => { if (!el.contains(e.relatedTarget)) close(); });
 
   return {

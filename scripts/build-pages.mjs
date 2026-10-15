@@ -9,7 +9,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (name) => JSON.parse(readFileSync(join(ROOT, 'data', `${name}.json`), 'utf8'));
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-const SITE = 'HTML & CSS GUIDE';
+const SITE = 'FRONTEND-DOCS';
 const DESCRIPTION = 'HTMLタグ・CSSプロパティ・JavaScriptを、サンプルコードと実際の表示結果で学べる辞典・学習サイトです。';
 
 function page({ root, title, description = DESCRIPTION, body }) {
