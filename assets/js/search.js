@@ -2,6 +2,7 @@
 import { CONFIG } from './config.js';
 import { esc, url } from './util.js';
 import { icon } from './icons.js';
+import { logSearch } from './search-log.js';
 
 /**
  * スコア：完全一致100 > 前方一致70 > 部分一致50 > キーワード40 > 説明30 > カテゴリ15
@@ -94,11 +95,13 @@ export function createSearchBox(data, { placeholder, className = '', emptyText, 
     if (e.isComposing) return; // 日本語変換中のEnterは無視
     if (e.key === 'ArrowDown') { e.preventDefault(); if (drop.hidden) render(); else move(1); }
     else if (e.key === 'ArrowUp') { e.preventDefault(); move(-1); }
-    else if (e.key === 'Enter' && !drop.hidden && results[active]) { e.preventDefault(); location.href = url.item(results[active]); }
+    else if (e.key === 'Enter' && !drop.hidden && results[active]) { e.preventDefault(); logSearch(input.value); location.href = url.item(results[active]); }
     else if (e.key === 'Escape') close();
   });
   // クリック時に入力欄のフォーカスを外さない（Safari ではリンクにフォーカスが移らないため）
   drop.addEventListener('mousedown', (e) => e.preventDefault());
+  // 候補をクリックして項目を開いたときも検索語を記録する
+  drop.addEventListener('click', (e) => { if (e.target.closest('.search__result')) logSearch(input.value); });
   el.addEventListener('focusout', (e) => { if (!el.contains(e.relatedTarget)) close(); });
 
   return {

@@ -576,3 +576,4 @@
   font-family: var(--font-code); font-size: 11px; text-align: center;
 }
 .search-dialog__shortcut { margin-left: auto; }
+.top__quick-words { display: contents; }

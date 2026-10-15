@@ -1,10 +1,13 @@
 {
-  "name": "html-css-guide",
+  "name": "frontend-docs",
   "private": true,
   "type": "module",
-  "description": "HTML & CSS GUIDE — HTMLタグ・CSSプロパティの辞典と学習ロードマップ",
+  "description": "frontend docs — HTMLタグ・CSSプロパティ・JavaScriptの辞典と学習ロードマップ",
   "scripts": {
     "build": "node scripts/build-pages.mjs",
     "start": "node scripts/serve.mjs"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

@@ -8,6 +8,6 @@ export const CONFIG = {
   searchLimit: 8,
   // 辞典一覧で初期展開するカテゴリ（例：{ html: ['text'], css: ['flexgrid'] }）
   dictInitialOpen: { html: [], css: [], js: [] },
-  // トップページの「よく調べるキーワード」
+  // トップページの「よく調べるキーワード」（検索履歴が取得できないとき・足りないときに使う既定の語句）
   quickWords: ['flex', 'margin', '中央寄せ', '画像', '見出し'],
 };
